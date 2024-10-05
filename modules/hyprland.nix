@@ -7,7 +7,7 @@ in {
     enable = true;
 
     # set the flake package
-    packge = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
 
     # portal configuration
     portalPackage = inputs.hyprland.pacakges.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
