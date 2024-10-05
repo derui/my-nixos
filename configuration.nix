@@ -114,6 +114,12 @@
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
 
+  # enable zram
+  zramSwap = {
+    enable = true;
+    memoryPercent = 200;
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
