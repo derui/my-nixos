@@ -92,8 +92,33 @@
 
     bind =
       [
-        "$mod, Enter, exec, firefox"
-        ", Print, exec, grimblast copy area"
+        "$mod, Return, exec, $terminal"
+        "$mod SHIFT, C, killactive,"
+        "$mod SHIFT, E, exit,"
+        "$mod, V, togglefloating,"
+        "$mod, F, fullscreen,"
+        "$mod, Semicolon, exec, $menu"
+
+        # Move focus with mainMod + arrow keys
+        "$mod, H, movefocus, l"
+        "$mod, L, movefocus, r"
+        "$mod, K, movefocus, u"
+        "$mod, J, movefocus, d"
+
+        # move focused workspace to other monitor
+        "$mod CTRL, H, movecurrentworkspacetomonitor, DP-3"
+        "$mod CTRL, L, movecurrentworkspacetomonitor, DP-1"
+
+        # Example special workspace (scratchpad)
+        "$mod, S, togglespecialworkspace, magic"
+        "$mod SHIFT, S, movetoworkspace, special:magic"
+        
+        # Disable/Enable monitor by keybind
+        "$mod SHIFT, Q, exec, hyprctl keyword monitor \"DP-3, disable\""
+        "$mod SHIFT CTRL, Q, exec, hyprctl keyword monitor \"DP-3,2560x1440@59.95,0x0,1,bitdepth,10,vrr,1\""
+        "$mod SHIFT, W, exec, hyprctl keyword monitor "DP-1, disable""
+        "$mod SHIFT CTRL, W, exec, hyprctl keyword monitor \"DP-1,3840x2160@120,2560x0,1,bitdepth,10\""
+
       ]
       ++ (
         # workspaces
