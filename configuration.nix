@@ -82,6 +82,10 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     curl
+
+    # shells
+    fish
+    nushell
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";
