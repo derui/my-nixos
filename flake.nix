@@ -1,5 +1,5 @@
 {
-  description = "A derui's NixOS flake";
+  DESCRIPTION = "A derui's NixOS flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
@@ -10,7 +10,7 @@
     };
 
     # Hyprland
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland.url = "github:/yprwm/Hyprland?submodules=1";
 
     # NixOS hardware configurations
     nixos-hardware.url = "github:NixOS/nixos-hardware";
