@@ -27,6 +27,10 @@
     nix-output-monitor
 
     btop # replacement of htop
+
+    wofi # program launcher
+    waybar # bar display
+    mako
   ];
 
   programs.git = {
