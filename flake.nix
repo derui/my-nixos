@@ -20,8 +20,10 @@
       modules = [
         # import root configuration
         ./configuration.nix
+        # system modules
         ./modules/hyprland.nix
         ./modules/fcitx.nix
+        ./modules/gpu.nix
 
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
