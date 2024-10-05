@@ -1,4 +1,4 @@
-{...}:
+{ ... }:
 {
   hardware.bluetooth = {
     enable = true;
@@ -10,7 +10,7 @@
         Privacy = "device";
         ControllerMode = "dual";
       };
-      
+
     };
   };
 }

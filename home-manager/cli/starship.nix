@@ -1,5 +1,5 @@
 {
-    # customizable prompt for any shell
+  # customizable prompt for any shell
   programs.starship = {
     enable = true;
 
@@ -10,18 +10,18 @@
       line_break.disabled = true;
 
       format = ''
-  $username\
-  $directory\
-  $git_branch\
-  $git_state\
-  $nodejs\
-  $ocaml\
-  $time\
-  $cmd_duration\
-  $line_break\
-  $jobs\
-  $character
-'';
+        $username\
+        $directory\
+        $git_branch\
+        $git_state\
+        $nodejs\
+        $ocaml\
+        $time\
+        $cmd_duration\
+        $line_break\
+        $jobs\
+        $character
+      '';
 
       package.disabled = true;
       username.show_always = true;

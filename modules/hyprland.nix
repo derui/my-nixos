@@ -1,6 +1,8 @@
-{pkgs, inputs, ...}: let
+{ pkgs, inputs, ... }:
+let
   pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-in {
+in
+{
   # enable hyprland
   # Configuration should be located in home-manager
   programs.hyprland = {

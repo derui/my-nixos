@@ -1,4 +1,4 @@
-{config, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   home.username = "derui";
@@ -35,11 +35,11 @@
 
   # imports software
   imports =
-    [ 
+    [
       ./home-manager/gui
       ./home-manager/cli
     ];
-    
+
   # home manager version
   home.stateVersion = "24.05";
 

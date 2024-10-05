@@ -26,14 +26,15 @@
         ./configuration.nix
 
         # home-manager support
-        home-manager.nixosModules.home-manager {
+        home-manager.nixosModules.home-manager
+        {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.derui = import ./home.nix;
         }
       ];
     };
-    
+
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
   };
 }

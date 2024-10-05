@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
 
       # system modules
@@ -35,7 +36,7 @@
   networking.hostName = "ereshkigal"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
@@ -69,9 +70,9 @@
   # hardware.pulseaudio.enable = true;
   # OR
   services.pipewire = {
-     enable = true;
-     pulse.enable = true;
-     jack.enable = true;
+    enable = true;
+    pulse.enable = true;
+    jack.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -84,8 +85,8 @@
       "video"
       "audio"
       "game"
-      "wheel"  # Enable ‘sudo’ for the user.
-    ]; 
+      "wheel" # Enable ‘sudo’ for the user.
+    ];
   };
 
   # List packages installed in system profile. To search, run:
