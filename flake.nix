@@ -24,7 +24,9 @@
         ./modules/hyprland.nix
         ./modules/fcitx.nix
         ./modules/gpu.nix
+        ./modules/bluetooth.nix
 
+        # home-manager support
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
