@@ -10,11 +10,11 @@
       ./hardware-configuration.nix
 
       # system modules
-      ../modules/hyprland.nix
-      ../modules/fcitx.nix
-      ../modules/gpu.nix
-      ../modules/bluetooth.nix
-      ../modules/steam.nix
+      ./modules/hyprland.nix
+      ./modules/fcitx.nix
+      ./modules/gpu.nix
+      ./modules/bluetooth.nix
+      ./modules/steam.nix
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
       common-cpu-amd
