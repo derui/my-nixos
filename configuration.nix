@@ -68,11 +68,12 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.derui = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      firefox
-      tree
-    ];
+    extraGroups = [
+      "video"
+      "audio"
+      "game"
+      "wheel"  # Enable ‘sudo’ for the user.
+    ]; 
   };
 
   # List packages installed in system profile. To search, run:
@@ -89,6 +90,9 @@
 
     # terminals
     kitty
+
+    # browsers
+    firefox
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";
@@ -105,6 +109,9 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  # enable display manager
+  services.displayManager.sddm.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
