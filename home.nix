@@ -50,6 +50,12 @@
     };
   };
 
+  # imports dotfile generations
+  imports =
+    [ 
+      ./dotfiles/hyprland.nix
+    ];
+    
   # home manager version
   home.stateVersion = "24.05";
 
