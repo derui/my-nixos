@@ -8,6 +8,9 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Hyprland
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
@@ -16,6 +19,7 @@
       modules = [
         # import root configuration
         ./configuration.nix
+        ./modules/hyprland.nix
 
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;

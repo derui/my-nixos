@@ -86,6 +86,9 @@
     # shells
     fish
     nushell
+
+    # terminals
+    kitty
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";
@@ -133,5 +136,7 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.05"; # Did you read the comment?
 
+  # enable kitty
+  programs.kitty.enable = true;  
 }
 
