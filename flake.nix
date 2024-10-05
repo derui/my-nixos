@@ -21,6 +21,7 @@
         # import root configuration
         ./configuration.nix
         ./modules/hyprland.nix
+        ./modules/fcitx.nix
 
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
