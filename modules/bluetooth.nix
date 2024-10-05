@@ -4,10 +4,13 @@
     enable = true;
 
     settings = {
-      # for low-energy support
-      "Privacy" = "device";
 
-      ControllerMode = "dual";
+      General = {
+        # for low-energy support
+        Privacy = "device";
+        ControllerMode = "dual";
+      };
+      
     };
   };
 }
