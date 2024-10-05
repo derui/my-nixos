@@ -16,7 +16,7 @@
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations.ereshkigal = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs };
+      specialArgs = { inherit inputs; };
       modules = [
         # import root configuration
         ./configuration.nix
