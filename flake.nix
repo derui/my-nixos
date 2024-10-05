@@ -11,6 +11,9 @@
 
     # Hyprland
     hyprland.url = "github:hyprwm/Hyprland";
+
+    # NixOS hardware configurations
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
@@ -20,12 +23,6 @@
       modules = [
         # import root configuration
         ./configuration.nix
-        # system modules
-        ./modules/hyprland.nix
-        ./modules/fcitx.nix
-        ./modules/gpu.nix
-        ./modules/bluetooth.nix
-        ./modules/steam.nix
 
         # home-manager support
         home-manager.nixosModules.home-manager {

@@ -8,7 +8,19 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-    ];
+
+      # system modules
+      ../modules/hyprland.nix
+      ../modules/fcitx.nix
+      ../modules/gpu.nix
+      ../modules/bluetooth.nix
+      ../modules/steam.nix
+    ]
+    ++ (with inputs.nixos-hardware.nixosModules; [
+      common-cpu-amd
+      common-gpu-amd
+      common-pc-ssd
+    ]);;
 
   # Use the GRUB 2 boot loader.
   #boot.loader.grub.enable = true;
