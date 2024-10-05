@@ -25,6 +25,7 @@
         ./modules/fcitx.nix
         ./modules/gpu.nix
         ./modules/bluetooth.nix
+        ./modules/steam.nix
 
         # home-manager support
         home-manager.nixosModules.home-manager {
