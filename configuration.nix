@@ -20,7 +20,7 @@
       common-cpu-amd
       common-gpu-amd
       common-pc-ssd
-    ]);;
+    ]);
 
   # Use the GRUB 2 boot loader.
   #boot.loader.grub.enable = true;
