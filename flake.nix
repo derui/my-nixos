@@ -10,7 +10,7 @@
     };
 
     # Hyprland
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland.url = "https://github.com/hyprwm/Hyprland?submodules=1";
 
     # NixOS hardware configurations
     nixos-hardware.url = "github:NixOS/nixos-hardware";
