@@ -2,17 +2,16 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
-  };
-
-  wayland.windowManager.hyprland.settings = {
-    "$mod" = "SUPER";
-    "$terminal" = "kitty";
-    "$menu" = "wofi --show drun";
-    exec-once = [
-      "waybar"
-      "fcitx5 -rd"
-      "mako"
-    ];
+    settings = {
+      "$mod" = "SUPER";
+      "$terminal" = "kitty";
+      "$menu" = "wofi --show drun";
+      
+      exec-once = [
+        "waybar"
+        "/run/current-system/sw/bin/fcitx5 -D"
+        "mako"
+      ];
 
     input = {
       kb_layout = "us";
@@ -98,6 +97,9 @@
         "$mod, V, togglefloating,"
         "$mod, F, fullscreen,"
         "$mod, Semicolon, exec, $menu"
+        # dwindle
+        "$mod, P, pseudo, "
+        "$mod SHIFT, J, togglesplit,"
 
         # Move focus with mainMod + arrow keys
         "$mod, H, movefocus, l"
@@ -118,7 +120,6 @@
         "$mod SHIFT CTRL, Q, exec, hyprctl keyword monitor \"DP-3,2560x1440@59.95,0x0,1,bitdepth,10,vrr,1\""
         "$mod SHIFT, W, exec, hyprctl keyword monitor \"DP-1, disable\""
         "$mod SHIFT CTRL, W, exec, hyprctl keyword monitor \"DP-1,3840x2160@120,2560x0,1,bitdepth,10\""
-
       ]
       ++ (
         # workspaces
@@ -132,5 +133,6 @@
           )
           9)
       );
+  }
   };
 }
