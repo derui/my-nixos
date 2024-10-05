@@ -50,10 +50,11 @@
     };
   };
 
-  # imports dotfile generations
+  # imports software
   imports =
     [ 
-      ./dotfiles/hyprland.nix
+      ./home-manager/gui
+      ./home-manager/cli
     ];
     
   # home manager version
