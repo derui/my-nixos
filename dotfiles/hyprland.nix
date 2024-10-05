@@ -116,7 +116,7 @@
         # Disable/Enable monitor by keybind
         "$mod SHIFT, Q, exec, hyprctl keyword monitor \"DP-3, disable\""
         "$mod SHIFT CTRL, Q, exec, hyprctl keyword monitor \"DP-3,2560x1440@59.95,0x0,1,bitdepth,10,vrr,1\""
-        "$mod SHIFT, W, exec, hyprctl keyword monitor "DP-1, disable""
+        "$mod SHIFT, W, exec, hyprctl keyword monitor \"DP-1, disable\""
         "$mod SHIFT CTRL, W, exec, hyprctl keyword monitor \"DP-1,3840x2160@120,2560x0,1,bitdepth,10\""
 
       ]
