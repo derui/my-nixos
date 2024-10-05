@@ -111,7 +111,8 @@
   services.openssh.enable = true;
 
   # enable display manager
-  services.displayManager.sddm.wayland.enable = true;
+  services.xserver.enable = true;
+  services.xserver.displayManager.lightdm.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
