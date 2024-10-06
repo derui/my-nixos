@@ -58,6 +58,11 @@ if test -x "$_eza"
     alias ls='eza --icons'
 end
 
+set -l _zoxide (which zoxide)
+if test -x "$_zoxide"
+    zoxide init fish | source
+end
+
 alias g=git
 
 if test -f ~/.secrets/fish
@@ -68,13 +73,9 @@ if test -d ~/.asdf
     source ~/.asdf/asdf.fish
 end
 
-if test -x starship
+set -l _starship (which starship)
+if test -x "$_starship"
     starship init fish | source
-end
-
-if ! type -q fisher
-    echo "You should install fisher after first booting fish."
-    echo "execute in fish: ~/.config/fish/fisher-install.fish"
 end
 
 if test -d ~/.volta/

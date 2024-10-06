@@ -5,7 +5,7 @@
 
     # https://github.com/bouk/babelfish
     # babelfishを使ってglobalの設定をfishにcopyする
-    useBabelfish = true;
+    #useBabelfish = true;
   };
 
   # 設定ファイルはかなりの規模になっているので、recursiveする形にする。
