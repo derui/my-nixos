@@ -1,4 +1,17 @@
 { pkgs, home, ... }:
+let
+  # melpaにあるpackgeについて、指定したpkgについてrev/sha256をoverrideしたものを返す
+  useMelpaWithFixedHash = prev: { pkg, commit, sha256 }:
+    prev.melpaPackages.${pkg}.overrideAttrs (old: {
+      src = pkgs.fetchFromGitHub {
+        owner = old.src.owner;
+        repo = old.src.repo;
+
+        rev = commit;
+        inherit sha256;
+      };
+    });
+in
 {
   # lspを高速化するための拡張
   home.packages = with pkgs; [
@@ -6,7 +19,7 @@
 
     (pkgs.emacsWithPackagesFromUsePackage {
       # configはinit.elとinit.orgで管理するので、ここでは設定しない
-      config = ./init.el;
+      config = "";
 
       #  default.elは用意しない
       defaultInitFile = false;
@@ -17,26 +30,16 @@
       extraEmacsPackages = epkgs: [
         # treesitのgrammerは全体を用意しておく
         epkgs.treesit-grammars.with-all-grammars
+        epkgs.magit
       ];
 
       # Optionally override derivations.
       override = final: prev: {
-        magit =
-          let
-            rev = "4d054196eb1e99251012fc8b133db9512d644bf1";
-            sha256 = "sha256-SEqDeF5F/DQ5/NOi3n6mYhlkYg+VxY/EPAvxtt5wUG0=";
-          in
-          prev.melpaPackages.magit.overrideAttrs (old:
-            {
-              src = pkgs.fetchFromGitHub {
-                owner = old.src.owner;
-                repo = old.src.repo;
-
-                inherit
-                  rev
-                  sha256;
-              };
-            });
+        magit = useMelpaWithFixedHash prev {
+          pkg = "magit";
+          commit = "4d054196eb1e99251012fc8b133db9512d644bf1";
+          sha256 = "sha256-o7GaaOajc0EbsfXwOtHZfO6bocy5oPUlG+xwt4TGZhc=";
+        };
       };
     })
   ];
