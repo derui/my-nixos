@@ -31,6 +31,9 @@
     wofi # program launcher
     waybar # bar display
     mako
+
+    # emacs
+    emacs30-pgtk
   ];
 
   # imports software

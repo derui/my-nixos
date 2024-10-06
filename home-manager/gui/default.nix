@@ -6,5 +6,6 @@
     ./waybar.nix
     ./mako.nix
     ./intellij
+    ./emacs
   ];
 }
