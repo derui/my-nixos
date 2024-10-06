@@ -6,20 +6,20 @@
 }:
 let
   version = "2.0.0";
-  sha256 = "sha256-mOQOlq3p/TZ/7+WSMFgjsI1kx0UL8IeQnUATAXxxahg=";
+  sha256 = "sha256-u3iv5IilWysw9v8v4AfN7ucNM+eNbKVR2kfQn7JH/AM=";
 in
 stdenvNoCC.mkDerivation {
-  pname = "udev-gothic";
+  pname = "udev-gothic-nf";
   inherit version;
 
   src = fetchzip {
-    url = "https://github.com/yuru7/udev-gothic/releases/download/v2.0.0/UDEVGothic_HS_v2.0.0.zip";
+    url = "https://github.com/yuru7/udev-gothic/releases/download/v2.0.0/UDEVGothic_NF_v2.0.0.zip";
     hash = sha256;
     stripRoot = true;
   };
 
   installPhase = ''
-    install -m444 -Dt $out/share/fonts/truetype/udev-gothic *.ttf
+    install -m444 -Dt $out/share/fonts/truetype/udev-gothic-nf *.ttf
   '';
 
   passthru.tests.noto-fonts = nixosTests.noto-fonts;

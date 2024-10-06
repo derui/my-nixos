@@ -1,5 +1,7 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, inputs, ... }:
+let
+  mypkg = inputs.self.outputs.packages.${pkgs.system};
+in
 {
   home.username = "derui";
   home.homeDirectory = "/home/derui";
@@ -32,6 +34,9 @@
     waybar # bar display
     mako
 
+    # fonts
+    mypkg.udev-gothic
+    mypkg.udev-gothic-nf
   ];
 
   # imports software
@@ -45,4 +50,6 @@
   home.stateVersion = "24.05";
 
   programs.home-manager.enable = true;
+  # fontをインストールできるように
+  fonts.fontconfig.enable = true;
 }
