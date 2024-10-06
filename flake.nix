@@ -85,7 +85,7 @@
         };
 
       # My old desktop
-      homeConfigurations.my-gentoo =
+      homeConfigurations."derui@my-gentoo" =
         let
           system = "x86_64-linux";
           pkgs = nixpkgsFor.${system};

@@ -17,6 +17,7 @@ in
     jq # JSON processor
     eza # A modern replacement for `ls`
     fzf # command-line fuzzy
+    fd # find alternative
 
     # misc
     which
@@ -37,6 +38,8 @@ in
     # fonts
     mypkg.udev-gothic
     mypkg.udev-gothic-nf
+
+    nh # for daily nix development
   ];
 
   # imports software
