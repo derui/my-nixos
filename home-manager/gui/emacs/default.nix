@@ -74,11 +74,18 @@ in
           commit = "3281c5648d854f77450c1268dbb31f5a872900a5";
           sha256 = "sha256-RFEOvybZblO0G34xfYrwdDhcllpEAxZo3gFTSbX/74s=";
         };
-
       };
     })
   ];
 
   # Use unstable emacs
   programs.emacs.package = pkgs.emacs-git;
+
+  home.file.".emacs.d/init.el" = {
+    source = ./init.el;
+  };
+
+  home.file.".emacs.d/early-init.el" = {
+    source = ./early-init.el;
+  };
 }
