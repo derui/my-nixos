@@ -1,0 +1,30 @@
+* My NixOS and environment management
+This repository manages nix files for my NixOS-machine (in the future), and home directory management for some hosts.
+
+
+* Managed environment
+
+- *Ereshkigal* :: My main (in the future) machine. It's NixOS.
+- *my-gentoo* :: My current gentoo machine. It's only managed home directory.
+
+
+* File structure
+
+
+** home-manager
+Locate modules for home-manager and daily use programs.
+
+- *cli* :: management for CLI in daily use, such as git, starship, fish and more.
+- *gui* :: managemtn for GUI applications. Such as hyprland on Linux.
+- *gui/emacs* :: My main editor is Emacs, so I manage it in nix.
+
+
+
+** modules
+~modules~ manages *system-global* managemnet. So it is used for NixOS only.
+
+** pkgs
+~pkgs~ defines private packages.
+
+* develop
+TBD
