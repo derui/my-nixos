@@ -26,10 +26,11 @@ in
     gawk
     zstd
     direnv
-    nix-direnv
 
     # nix related
     nix-output-monitor
+    nh # for daily nix development
+    nix-direnv
 
     btop # replacement of htop
 
@@ -40,8 +41,6 @@ in
     # fonts
     mypkg.udev-gothic
     mypkg.udev-gothic-nf
-
-    nh # for daily nix development
   ];
 
   # imports software
