@@ -25,6 +25,8 @@ in
     gnutar
     gawk
     zstd
+    direnv
+    nix-direnv
 
     # nix related
     nix-output-monitor

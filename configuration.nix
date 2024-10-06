@@ -16,6 +16,7 @@
       ./modules/gpu.nix
       ./modules/bluetooth.nix
       ./modules/steam.nix
+      ./modules/nix.nix
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
       common-cpu-amd
@@ -52,9 +53,6 @@
   #   keyMap = "us";
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
-
-  # Enable flakes feature
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
