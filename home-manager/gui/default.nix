@@ -5,5 +5,6 @@
     ./kitty.nix
     ./waybar.nix
     ./mako.nix
+    ./intellij
   ];
 }
