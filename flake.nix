@@ -43,6 +43,8 @@
       });
     in
     {
+      # 自作のpackageをoutputに追加する
+      packages = forAllSystems (system: import ./pkgs inputs.nixpkgs.legacyPackages.${system});
 
       # define devShell for aysstem with packages
       devShells = forAllSystems (system:
@@ -70,6 +72,7 @@
             # import root configuration
             ./configuration.nix
             ./home-manager/gui/emacs
+            ./pkgs
 
             # home-manager support
             home-manager.nixosModules.home-manager
