@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{ pkgs, ... }:
 {
   nix = {
     package = pkgs.nix;
@@ -10,7 +10,7 @@
       ];
       trusted-users = [
         "root"
-        "${username}"
+        "derui"
       ];
       accept-flake-config = true;
     };

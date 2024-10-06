@@ -91,7 +91,7 @@
           pkgs = nixpkgsFor.${system};
         in
         home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs;
+          inherit pkgs;
 
           extraSpecialArgs = {
             inherit inputs;
