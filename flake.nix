@@ -38,23 +38,25 @@
     };
 
     # My old desktop
-    homeConfigurations.my-gentoo = let
-      system ="x86_64-linux";
-    in home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs {
-        
-        system = system;
-        
+    homeConfigurations.my-gentoo =
+      let
+        system = "x86_64-linux";
+      in
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+
+          system = system;
+
+        };
+
+        extraSpecialArgs = {
+          inherit inputs;
+        };
+        modules = [
+          ./home.nix
+        ];
       };
 
-      extraSpecialArgs = {
-        inherit inputs;
-      };
-      modules = [
-        ./home.nix
-      ];
-    };
-    
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
   };
 }
