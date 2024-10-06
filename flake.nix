@@ -18,6 +18,8 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+
+    # My reserved desktop configuration as NixOS
     nixosConfigurations.ereshkigal = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
@@ -29,6 +31,21 @@
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.derui = import ./home.nix;
+        }
+      ];
+    };
+
+    # My old desktop
+    nixosConfigurations.my-gentoo = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
+      modules = [
+        
+        # home-manager support
+        home-manager.nixosModules.home-manager
+        {
           home-manager.useUserPackages = true;
           home-manager.users.derui = import ./home.nix;
         }
