@@ -10,6 +10,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Emacs Head
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Hyprland
     hyprland.url = "github:hyprwm/Hyprland?submodules=1";
 
@@ -17,46 +23,80 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-
-    # My reserved desktop configuration as NixOS
-    nixosConfigurations.ereshkigal = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
-      modules = [
-        # import root configuration
-        ./configuration.nix
-
-        # home-manager support
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.derui = import ./home.nix;
-        }
+  outputs = { self, nixpkgs, home-manager, emacs-overlay, ... }@inputs:
+    let
+      overlays = [
+        (import ./overlays/emacs)
+        (import emacs-overlay)
       ];
-    };
 
-    # My old desktop
-    homeConfigurations.my-gentoo =
-      let
+      # System types to support.
+      supportedSystems = [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
+
+      # Helper function to generate an attrset '{ x86_64-linux = f "x86_64-linux"; ... }'.
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+
+      # Nixpkgs instantiated for supported system types.
+      nixpkgsFor = forAllSystems (system: import nixpkgs {
+        inherit
+          overlays
+          system;
+      });
+    in
+    {
+
+      # define devShell for aysstem with packages
+      devShells = forAllSystems (system:
+        let
+          pkgs = nixpkgsFor.${system};
+        in
+        {
+          default = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              nil
+            ];
+          };
+        });
+
+      # define formatter for all systems
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
+
+      # My reserved desktop configuration as NixOS
+      nixosConfigurations.ereshkigal = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-      in
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-
-          system = system;
-
-        };
-
-        extraSpecialArgs = {
-          inherit inputs;
-        };
+        specialArgs = { inherit inputs; };
         modules = [
-          ./home.nix
+          # import root configuration
+          ./configuration.nix
+
+          # home-manager support
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.derui = import ./home.nix;
+          }
         ];
       };
 
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
-  };
+      # My old desktop
+      homeConfigurations.my-gentoo =
+        let
+          system = "x86_64-linux";
+        in
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            system = system;
+          };
+
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            ./home.nix
+          ];
+        };
+
+
+    };
 }

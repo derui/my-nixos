@@ -99,13 +99,17 @@
 
     # shells
     fish
-    nushell
 
     # terminals
     kitty
 
     # browsers
     firefox
+
+    # for emacs
+    enchant2
+    nuspell
+    en-us-large
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";
