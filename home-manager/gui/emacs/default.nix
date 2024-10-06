@@ -128,6 +128,11 @@ in
         epkgs.multiple-cursors
         epkgs.vterm
         epkgs.popon
+        epkgs.flymake-popon
+        epkgs.migemo
+        epkgs.dmacro
+        epkgs.tabspaces
+        epkgs.dashboard
       ];
 
       # Optionally override derivations.
@@ -721,18 +726,18 @@ in
           commit = "c870c18462461df19382ecd2f9374c8b902cd804";
           sha256 = "sha256-SsNtYGQHMKFZEWerZMfqEUH137diS0APlJtWMIFiA5w=";
         };
-        # vterm = useMelpa prev {
-        #   pkg = "vterm";
-        #   commit = "988279316fc89e6d78947b48513f248597ba969a";
-        #   sha256 = "";
-        # };
+        vterm = useMelpa prev {
+          pkg = "vterm";
+          commit = "988279316fc89e6d78947b48513f248597ba969a";
+          sha256 = "sha256-W/UGA3/ecu1fd7u5pYTlRqcULF3EgCVnWQGQYX93YOI=";
+        };
         popon =
           let
             rev = "bf8174cb7e6e8fe0fe91afe6b01b6562c4dc39da";
-            sha256 = "";
+            sha256 = "sha256-stiwCre9Ih6GwKjVQ7iFmMPGbkiQHx8hNgy8PHRE1BA=";
           in
           final.trivialBuild rec {
-            pname = "popon";
+            pname = "emacs-popon";
             version = rev;
 
             src = fetchFromCodeberg {
@@ -742,6 +747,33 @@ in
               inherit rev sha256;
             };
           };
+        flymake-popon =
+          let
+            rev = "99ea813346f3edef7220d8f4faeed2ec69af6060";
+            sha256 = "sha256-YUyCP3WIjOAvaTP6d2G68mqwGwWdRqhoFMaJWai1WFI=";
+          in
+          final.trivialBuild rec {
+            pname = "emacs-flymake-popon";
+            version = rev;
+
+            packageRequires = [ prev.popon prev.posframe ];
+            src = fetchFromCodeberg {
+              owner = "akib";
+              repo = pname;
+
+              inherit rev sha256;
+            };
+          };
+        tabspaces = useMelpa prev {
+          pkg = "tabspaces";
+          commit = "c21f28b96b63926a530babe50d2c4de81ebaaa18";
+          sha256 = "sha256-HppqgqnDQ2XTH8M/IcZYcKl1q4RA+jUvwuyodwGEtV8=";
+        };
+        dashboard = useMelpa prev {
+          pkg = "dashboard";
+          commit = "3852301f9c6f3104d9cc98389612b5ef3452a7de";
+          sha256 = "sha256-mxTDALb8RqZWeKS08LI1/mtJcNFpOndUSee/2nxwHaU=";
+        };
       };
 
     })

@@ -1036,9 +1036,6 @@ modusの作者が開発している、window/frameの間隔を調整するため
 https://github.com/protesilaos/spacious-padding?tab=readme-ov-file
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (spacious-padding :ref "a3151f3c99d6b3b2d4644da88546476b3d31f0fe")))
-
   (with-eval-after-load 'spacious-padding
     (setopt spacious-padding-widths '(
                                       :internal-border-width 15
@@ -1063,9 +1060,6 @@ https://github.com/protesilaos/spacious-padding?tab=readme-ov-file
 https://github.com/mpwang/perfect-margin
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (perfect-margin :ref "3281c5648d854f77450c1268dbb31f5a872900a5")))
-
   (with-eval-after-load 'perfect-margin
     (setopt perfect-margin-disable-in-splittable-check nil)
     ;; mode-lineが右に間伸びするのを防ぐ
@@ -1082,18 +1076,12 @@ https://github.com/mpwang/perfect-margin
 ** library packages
 *** dash.el
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (dash :ref "1de9dcb83eacfb162b6d9a118a4770b1281bcd84")))
-
   (with-low-priority-startup
     (load-package dash)
     (require 'dash))
 #+end_src
 *** f.el
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (f :ref "1e7020dc0d4c52d3da9bd610d431cab13aa02d8c")))
-
   (with-eval-after-load 'f)
 
   (with-low-priority-startup
@@ -1102,9 +1090,6 @@ https://github.com/mpwang/perfect-margin
 
 *** s
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (s :ref "dda84d38fffdaf0c9b12837b504b402af910d01d")))
-
   (with-high-priority-startup
     (load-package s)
 
@@ -1114,27 +1099,18 @@ https://github.com/mpwang/perfect-margin
 Growlに対応するprotocolを提供するpackage。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (gntp :ref "767571135e2c0985944017dc59b0be79af222ef5")))
-
   (with-high-priority-startup
     (load-package gntp))
 #+end_src
 
 *** ht
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (ht :ref "1c49aad1c820c86f7ee35bf9fff8429502f60fef")))
-
   (with-low-priority-startup
     (load-package ht))
 #+end_src
 
 *** xterm-color
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (xterm-color :ref "2ad407c651e90fff2ea85d17bf074cee2c022912")))
-
   (with-low-priority-startup
     (load-package xterm-color))
 #+end_src
@@ -1577,10 +1553,6 @@ evilからvimのkeybindを除いたようなpackage。純粋にstateとmodalの�
 Motionについては、visualを前提とした状態でもある。motionの処理そのものは、stateとして管理はするものの、which-keyを主に利用する形となる。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (multistate :type git :host github :repo "emacsmirror/multistate"
-                        :ref "a7ab9dc7aac0b6d6d2f872de4e0d1b8550834a9b")))
-
   (with-eval-after-load 'multistate
     (defun my:multistate-disable ()
       "multistateを強制的に無効化する"
@@ -1596,10 +1568,6 @@ Motionについては、visualを前提とした状態でもある。motionの�
 
 *** motion
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (motion :type git :host github :repo "derui/motion"
-                    :ref "b67044122700eb02cf18223e5df7c8f8c3541131")))
-
   (with-low-priority-startup
     (load-package motion)
 
@@ -2043,9 +2011,6 @@ https://github.com/dandavison/magit-delta/tree/master
 deltaをmagitのdiffとしてつかえるようにする。
 
     #+begin_src emacs-lisp
-      (eval-when-compile
-        (elpaca (magit-delta :ref "5fc7dbddcfacfe46d3fd876172ad02a9ab6ac616")))
-
       (with-eval-after-load 'magit
         (add-hook 'magit-mode-hook #'magit-delta-mode))
 
@@ -2058,9 +2023,6 @@ https://github.com/minad/consult
 swiper/counselの置き換え。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (consult :ref "4889458dccf842ab6223099f8a73ff8b147e9459")))
-
   (defun my:consult-search-dwim (&optional prefix)
     "Merge version to search document via grep/rg.
   Use fast alternative if it exists, fallback grep if no alternatives in system.
@@ -2100,10 +2062,6 @@ Contextに応じたアクションを実行できる、というようなもの�
 というのがデフォルトのバインディングになっている。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (embark :ref "19a13e344e04bbf861eaa74491b23da52b398672"))
-    (elpaca (embark-consult :ref "19a13e344e04bbf861eaa74491b23da52b398672")))
-
   (with-low-priority-startup
     (load-package embark)
     (load-package embark-consult)
@@ -2133,9 +2091,6 @@ minibufferの表示に対して注釈？を追加できるパッケージ。cons
 注釈というか、metaという情報らしい。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (marginalia :ref "50a51c69f006ec8b3ba1c570555d279d4cff6d99")))
-
   (with-eval-after-load 'marginalia
     (add-to-list 'marginalia-prompt-categories
                  '("\\<File\\>" . file)))
@@ -2154,10 +2109,6 @@ https://github.com/minad/vertico
 垂直補完UIを提供することのみを目的としたUIライブラリ。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (vertico :type git :host github :repo "minad/vertico"
-                     :ref "c682ef50e62237435e9fc287927ce4181b49be90")))
-
   (with-eval-after-load 'vertico
     ;; 選択時にprefix iconを表示する
     ;; https://github.com/minad/vertico/wiki#prefix-current-candidate-with-arrow
@@ -2209,9 +2160,6 @@ https://github.com/oantolin/orderless
 completionのstyleを変更するパッケージ。基本的には空白区切りでのfilteringを提供する。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (orderless :ref "49d1fdfb80b55699a00b11bc916ad29c0447039b")))
-
   (defun my:orderless-migemo (component)
     (condition-case nil
         (let ((pattern (migemo-get-pattern component)))
@@ -2249,11 +2197,6 @@ completionのstyleを変更するパッケージ。基本的には空白区切�
 built-inのflexに似た結果を生成するが、より高速かつ、単語間の切れめなどがよりわかりやすいようになっている。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (hotfuzz :type git :host github :repo "axelf4/hotfuzz" :branch "master"
-                     :files ("hotfuzz.el" "hotfuzz-module.c" "CMakeLists.txt")
-                     :ref "622329477d893a9fc2528a75935cfe1f8614f4bc")))
-
   (with-low-priority-startup
     (load-package hotfuzz)
 
@@ -2265,10 +2208,6 @@ https://github.com/minad/corfu
 minimalなregion completion。child frameを利用しているのと、あくまでシンプルなUIのみを提供しているため、軽量かつ高速。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (corfu :type git :host github :repo "minad/corfu" :branch "main"
-                   :ref "98026a98a6f74220fac8d79afd523454fceaa468")))
-
   (with-eval-after-load 'corfu
     (setopt corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
     (setopt corfu-auto t)                 ;; Enable auto completion
@@ -2310,9 +2249,6 @@ https://github.com/minad/cape
 capf = completion-at-point-functionを極限までシンプルに拡張するための処理。corfuなどとは独立していて、あくまでcapfを拡張するだけに留まっている。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (cape :ref "9110956a5155d5e3c460160fa1b4dac59322c229")))
-
   (declare-function eglot-completion-at-point 'eglot)
   (declare-function tempel-complete 'tempel)
 
@@ -2340,9 +2276,6 @@ capf = completion-at-point-functionを極限までシンプルに拡張するた
 org-mode本体の設定をおこなう。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (org :ref "233a0ced97366090c31ef94562879bb2f729b120")))
-
   (with-eval-after-load 'org
     ;; org-mode内部のソースを色付けする
     (setopt org-src-fontify-natively t)
@@ -2621,10 +2554,6 @@ org-mode本体の設定をおこなう。
 #+end_src
 *** org-onit
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (org-onit :type git :host github :repo "takaxp/org-onit"
-                      :ref  "932ed472e46c277daf1edf0efb71fbac5ff45346")))
-
   (with-eval-after-load 'org
     (declare-function org-onit-goto-anchor 'org-onit)
     (keymap-set org-mode-map "<f11>" #'org-onit-toggle-doing)
@@ -2636,10 +2565,6 @@ org-mode本体の設定をおこなう。
 #+end_src
 *** ox-hugo
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (ox-hugo :ref "c4156d9d383bf97853ba9e16271b7c4d5e697f49"))
-    (elpaca (tomelr :ref "670e0a08f625175fd80137cf69e799619bf8a381")))
-
   (defun my:org-hugo-enable-if-hugo-buffer ()
     (let ((prop (my:org-global-props "HUGO_.\+" (current-buffer))))
       (when prop
@@ -2657,9 +2582,6 @@ org-mode本体の設定をおこなう。
 emacsqlのバックエンドとしてsqliteを使うが、使うsqliteとしてemacsにbuiltinされているものを使う、というやつ。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (emacsql :ref "5108c16c5e1d5bfdd41fcc0807241e28886ab763")))
-
   (with-eval-after-load 'emacsql-sqlite-builtin)
 
   (with-low-priority-startup
@@ -2671,10 +2593,6 @@ https://github.com/org-roam/
 
 Roamというtoolをorg-mode上で再現しようとしているもの。
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (org-roam :type git :host github :repo "org-roam/org-roam"
-                      :ref  "0b9fcbc97b65b349826e63bad89ca121a08fd2be")))
-
   (with-eval-after-load 'org-roam
     (setopt org-roam-directory my:org-roam-directory)
     (setopt org-roam-db-update-on-save t)
@@ -2705,9 +2623,6 @@ https://github.com/minad/org-modern
 
 org-modeの表現をモダンなものにしてくれるパッケージ。variable pitch的な挙動になるので、結構気をつける必要がある。
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (org-modern :ref "e306c7df4985f77e5c4e2146900259a23a76c974")))
-
   (with-eval-after-load 'org-modern
     (setopt org-modern-block-fringe t)
     ;; UDEV Gothicだとガタつくので、ガタつかないのと視覚的にわかりやすいものを使う
@@ -2814,9 +2729,6 @@ org-modeの表現をモダンなものにしてくれるパッケージ。variab
 ** major-modes
 *** go-mode
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (go-mode :ref "6f4ff9ef874d151ed8d297a80f1bf27db5d9dbf0")))
-
   ;; go.modがある場所をrootとする
   (defun my:project-find-go-module (dir)
     (when-let ((root (locate-dominating-file dir "go.mod")))
@@ -2839,22 +2751,8 @@ org-modeの表現をモダンなものにしてくれるパッケージ。variab
 
 #+end_src
 
-*** ruby
-#+begin_src emacs-lisp
-
-  (eval-when-compile
-    (elpaca (ruby-end :ref "ba7d7230f9e3ed75c9982d32bb9fdff1dc10935d")))
-
-  (with-eval-after-load 'ruby-mode
-    (add-hook 'ruby-mode-hook #'ruby-end-mode)
-    )
-
-  (with-low-priority-startup
-    (load-package ruby-end))
-#+end_src
-
 *** rust-mode
-Rust用のmajor mode
+Rust用のmajor mode。treesitter対応のものがEmacs公式に入ったのでそれを利用するようにする。
 
 #+begin_src emacs-lisp
   (defun my:find-rust-project-root (dir)
@@ -2893,9 +2791,6 @@ Rust用のmajor mode
 venvを利用できるようにする。実際には、その時点で利用するvenvを変更する・・・みたいなこともできるみたいだが、まぁそこまではできなくてもいいかなっていう。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (pyvenv :ref "31ea715f2164dd611e7fc77b26390ef3ca93509b")))
-
   (defun my:pyvenv-activate-hook ()
     "pyvenvを有効にする"
     (pyvenv-activate my:virtualenv-path))
@@ -2943,9 +2838,6 @@ OPAMの動作が前提なので、最初にOPAMにあるやつを読み込める
 caml-modeよりもこちらを利用する。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (tuareg :ref "1d53723e39f22ab4ab76d31f2b188a2879305092")))
-
   (with-eval-after-load 'tuareg
     ;; Global tuareg setting
     ;; ただしインデント系統はocamlformatでフォーマットされるので、ほぼここにある設定は意味がなくなっている
@@ -2969,10 +2861,6 @@ caml-modeよりもこちらを利用する。
 Emacs29から組み込まれたtreesitterのmoduleを前提としたもの。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (ocaml-ts-mode :type git :host github :repo "dmitrig/ocaml-ts-mode"
-                           :ref "bb8c86bd49e4e98f41e45fb0ec82e38f90bc3ee4")))
-
   (with-eval-after-load 'ocaml-ts-mode
     (defvar ocaml-ts-mode-map)
     (keymap-set ocaml-ts-mode-map "C-h" #'delete-backward-char)
@@ -2989,30 +2877,14 @@ Emacs29から組み込まれたtreesitterのmoduleを前提としたもの。
     (add-hook 'ocaml-ts-mode-hook #'eglot-ensure)
     )
 #+end_src
-*** adoc-mode
-asciidoc用のモード。ちょっと表示がうるさいのが玉に瑕。
-#+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (adoc-mode :ref "2c2eb8043623aa99d35aacbad2ee39188bf1bad3")))
-
-  (with-low-priority-startup
-    (load-package adoc-mode))
-#+end_src
-
 *** lua-mode
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (lua-mode :ref "d074e4134b1beae9ed4c9b512af741ca0d852ba3")))
-
   (with-low-priority-startup
     (load-package lua-mode))
 #+end_src
 
 *** markdown-mode
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (markdown-mode :ref "0cdebc833ed9b98baf9f260ed12b1e36b0ca0e89")))
-
   (with-low-priority-startup
     (load-package markdown-mode))
 #+end_src
@@ -3042,17 +2914,17 @@ asciidoc用のモード。ちょっと表示がうるさいのが玉に瑕。
     (add-to-list 'auto-mode-alist '("\\.s?css\\'" . css-ts-mode)))
 #+end_src
 
-**** rainbow-mode
-文字の名前やコードに対して色をつける。CSS書く場合はないと、一部の特殊な人間以外はわけわからなくなる。ただし問題としては、 hex形式  ~#xxx~ じゃないと表示できない。これはこれで結構辛いけど、まぁvariableのときくらいしか使わないというのはある。
+**** colorful-mode
+文字の名前やコードに対して色をつける。CSS書く場合はないと、一部の特殊な人間以外はわけわからなくなる。
+rainbow-modeに対するalternativeとして開発されている。
+
+https://github.com/DevelopmentCool2449/colorful-mode
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (rainbow-mode :ref "f7db3b5919f70420a91eb199f8663468de3033f3")))
-
-  (with-eval-after-load 'rainbow-mode)
+  (with-eval-after-load 'colorful-mode)
 
   (with-low-priority-startup
-    (load-package rainbow-mode))
+    (load-package colorful-mode))
 #+end_src
 
 *** yaml-mode
@@ -3061,15 +2933,10 @@ https://github.com/zkry/yaml-pro
 treesitサポートも組み込んだ、非常に高機能なyaml用のmode。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (yaml-pro :ref "5f06949e92dc19dcc48dc31662b2aa958fe33726"))
-    (elpaca (yaml :ref "70c4fcead97e9bd6594e418c922ae769818f4245")))
-
   (with-eval-after-load 'yaml-pro
     )
 
   (with-low-priority-startup
-    (load-package yaml)
     (load-package yaml-pro)
 
     (add-hook 'yaml-ts-mode-hook #'yaml-pro-ts-mode)
@@ -3080,9 +2947,6 @@ treesitサポートも組み込んだ、非常に高機能なyaml用のmode。
 jsxを使うときにたまに使う。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (web-mode :ref "005aa62d6f41fbf9bc045cac3b3b772716ee8ba7")))
-
   (defun my:web-mode-hook-angular-service ()
     "Start angular lsp server if target is component"
     (when (and
@@ -3109,9 +2973,6 @@ jsxを使うときにたまに使う。
 node_modules/.binをexec-pathに追加してくれる。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (add-node-modules-path :ref "841e93dfed50448da66c89a977c9182bb18796a1")))
-
   (with-eval-after-load 'add-node-modules-path
     ;; npm v9でbinが削除されてしまったので、npm rootを利用するように
     ;; https://github.com/codesuki/add-node-modules-path/issues/23
@@ -3152,10 +3013,6 @@ node_modules/.binをexec-pathに追加してくれる。
 
 *** terraform-mode
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (terraform-mode :ref "a645c32a8f0f0d04034262ae5fea330d5c7a33c6"))
-    (elpaca (hcl-mode :ref "37f2cb1bf6fb51fbf99d4fac256298fcd6d1dd24")))
-
   (with-low-priority-startup
     (load-package hcl-mode)
     (load-package terraform-mode))
@@ -3163,9 +3020,6 @@ node_modules/.binをexec-pathに追加してくれる。
 
 *** plantuml-mode
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (plantuml-mode :ref "ea45a13707abd2a70df183f1aec6447197fc9ccc")))
-
   (with-eval-after-load 'plantuml-mode
     (defvar plantuml-output-type)
     (setq plantuml-output-type "png")
@@ -3185,12 +3039,6 @@ node_modules/.binをexec-pathに追加してくれる。
 
 *** protobuf-mode
 #+begin_src emacs-lisp
-  ;; protobuf-modeが要求しているのでここで追加している
-  (eval-when-compile
-    (elpaca (gtags-mode :ref "2f553d0c41c470c5d2ee4210267161333969e080"))
-    (elpaca (protobuf-mode :type git :host github :repo "protocolbuffers/protobuf"
-                           :ref "54d8f03974c108ef8fd0f26568cd9eb086165568")))
-
   (defconst my:protobuf-style
     '((c-basic-offset . 2)
       (indent-tabs-mode . nil)))
@@ -3207,35 +3055,9 @@ node_modules/.binをexec-pathに追加してくれる。
 
 *** fish-mode
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (fish-mode :ref "2526b1803b58cf145bc70ff6ce2adb3f6c246f89")))
-
   (with-low-priority-startup
     ;; emacs-fish is repository name of recipe
     (load-package emacs-fish))
-
-#+end_src
-
-*** nushell-mode
-nushell用のsytax hightling
-#+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (nushell-mode :type git :host github :repo "mrkkrp/nushell-mode"
-                          :ref "ad8d6f268d1307ac8b7c0aaef133cdd615c9a57b")))
-
-  (with-low-priority-startup
-    (load-package nushell-mode))
-#+end_src
-*** kotlin-mode
-#+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (kotlin-mode :ref "fddd747e5b4736e8b27a147960f369b86179ddff")))
-
-  (with-low-priority-startup
-    (load-package kotlin-mode)
-
-    (add-hook 'kotlin-mode-hook #'eglot-ensure)
-    )
 #+end_src
 
 *** text-mode
@@ -3251,9 +3073,6 @@ nushell用のsytax hightling
 Nixを活用するためのmode。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (nix-mode :ref "719feb7868fb567ecfe5578f6119892c771ac5e5")))
-
   (with-eval-after-load 'nix-mode
     )
 
@@ -3314,9 +3133,6 @@ https://github.com/abo-abo/ace-window
 ウィンドウ間を1キーで移動できるようにするための拡張。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (ace-window :ref "77115afc1b0b9f633084cf7479c767988106c196")))
-
   (with-eval-after-load 'posframe
     (ace-window-posframe-mode +1))
 
@@ -3331,10 +3147,6 @@ https://github.com/minad/tempel
 tempoに似たような構文を持つ、シンプルなテンプレートエンジン。corfuなどと効果的に組み合わせることができるようなキーバインドを提供している。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca  (tempel :type git :host github :repo "minad/tempel" :branch "main"
-                     :ref "317c0e41d542721db11a7a8a1c6b78762959259b")))
-
   (defvar tempel-map)
   (with-eval-after-load 'tempel
     (keymap-set tempel-map "C-." #'tempel-next)
@@ -3353,9 +3165,6 @@ tempoに似たような構文を持つ、シンプルなテンプレートエン
 symbolをハイライトするfaceを提供する。lsp-modeとかと見事に競合するので、lsp-modeを利用する場合はオフにするのを推奨。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (symbol-overlay :ref "de215fff392c916ffab01950fcb6daf6fd18be4f")))
-
   (with-eval-after-load 'symbol-overlay
     (set-face-attribute 'symbol-overlay-default-face nil :inherit 'highlight :underline t)
     )
@@ -3371,10 +3180,6 @@ symbolをハイライトするfaceを提供する。lsp-modeとかと見事に�
 https://protesilaos.com/emacs/pulsar
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (pulsar :type git :host github :repo "protesilaos/pulsar"
-                    :ref "f20879ee38121a30498b25bc3d0b07460227b63a")))
-
   (with-eval-after-load 'pulsar
     (setopt pulsar-face 'pulsar-magenta)
     )
@@ -3386,9 +3191,6 @@ https://protesilaos.com/emacs/pulsar
 #+end_src
 *** imenu-list
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (imenu-list :ref "76f2335ee6f2f066d87fe4e4729219d70c9bc70d")))
-
   (with-eval-after-load 'imenu-list
     (setopt imenu-list-size 0.25)
     (setopt imenu-list-auto-resize nil)
@@ -3402,9 +3204,6 @@ https://protesilaos.com/emacs/pulsar
 
 *** whick-key
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (which-key :ref "1e89fa000e9ba9549f15ef57abccd118d5f2fe1a")))
-
   (with-eval-after-load 'which-key
     (setopt which-key-max-description-length 40)
     (setopt which-key-use-C-h-commands t)
@@ -3421,9 +3220,6 @@ https://github.com/AmaiKinono/puni
 smartparensと同じような、括弧をうまく扱うためのpackage.
 
     #+begin_src emacs-lisp
-      (eval-when-compile
-        (elpaca (puni :ref "72e091ef30e0c9299dbcd0bc4669ab9bb8fb6e47")))
-
       (with-eval-after-load 'puni)
 
       (with-high-priority-startup
@@ -3441,9 +3237,6 @@ https://github.com/dgutov/diff-hl
 git-gutter系統をよりシンプルにしたもの。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (diff-hl :ref "b80ff9b4a772f7ea000e86fbf88175104ddf9557")))
-
   (with-eval-after-load 'diff-hl
     ;; do not display border on fringe
     (setopt diff-hl-draw-borders nil)
@@ -3474,9 +3267,6 @@ git-gutter系統をよりシンプルにしたもの。
 flymakeの設定を色々一般化して作製しやすくしたpackage。collectionということなので、色々なpackageも存在している。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (flymake-collection :ref "ecc15c74630fa75e7792aa23cec79ea4afc28cc2")))
-
   (with-eval-after-load 'flymake-collection
     )
 
@@ -3489,18 +3279,11 @@ flymakeの設定を色々一般化して作製しやすくしたpackage。collec
 https://github.com/tumashu/posframe
 
 #+begin_src emacs-lisp
-  (when (and window-system my:use-posframe)
-    (eval-when-compile
-      (elpaca (posframe :ref "570273bcf6c21641f02ccfcc9478607728f0a2a2"))
-      (elpaca (mozc-posframe :type git :host github :repo "derui/mozc-posframe"
-                             :ref "54451afb2edfe48b83dde9c476b338706ddbe6de")))
-
     (when (eq window-system 'x)
       (setq x-gtk-resize-child-frames 'resize-mode))
 
     (with-low-priority-startup
-      (load-package posframe)
-      (load-package mozc-posframe)))
+      (load-package posframe))
 #+end_src
 
 *** eldoc-box
@@ -3509,9 +3292,6 @@ https://github.com/casouri/eldoc-box
 eldocをchildframeで表示するようにしてくれる。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (eldoc-box :ref "d3250fccf26649f250e8678f22276f375c01aec5")))
-
   (with-eval-after-load 'eldoc-box
     ;; 複数行の場合だけ表示するようにする
     (setopt eldoc-box-only-multi-line t)
@@ -3526,9 +3306,6 @@ eldocをchildframeで表示するようにしてくれる。
 https://github.com/casouri/vundo
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (vundo :ref "ca590c571546eb1d38c855216db11d28135892f2")))
-
   (with-low-priority-startup
     (load-package vundo))
 #+end_src
@@ -3573,18 +3350,11 @@ Emacs29から標準添付になったので、これを利用してみる。
     eglotのcommunicateにおいて、Rust製のprogramを利用することで、JSONのParseに伴う諸々の性能問題を解消しようとするpackage。
 
     #+begin_src emacs-lisp
-      (eval-when-compile
-        (elpaca (eglot-booster :type git :host github :repo "jdtsmith/eglot-booster"
-                               :ref "e19dd7ea81bada84c66e8bdd121408d9c0761fe6")))
-
       (with-low-priority-startup
         (load-package eglot-booster))
     #+end_src
 *** aggressive-indent
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (aggressive-indent :ref "a437a45868f94b77362c6b913c5ee8e67b273c42")))
-
   (with-low-priority-startup
     (load-package aggressive-indent)
 
@@ -3598,10 +3368,6 @@ https://github.com/copilot-emacs/copilot.el
 GitHub Copilotを利用するための設定。agent の起動が非常に重いので、基本的には必要になったときにだけ有効化する。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (copilot :type git :host github :repo "copilot-emacs/copilot.el" :files ("dist" "*.el")
-                     :ref "535ef61e82f09d744cd5b097b1fc99f08cce175c")))
-
   (defun my:not-completion-in-region-mode-p ()
     "Predicate to check if `completion-in-region-mode' is enabled."
     (null completion-in-region-mode))
@@ -3648,9 +3414,6 @@ volatile-highlightsの代替。標準で用意されている ~pulse~ というp
 https://github.com/minad/goggles
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (goggles :ref "41d3669d7ae7b73bd39d298e5373ece48b656ce3")))
-
   (with-low-priority-startup
     (load-package goggles)
 
@@ -3658,34 +3421,6 @@ https://github.com/minad/goggles
     (add-hook 'text-mode-hook #'goggles-mode)
 
     (setq-default goggles-pulse t)
-    )
-#+end_src
-*** selected.el
-リージョンを選択しているときだけ有効になるようなkeymapを提供する。
-
-#+begin_src emacs-lisp :tangle no
-  (eval-when-compile
-    (elpaca (selected :ref "1ca6e12f456caa1dc97c3d68597598662eb5de9a")))
-
-  (with-eval-after-load 'selected
-    (seq-each (lambda (v)
-                (keymap-set selected-keymap (car v) (cadr v)))
-              '(("q" selected-off)
-                ("u" upcase-region)
-                ("y" kill-ring-save)
-                ("c" (lambda () (interactive)
-                       (delete-active-region)
-                       (modalka-mode -1)))
-                ("d" (lambda () (interactive) (puni-kill-active-region) (modalka-mode +1)))
-                ("w" my:treesit-expand-region)
-                ("Q" apply-macro-to-region-lines)
-                (";" exchange-point-and-mark)
-                ("v" (lambda () (interactive) (deactivate-mark) (setq mark-ring nil))))))
-
-  (with-low-priority-startup
-    (load-package selected)
-
-    (setq selected-minor-mode-override t)
     )
 #+end_src
 *** jinx
@@ -3696,10 +3431,6 @@ https://github.com/minad/jinx
 #+begin_src emacs-lisp
   ;; macOSの場合、segfaultが発生してしまうので、一旦止めておく
   (linux!
-   (eval-when-compile
-     (elpaca (jinx :type git :host github :repo "minad/jinx" :branch "main"
-                   :ref "cd827ee199efedc8f5e094001d90206e698f91e8")))
-
    (with-eval-after-load 'jinx
      (setopt jinx-languages "en_US ja_JP")
      )
@@ -3714,9 +3445,6 @@ https://github.com/minad/jinx
 abo-abo氏が作成している、keyによって移動することを可能とするためのpackage。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (avy :ref "be612110cb116a38b8603df367942e2bb3d9bdbe")))
-
   (with-low-priority-startup
     (load-package avy))
 #+end_src
@@ -3725,9 +3453,6 @@ https://github.com/mhayashi1120/Emacs-wgrep
 grepに対応するwdired的なpackage。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (wgrep :ref "208b9d01cfffa71037527e3a324684b3ce45ddc4")))
-
   (with-low-priority-startup
     (load-package wgrep))
 #+end_src
@@ -3735,19 +3460,12 @@ grepに対応するwdired的なpackage。
 Emacs標準のtreesitを前提にしたfolding library。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (treesit-fold :type git :host github :repo "emacs-tree-sitter/treesit-fold"
-                          :ref "7312871386e4b525a0ced6a03dc33062cb27f573")))
-
   (with-low-priority-startup
     (load-package treesit-fold))
 #+end_src
 ** utility packages
 *** diminish
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (diminish :ref  "fbd5d846611bad828e336b25d2e131d1bc06b83d")))
-
   (with-low-priority-startup
     (load-package diminish))
 #+end_src
@@ -3757,10 +3475,6 @@ https://github.com/rainstormstudio/nerd-icons.el#installing-fonts
 all-the-iconsの代替とのこと。all-the-iconsはターミナルでは利用できないらしいが、これはnerd-fontsにだけ依存しているので利用できるらしい。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (nerd-icons :type git :host github :repo "rainstormstudio/nerd-icons.el"
-                        :ref "c3d641d8e14bd11b5f98372da34ee5313636e363")))
-
   (with-high-priority-startup
     (load-package nerd-icons))
 #+end_src
@@ -3770,9 +3484,6 @@ minibufferでの補完時などに、nerd-iconsを使ってアイコンを表示
 https://github.com/rainstormstudio/nerd-icons-completion
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (nerd-icons-completion :ref "426a1d7c29a04ae8e6ae9b55b0559f11a1e8b420")))
-
   (with-low-priority-startup
     (load-package nerd-icons-completion)
 
@@ -3786,9 +3497,6 @@ diredでnerd-iconsを利用できるようにする。
 https://github.com/rainstormstudio/nerd-icons-dired
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (nerd-icons-dired :ref "c1c73488630cc1d19ce1677359f614122ae4c1b9")))
-
   (with-low-priority-startup
     (load-package nerd-icons-dired)
 
@@ -3801,9 +3509,6 @@ https://github.com/rainstormstudio/nerd-icons-dired
 https://github.com/LuigiPiucco/nerd-icons-corfu?tab=readme-ov-file
 
     #+begin_src emacs-lisp
-      (eval-when-compile
-        (elpaca (nerd-icons-corfu :ref "7077bb76fefc15aed967476406a19dc5c2500b3c")))
-
       (with-eval-after-load 'corfu
         (setopt corfu-margin-formatters '(nerd-icons-corfu-formatter)))
 
@@ -3814,9 +3519,6 @@ https://github.com/LuigiPiucco/nerd-icons-corfu?tab=readme-ov-file
 emojiを表示するためのpackage 。GitHubみたいな ~::~ で挾んだような形式や、英語圏のascii artとかを対象としている。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (emojify :ref "1b726412f19896abf5e4857d4c32220e33400b55")))
-
   (with-eval-after-load 'emojify
     (setopt emojify-display-style 'unicode)
     (setopt emojify-emoji-style '(unicode github))
@@ -3829,9 +3531,6 @@ emojiを表示するためのpackage 。GitHubみたいな ~::~ で挾んだよ�
 #+end_src
 *** exec-path-from-shell
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (exec-path-from-shell :ref "72ede29a0e0467b3b433e8edbee3c79bab005884")))
-
   (with-high-priority-startup
     (load-package exec-path-from-shell)
 
@@ -3839,16 +3538,12 @@ emojiを表示するためのpackage 。GitHubみたいな ~::~ で挾んだよ�
 
     (let ((envs '("GOROOT" "GOPATH" "PATH")))
       (exec-path-from-shell-copy-envs envs)))
-
 #+end_src
 
 *** ripgrep.el
 rg.elだとtransientとのnative compで相性が悪かったので、こっちにもどす。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (ripgrep :ref "b6bd5beb0c11348f1afd9486cbb451d0d2e3c45a")))
-
   (with-eval-after-load 'ripgrep
     (setopt ripgrep-arguments '("--smart-case"
                                 "--hidden"
@@ -3860,10 +3555,6 @@ rg.elだとtransientとのnative compで相性が悪かったので、こっち�
 
 *** mozc
 #+begin_src emacs-lisp
-  (when (and my:use-mozc-el my:mozc-helper-locate)
-    (eval-when-compile
-      (elpaca (mozc :ref "7967c42e5585d0789fe6565bf366afba8b31fcbf"))))
-
   (defvar mozc-keymap-kana)
   (defvar mozc-helper-program-name)
   (with-eval-after-load 'mozc
@@ -3886,10 +3577,6 @@ treesit自体は魅力的なのだが、font-lockの仕組みそのものが別�
     ;; font lockで最大のレベルを利用しておく
     (setopt treesit-font-lock-level 4))
 
-
-  (eval-when-compile
-    (elpaca (treesit-auto :ref "016bd286a1ba4628f833a626f8b9d497882ecdf3")))
-
   (with-eval-after-load 'treesit-auto
     ;; 対象のパーサがすでにあったら自動的にインストールしてくれる
     (setopt treesit-auto-install t)
@@ -3907,9 +3594,6 @@ treesit自体は魅力的なのだが、font-lockの仕組みそのものが別�
 diredにfont-lockを適用していい感じにしてくれる。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (diredfl :ref  "f6d599c30875ab4894c1deab9713ff2faea54e06")))
-
   (with-low-priority-startup
     (load-package diredfl)
 
@@ -3917,51 +3601,10 @@ diredにfont-lockを適用していい感じにしてくれる。
 
 #+end_src
 
-*** simple-pomodoro
-自作のpomodoro timer用パッケージ。
-
-#+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (alert :ref  "7774b5fd2feb98d4910ff06435d08c19fba93e26"))
-    (elpaca (simple-pomodoro :type git :host github :repo "derui/simple-pomodoro" :files (:defaults "misc/*")
-                             :ref  "109f902fabd5e7d0258dafcd7659bbf9cd87718f"))
-    )
-
-  (with-eval-after-load 'alert
-    (setopt alert-default-style (cond
-                                 ((string-match ".*darwin.*" (or system-configuration "")) 'osx-notifier)
-                                 ((string-match ".*linux-gnu.*" (or system-configuration "")) 'notifications)
-                                 (t 'message)))
-    )
-
-  ;; (with-eval-after-load 'simple-pomodoro
-  ;;   (setopt simple-pomodoro-auto-short-break t)
-
-  ;;   (setup simple-pomodoro-notification
-  ;;     (:require simple-pomodoro-notification)
-  ;;     (setopt simple-pomodoro-notification-icon `((default . ,(expand-file-name "images/001-tomato.png" user-emacs-directory))))
-  ;;     (setopt simple-pomodoro-notification-function #'simple-pomodoro-notification))
-
-  ;;   (setup simple-pomodoro-mode-line
-  ;;     (:require simple-pomodoro-mode-line)
-
-  ;;     (setopt simple-pomodoro-tick-function (lambda (&rest args)
-  ;;                                             (simple-pomodoro-mode-line-update-text)
-  ;;                                             (force-mode-line-update))))
-  ;;   )
-
-  (with-low-priority-startup
-    (load-package alert)
-    (load-package simple-pomodoro))
-#+end_src
-
 *** rainbow-delimiters
 定番のパッケージ。括弧を階層毎に色付けしてくれる。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (rainbow-delimiters :ref  "f40ece58df8b2f0fb6c8576b527755a552a5e763")))
-
   (with-low-priority-startup
     (load-package rainbow-delimiters)
 
@@ -3973,9 +3616,6 @@ diredにfont-lockを適用していい感じにしてくれる。
 https://github.com/joaotavora/breadcrumb
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (breadcrumb :ref "dcb6e2e82de2432d8eb75be74c8d6215fc97a2d3")))
-
   (with-eval-after-load 'breadcrumb)
 
   (with-low-priority-startup
@@ -3987,12 +3627,6 @@ https://github.com/joaotavora/breadcrumb
 自作のKanzen clone。
     
     #+begin_src emacs-lisp
-      (eval-when-compile
-        (elpaca (chokan :type git :host github :repo "derui/chokan"
-                        :ref "206acbfdc9709fa0392c4ad97cc263394db4ac1a"))
-        (elpaca (websocket :ref "40c208eaab99999d7c1e4bea883648da24c03be3")))
-
-
       (with-eval-after-load 'chokan
         (chokan-websocket-setup)
         )
@@ -4007,9 +3641,6 @@ https://github.com/emacsorphanage/anzu
 結構昔からあるVisual replace を実現するためのpackage。どっちかというと、本来はmode Line にマッチ状況を表示することが目的というかなんというか、というものだったようだ。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (anzu :ref  "26fb50b429ee968eb944b0615dd0aed1dd66172c")))
-
   (with-eval-after-load 'anzu
     ;; mode lineは自分で制御したいので、勝手にCons するのは許容しない
     (setopt anzu-cons-mode-line-p nil)
@@ -4019,7 +3650,6 @@ https://github.com/emacsorphanage/anzu
     (load-package anzu)
 
     (global-anzu-mode +1))
-
 #+end_src
 *** indent-bars
 https://github.com/jdtsmith/indent-bars
@@ -4027,10 +3657,6 @@ https://github.com/jdtsmith/indent-bars
 indent-guideを表示するpackage 。他のmode と比較して、軽量かつ高速である、とのこと。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (indent-bars :type git :host github :repo "jdtsmith/indent-bars" :branch "main"
-                         :ref "2d1d854ddaa5b0e19b69e73553675c2aaaed1641")))
-
   (defun my:indent-bars-mode-dwim ()
     "treesitが有効な場合は `indent-bars-ts-mode' を起動する。treesitが
   有効ではないmode の場合は `indent-bars-mode' を代りに起動する"
@@ -4067,10 +3693,6 @@ https://github.com/magnars/multiple-cursors.el
 複数のカーソルを同時にあつかうことができるpackage 。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (multiple-cursors :type git :host github :repo "magnars/multiple-cursors.el" :branch "master"
-                              :ref "c870c18462461df19382ecd2f9374c8b902cd804")))
-
   (with-eval-after-load 'multiple-cursors
     (defvar mc/cmds-to-run-for-all nil)
     (setq mc/cmds-to-run-for-all '(my:treesit-expand-region
@@ -4110,24 +3732,16 @@ libvtermを利用したterminal emulator package.
 textをwindowに対してpop onするpackage。内部的にはposframeを利用している。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (popon :type git :url "https://codeberg.org/akib/emacs-popon.git"
-                   :ref "bf8174cb7e6e8fe0fe91afe6b01b6562c4dc39da"))
-    (elpaca (flymake-popon :type git :url "https://codeberg.org/akib/emacs-flymake-popon.git"
-                           :ref "99ea813346f3edef7220d8f4faeed2ec69af6060")))
-
   (with-low-priority-startup
     (load-package popon)
     (load-package flymake-popon)
 
     (add-hook 'flymake-mode-hook #'flymake-popon-mode))
 #+end_src
+
 *** migemo
 #+begin_src emacs-lisp
   (when  (and my:migemo-command (executable-find my:migemo-command))
-    (eval-when-compile
-      (elpaca (migemo :ref "7d78901773da3b503e5c0d5fa14a53ad6060c97f")))
-
     (with-eval-after-load 'migemo
       (setopt migemo-command my:migemo-command)
       (setopt migemo-options '("-q" "--emacs"))
@@ -4152,10 +3766,6 @@ textをwindowに対してpop onするpackage。内部的にはposframeを利用�
 dynamic macro。key sequenceをある程度自動的に判別して、dynamicにmacroとして振る舞ってくれる。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (dmacro :type git :host github :repo "emacs-jp/dmacro"
-                    :ref "3480b97aaad9e65fa03c6a9d1a0a8111be1179f8")))
-
   (with-eval-after-load 'dmacro)
 
   (with-low-priority-startup
@@ -4318,10 +3928,6 @@ tab barを有効化する。
 tab-barをProject managementとして使えるようにするための package 。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (tabspaces :type git :host github :repo "mclear-tools/tabspaces" :branch "main"
-                       :ref "c21f28b96b63926a530babe50d2c4de81ebaaa18")))
-
   (with-eval-after-load 'tabspaces
     ;; tab ＝ Projectごとにfiltering されたbufferを利用する
     (setopt tabspaces-use-filtered-buffers-as-default t)
@@ -4370,9 +3976,6 @@ tab-barをProject managementとして使えるようにするための package �
 #+end_src
 ** dashboard
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (dashboard :ref "3852301f9c6f3104d9cc98389612b5ef3452a7de")))
-
   (with-eval-after-load 'dashboard
     (declare-function dashboard-modify-heading-icons 'dashboard)
     
