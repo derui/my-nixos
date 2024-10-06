@@ -26,7 +26,6 @@
   outputs = { self, nixpkgs, home-manager, emacs-overlay, ... }@inputs:
     let
       overlays = [
-        (import ./overlays/emacs)
         (import emacs-overlay)
       ];
 
@@ -62,41 +61,42 @@
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
 
       # My reserved desktop configuration as NixOS
-      nixosConfigurations.ereshkigal = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          # import root configuration
-          ./configuration.nix
+      nixosConfigurations.ereshkigal =
+        let pkgs = nixpkgsFor.x86_64-linux; in nixpkgs.lib.nixosSystem {
+          inherit pkgs;
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            # import root configuration
+            ./configuration.nix
+            ./home-manager/gui/emacs
 
-          # home-manager support
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.derui = import ./home.nix;
-          }
-        ];
-      };
+            # home-manager support
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.derui = import ./home.nix;
+            }
+          ];
+        };
 
       # My old desktop
       homeConfigurations.my-gentoo =
         let
           system = "x86_64-linux";
+          pkgs = nixpkgsFor.${system};
         in
         home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            system = system;
-          };
+          pkgs = pkgs;
 
           extraSpecialArgs = {
             inherit inputs;
           };
           modules = [
             ./home.nix
+            ./home-manager/gui/emacs
           ];
         };
-
-
     };
 }
