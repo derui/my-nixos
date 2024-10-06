@@ -1,0 +1,37 @@
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+format = """
+  $username\
+  $directory\
+  $git_branch\
+  $git_state\
+  $nodejs\
+  $ocaml\
+  $time\
+  $cmd_duration\
+  $line_break\
+  $jobs\
+  $character
+"""
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[username]
+show_always = true
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vicmd_symbol = "[❮](bold green)"
+
+[time]
+disabled = false
+time_format = "%T"
+utc_time_offset = "+9"
+style = "bold fg:blue"
+
+[ocaml]
+symbol = "OCaml "
