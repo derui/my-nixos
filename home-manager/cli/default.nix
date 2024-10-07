@@ -6,5 +6,6 @@
     ./fish.nix
     ./nix.nix
     ./development.nix
+    ./tools.nix
   ];
 }
