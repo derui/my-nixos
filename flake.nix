@@ -21,12 +21,19 @@
 
     # NixOS hardware configurations
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+
+    # Rust tool management
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, emacs-overlay, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, emacs-overlay, fenix, ... }@inputs:
     let
       overlays = [
         (import emacs-overlay)
+        fenix.overlays.default
       ];
 
       # System types to support.
@@ -37,6 +44,7 @@
 
       # Nixpkgs instantiated for supported system types.
       nixpkgsFor = forAllSystems (system: import nixpkgs {
+
         inherit
           overlays
           system;
@@ -44,7 +52,7 @@
     in
     {
       # 自作のpackageをoutputに追加する
-      packages = forAllSystems (system: import ./pkgs inputs.nixpkgs.legacyPackages.${system});
+      packages = forAllSystems (system: import ./pkgs inputs.nixpkgs.legacyPackages.${system} // fenix.packages.${system}.minimal.toolchain);
 
       # define devShell for aysstem with packages
       devShells = forAllSystems (system:
