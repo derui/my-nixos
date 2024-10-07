@@ -11,6 +11,7 @@
         "waybar"
         "/run/current-system/sw/bin/fcitx5 -D"
         "mako"
+        "dropbox start"
       ];
 
       input = {
