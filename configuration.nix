@@ -107,6 +107,9 @@
     # for emacs
     enchant2
     nuspell
+
+    # management
+    smartmontools
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";
