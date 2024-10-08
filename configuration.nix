@@ -11,11 +11,11 @@
       ./hardware-configuration.nix
 
       # system modules
-      ./modules/hyprland.nix
-      ./modules/fcitx.nix
       ./modules/gpu.nix
       ./modules/bluetooth.nix
-      ./modules/steam.nix
+      ./modules/desktop/hyprland.nix
+      ./modules/desktop/fcitx.nix
+      ./modules/desktop/steam.nix
       ./modules/nix.nix
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
