@@ -48,6 +48,8 @@
         inherit
           overlays
           system;
+
+        config.allowUnfree = true;
       });
     in
     {
@@ -72,9 +74,14 @@
 
       # My reserved desktop configuration as NixOS
       nixosConfigurations.ereshkigal =
-        let pkgs = nixpkgsFor.x86_64-linux; in nixpkgs.lib.nixosSystem {
-          inherit pkgs;
+        let
           system = "x86_64-linux";
+          pkgs = nixpkgsFor.${system};
+        in
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          inherit pkgs;
+
           specialArgs = { inherit inputs; };
           modules = [
             # import root configuration
