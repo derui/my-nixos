@@ -101,9 +101,6 @@
     # terminals
     kitty
 
-    # browsers
-    firefox
-
     # for emacs
     enchant2
     nuspell

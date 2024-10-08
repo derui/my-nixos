@@ -8,5 +8,6 @@
     ./intellij
     ./tools.nix
     ./emacs
+    ./firefox.nix
   ];
 }
