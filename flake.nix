@@ -49,7 +49,9 @@
           overlays
           system;
 
-        config.allowUnfree = true;
+        config = {
+          allowUnfree = true;
+        };
       });
     in
     {
