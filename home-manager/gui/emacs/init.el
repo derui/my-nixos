@@ -71,49 +71,6 @@
             (push (current-time) my:setup-tracker--times)
             (setq my:setup-tracker--level (1+ my:setup-tracker--level)))))))
 
-(eval-when-compile
-  (defvar elpaca-installer-version 0.7)
-  (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
-  (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
-  (defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
-  (defvar elpaca-order '(elpaca :repo "https://github.com/progfolio/elpaca.git"
-                                :ref nil :depth 1
-                                :files (:defaults "elpaca-test.el" (:exclude "extensions"))
-                                :build (:not elpaca--activate-package)))
-  (let* ((repo  (expand-file-name "elpaca/" elpaca-repos-directory))
-         (build (expand-file-name "elpaca/" elpaca-builds-directory))
-         (order (cdr elpaca-order))
-         (default-directory repo))
-    (add-to-list 'load-path (if (file-exists-p build) build repo))
-    (unless (file-exists-p repo)
-      (make-directory repo t)
-      (when (< emacs-major-version 28) (require 'subr-x))
-      (condition-case-unless-debug err
-          (if-let ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
-                   ((zerop (apply #'call-process `("git" nil ,buffer t "clone"
-                                                   ,@(when-let ((depth (plist-get order :depth)))
-                                                       (list (format "--depth=%d" depth) "--no-single-branch"))
-                                                   ,(plist-get order :repo) ,repo))))
-                   ((zerop (call-process "git" nil buffer t "checkout"
-                                         (or (plist-get order :ref) "--"))))
-                   (emacs (concat invocation-directory invocation-name))
-                   ((zerop (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
-                                         "--eval" "(byte-recompile-directory \".\" 0 'force)")))
-                   ((require 'elpaca))
-                   ((elpaca-generate-autoloads "elpaca" repo)))
-              (progn (message "%s" (buffer-string)) (kill-buffer buffer))
-            (error "%s" (with-current-buffer buffer (buffer-string))))
-        ((error) (warn "%s" err) (delete-directory repo 'recursive))))
-    (unless (require 'elpaca-autoloads nil t)
-      (require 'elpaca)
-      (elpaca-generate-autoloads "elpaca" repo)
-      (load "./elpaca-autoloads")))
-  (add-hook 'after-init-hook #'elpaca-process-queues)
-  (elpaca `(,@elpaca-order))
-
-  ;; 全体を更新するために先頭に追加する
-  (add-hook 'emacs-startup-hook #'elpaca-process-queues))
-
 (add-to-list 'exec-path (expand-file-name "~/.npm/bin"))
 (add-to-list 'exec-path (expand-file-name "~/.asdf/shims"))
 (add-to-list 'exec-path "/usr/local/bin")
@@ -758,9 +715,6 @@ This function does not add `str' to the kill ring."
   :type 'string
   :group 'my)
 
-(eval-when-compile
-  (elpaca request))
-
 (with-low-priority-startup
   (load-package request))
 
@@ -829,10 +783,6 @@ This function does not add `str' to the kill ring."
 
   (add-hook 'after-save-hook #'my:tangle-init-org)
   )
-
-(eval-when-compile
-  (elpaca (modus-themes :type git :host github :repo "protesilaos/modus-themes"
-                        :ref "1090a80a76c77d215b948d68a707fbb7e2b8d407")))
 
 (defun my:modus-mode-line-override ()
   "mode lineの表示が微妙だったので調整するhook"
@@ -915,10 +865,6 @@ This function does not add `str' to the kill ring."
 
 (with-low-priority-startup
   (load-package xterm-color))
-
-(eval-when-compile
-  (elpaca (transient :type git :host github :repo "magit/transient" :branch "main"
-                     :ref "3430943eaa3222cd2a487d4c102ec51e10e7e3c9")))
 
 (with-low-priority-startup
   (load-package transient)
@@ -1109,10 +1055,6 @@ This function does not add `str' to the kill ring."
       ("H" "Toggle isearch highlight" isearch-exit)
       ]]
     ))
-
-(eval-when-compile
-  (elpaca (moody :type git :host github :repo "tarsius/moody"
-                 :ref "e9969fac9efd43ac7ac811a791fabaf67b536a72")))
 
 (with-eval-after-load 'moody
   ;; 実際にはFont sizeから導出する。
@@ -1647,15 +1589,6 @@ prefixの引数として `it' を受け取ることができる"
                                                        (delete-rectangle s e)
                                                        (yank)
                                                        (multistate-normal-state))))
-
-(eval-when-compile
-  (elpaca (with-editor :type git :host github :repo "magit/with-editor"
-                       :ref "77cb2403158cfea9d8bfb8adad81b84d1d6d7c6a"))
-  (elpaca (magit :type git :host github :repo "magit/magit"
-                 :ref "4d054196eb1e99251012fc8b133db9512d644bf1"))
-  (elpaca (magit-section :type git :host github :repo "magit/magit"
-                         :ref "4d054196eb1e99251012fc8b133db9512d644bf1"))
-  )
 
 (with-eval-after-load 'magit
   ;; magitのbuffer切り替えを変える
@@ -2986,10 +2919,6 @@ Refer to `org-agenda-prefix-format' for more information."
 
   ;; multiple-cursors-modeが終了したら、normal stateに戻る
   (add-hook 'multiple-cursors-mode-hook #'my:normal-state-after-leave-mc))
-
-(eval-when-compile
-  (elpaca (vterm :type git :host github :repo "akermu/emacs-libvterm" :branch "master"
-                 :ref "d9ea29fb10aed20512bd95dc5b8c1a01684044b1")))
 
 (defvar vterm-mode-map)
 (with-eval-after-load 'vterm

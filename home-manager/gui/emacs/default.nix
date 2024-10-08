@@ -133,6 +133,7 @@ in
         epkgs.dmacro
         epkgs.tabspaces
         epkgs.dashboard
+        epkgs.modus-themes
       ];
 
       # Optionally override derivations.

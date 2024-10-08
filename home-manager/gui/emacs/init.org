@@ -91,7 +91,7 @@ https://zenn.dev/takeokunn/articles/56010618502ccc
 
 #+end_src
 ** Initialize elpaca
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
   (eval-when-compile
     (defvar elpaca-installer-version 0.7)
     (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
@@ -911,9 +911,6 @@ deeplと連携して、翻訳した文章をコピペするための処理を提
     :type 'string
     :group 'my)
 
-  (eval-when-compile
-    (elpaca request))
-
   (with-low-priority-startup
     (load-package request))
 
@@ -990,10 +987,6 @@ deeplと連携して、翻訳した文章をコピペするための処理を提
 * テーマ
 ** modus-themes
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (modus-themes :type git :host github :repo "protesilaos/modus-themes"
-                          :ref "1090a80a76c77d215b948d68a707fbb7e2b8d407")))
-
   (defun my:modus-mode-line-override ()
     "mode lineの表示が微妙だったので調整するhook"
     (let ((line (face-attribute 'mode-line :underline)))
@@ -1119,10 +1112,6 @@ Growlに対応するprotocolを提供するpackage。
 magitで使われているUIをlibraryにしたもの。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (transient :type git :host github :repo "magit/transient" :branch "main"
-                       :ref "3430943eaa3222cd2a487d4c102ec51e10e7e3c9")))
-
   (with-low-priority-startup
     (load-package transient)
 
@@ -1351,10 +1340,6 @@ https://github.com/tarsius/moody
 magitのメインコミッターが作成しているパッケージ。基本的には見た目を変えるためだけのものであり、それ以外については自前で色々やる必要がある。
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (moody :type git :host github :repo "tarsius/moody"
-                   :ref "e9969fac9efd43ac7ac811a791fabaf67b536a72")))
-
   (with-eval-after-load 'moody
     ;; 実際にはFont sizeから導出する。
     (setopt moody-mode-line-height (let* ((font (face-font 'mode-line)))
@@ -1959,15 +1944,6 @@ https://github.com/magit/with-editor
 https://github.com/magit/magit
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (with-editor :type git :host github :repo "magit/with-editor"
-                         :ref "77cb2403158cfea9d8bfb8adad81b84d1d6d7c6a"))
-    (elpaca (magit :type git :host github :repo "magit/magit"
-                   :ref "4d054196eb1e99251012fc8b133db9512d644bf1"))
-    (elpaca (magit-section :type git :host github :repo "magit/magit"
-                           :ref "4d054196eb1e99251012fc8b133db9512d644bf1"))
-    )
-
   (with-eval-after-load 'magit
     ;; magitのbuffer切り替えを変える
     (setopt magit-display-buffer-function #'display-buffer)
@@ -3719,10 +3695,6 @@ https://github.com/akermu/emacs-libvterm
 libvtermを利用したterminal emulator package.
 
 #+begin_src emacs-lisp
-  (eval-when-compile
-    (elpaca (vterm :type git :host github :repo "akermu/emacs-libvterm" :branch "master"
-                   :ref "d9ea29fb10aed20512bd95dc5b8c1a01684044b1")))
-
   (defvar vterm-mode-map)
   (with-eval-after-load 'vterm
     (keymap-set vterm-mode-map "C-o" #'window-toggle-side-windows))
