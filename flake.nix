@@ -54,7 +54,7 @@
     in
     {
       # 自作のpackageをoutputに追加する
-      packages = forAllSystems (system: import ./pkgs inputs.nixpkgs.legacyPackages.${system} // fenix.packages.${system}.minimal.toolchain);
+      packages = forAllSystems (system: import ./pkgs inputs.nixpkgs.legacyPackages.${system});
 
       # define devShell for aysstem with packages
       devShells = forAllSystems (system:
