@@ -7,5 +7,6 @@
     ./mako.nix
     ./intellij
     ./tools.nix
+    ./emacs
   ];
 }

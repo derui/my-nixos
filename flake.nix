@@ -79,16 +79,21 @@
           modules = [
             # import root configuration
             ./configuration.nix
-            ./home-manager/gui/emacs
-            ./pkgs
+          ];
+        };
+      homeConfigurations."derui@ereshkigal" =
+        let
+          system = "x86_64-linux";
+          pkgs = nixpkgsFor.${system};
+        in
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
 
-            # home-manager support
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.derui = import ./home.nix;
-            }
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            ./home.nix
           ];
         };
 
@@ -106,7 +111,6 @@
           };
           modules = [
             ./home.nix
-            ./home-manager/gui/emacs
           ];
         };
     };
