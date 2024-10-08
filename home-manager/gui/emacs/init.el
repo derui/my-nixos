@@ -863,9 +863,6 @@ This function does not add `str' to the kill ring."
   (load-package modus-themes)
   (load-theme 'modus-vivendi-tinted))
 
-(eval-when-compile
-  (elpaca (spacious-padding :ref "a3151f3c99d6b3b2d4644da88546476b3d31f0fe")))
-
 (with-eval-after-load 'spacious-padding
   (setopt spacious-padding-widths '(
                                     :internal-border-width 15
@@ -884,9 +881,6 @@ This function does not add `str' to the kill ring."
 
   (spacious-padding-mode +1))
 
-(eval-when-compile
-  (elpaca (perfect-margin :ref "3281c5648d854f77450c1268dbb31f5a872900a5")))
-
 (with-eval-after-load 'perfect-margin
   (setopt perfect-margin-disable-in-splittable-check nil)
   ;; mode-lineが右に間伸びするのを防ぐ
@@ -899,43 +893,25 @@ This function does not add `str' to the kill ring."
 
   (perfect-margin-mode +1))
 
-(eval-when-compile
-  (elpaca (dash :ref "1de9dcb83eacfb162b6d9a118a4770b1281bcd84")))
-
 (with-low-priority-startup
   (load-package dash)
   (require 'dash))
-
-(eval-when-compile
-  (elpaca (f :ref "1e7020dc0d4c52d3da9bd610d431cab13aa02d8c")))
 
 (with-eval-after-load 'f)
 
 (with-low-priority-startup
   (load-package f))
 
-(eval-when-compile
-  (elpaca (s :ref "dda84d38fffdaf0c9b12837b504b402af910d01d")))
-
 (with-high-priority-startup
   (load-package s)
 
   (require 's))
 
-(eval-when-compile
-  (elpaca (gntp :ref "767571135e2c0985944017dc59b0be79af222ef5")))
-
 (with-high-priority-startup
   (load-package gntp))
 
-(eval-when-compile
-  (elpaca (ht :ref "1c49aad1c820c86f7ee35bf9fff8429502f60fef")))
-
 (with-low-priority-startup
   (load-package ht))
-
-(eval-when-compile
-  (elpaca (xterm-color :ref "2ad407c651e90fff2ea85d17bf074cee2c022912")))
 
 (with-low-priority-startup
   (load-package xterm-color))
@@ -1315,10 +1291,6 @@ This function uses nerd-icon package to get status icon."
 
   (my:init-mode-line))
 
-(eval-when-compile
-  (elpaca (multistate :type git :host github :repo "emacsmirror/multistate"
-                      :ref "a7ab9dc7aac0b6d6d2f872de4e0d1b8550834a9b")))
-
 (with-eval-after-load 'multistate
   (defun my:multistate-disable ()
     "multistateを強制的に無効化する"
@@ -1330,10 +1302,6 @@ This function uses nerd-icon package to get status icon."
   ;; global-modeだと特殊なmodeを全部列挙しないといけないので、prog/textだけに一回絞っておく
   (add-hook 'prog-mode-hook #'multistate-mode)
   (add-hook 'text-mode-hook #'multistate-mode))
-
-(eval-when-compile
-  (elpaca (motion :type git :host github :repo "derui/motion"
-                  :ref "b67044122700eb02cf18223e5df7c8f8c3541131")))
 
 (with-low-priority-startup
   (load-package motion)
@@ -1726,17 +1694,11 @@ prefixの引数として `it' を受け取ることができる"
   (load-package magit)
   (load-package magit-section))
 
-(eval-when-compile
-  (elpaca (magit-delta :ref "5fc7dbddcfacfe46d3fd876172ad02a9ab6ac616")))
-
 (with-eval-after-load 'magit
   (add-hook 'magit-mode-hook #'magit-delta-mode))
 
 (with-low-priority-startup
   (load-package magit-delta))
-
-(eval-when-compile
-  (elpaca (consult :ref "4889458dccf842ab6223099f8a73ff8b147e9459")))
 
 (defun my:consult-search-dwim (&optional prefix)
   "Merge version to search document via grep/rg.
@@ -1763,10 +1725,6 @@ Use fast alternative if it exists, fallback grep if no alternatives in system.
 (with-low-priority-startup
   (load-package consult))
 
-(eval-when-compile
-  (elpaca (embark :ref "19a13e344e04bbf861eaa74491b23da52b398672"))
-  (elpaca (embark-consult :ref "19a13e344e04bbf861eaa74491b23da52b398672")))
-
 (with-low-priority-startup
   (load-package embark)
   (load-package embark-consult)
@@ -1774,9 +1732,6 @@ Use fast alternative if it exists, fallback grep if no alternatives in system.
   (keymap-global-set "M-a" #'embark-act)
   (keymap-global-set "<f1> B" #'embark-bindings)
   (add-hook 'embark-collect-mode-hook #'consult-preview-at-point-mode))
-
-(eval-when-compile
-  (elpaca (marginalia :ref "50a51c69f006ec8b3ba1c570555d279d4cff6d99")))
 
 (with-eval-after-load 'marginalia
   (add-to-list 'marginalia-prompt-categories
@@ -1788,10 +1743,6 @@ Use fast alternative if it exists, fallback grep if no alternatives in system.
 
   ;; Either bind `marginalia-cycle` globally or only in the minibuffer
   (keymap-set minibuffer-local-map "M-A" #'marginalia-cycle))
-
-(eval-when-compile
-  (elpaca (vertico :type git :host github :repo "minad/vertico"
-                   :ref "c682ef50e62237435e9fc287927ce4181b49be90")))
 
 (with-eval-after-load 'vertico
   ;; 選択時にprefix iconを表示する
@@ -1838,9 +1789,6 @@ Use fast alternative if it exists, fallback grep if no alternatives in system.
   (load-package vertico)
   (vertico-mode +1))
 
-(eval-when-compile
-  (elpaca (orderless :ref "49d1fdfb80b55699a00b11bc916ad29c0447039b")))
-
 (defun my:orderless-migemo (component)
   (condition-case nil
       (let ((pattern (migemo-get-pattern component)))
@@ -1873,20 +1821,11 @@ Use fast alternative if it exists, fallback grep if no alternatives in system.
                                  orderless-regexp
                                  my:orderless-migemo))))
 
-(eval-when-compile
-  (elpaca (hotfuzz :type git :host github :repo "axelf4/hotfuzz" :branch "master"
-                   :files ("hotfuzz.el" "hotfuzz-module.c" "CMakeLists.txt")
-                   :ref "622329477d893a9fc2528a75935cfe1f8614f4bc")))
-
 (with-low-priority-startup
   (load-package hotfuzz)
 
   (add-to-list 'completion-styles 'hotfuzz)
   )
-
-(eval-when-compile
-  (elpaca (corfu :type git :host github :repo "minad/corfu" :branch "main"
-                 :ref "98026a98a6f74220fac8d79afd523454fceaa468")))
 
 (with-eval-after-load 'corfu
   (setopt corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
@@ -1924,9 +1863,6 @@ Use fast alternative if it exists, fallback grep if no alternatives in system.
 
   (global-corfu-mode +1))
 
-(eval-when-compile
-  (elpaca (cape :ref "9110956a5155d5e3c460160fa1b4dac59322c229")))
-
 (declare-function eglot-completion-at-point 'eglot)
 (declare-function tempel-complete 'tempel)
 
@@ -1949,9 +1885,6 @@ Use fast alternative if it exists, fallback grep if no alternatives in system.
   (add-to-list 'completion-at-point-functions #'tempel-complete)
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-keyword))
-
-(eval-when-compile
-  (elpaca (org :ref "233a0ced97366090c31ef94562879bb2f729b120")))
 
 (with-eval-after-load 'org
   ;; org-mode内部のソースを色付けする
@@ -2222,10 +2155,6 @@ Use fast alternative if it exists, fallback grep if no alternatives in system.
   (with-eval-after-load 'org
     (require 'org-tempo)))
 
-(eval-when-compile
-  (elpaca (org-onit :type git :host github :repo "takaxp/org-onit"
-                    :ref  "932ed472e46c277daf1edf0efb71fbac5ff45346")))
-
 (with-eval-after-load 'org
   (declare-function org-onit-goto-anchor 'org-onit)
   (keymap-set org-mode-map "<f11>" #'org-onit-toggle-doing)
@@ -2234,10 +2163,6 @@ Use fast alternative if it exists, fallback grep if no alternatives in system.
 
 (with-low-priority-startup
   (load-package org-onit))
-
-(eval-when-compile
-  (elpaca (ox-hugo :ref "c4156d9d383bf97853ba9e16271b7c4d5e697f49"))
-  (elpaca (tomelr :ref "670e0a08f625175fd80137cf69e799619bf8a381")))
 
 (defun my:org-hugo-enable-if-hugo-buffer ()
   (let ((prop (my:org-global-props "HUGO_.\+" (current-buffer))))
@@ -2252,17 +2177,10 @@ Use fast alternative if it exists, fallback grep if no alternatives in system.
 
   (add-hook 'org-mode-hook #'my:org-hugo-enable-if-hugo-buffer))
 
-(eval-when-compile
-  (elpaca (emacsql :ref "5108c16c5e1d5bfdd41fcc0807241e28886ab763")))
-
 (with-eval-after-load 'emacsql-sqlite-builtin)
 
 (with-low-priority-startup
   (load-package emacsql))
-
-(eval-when-compile
-  (elpaca (org-roam :type git :host github :repo "org-roam/org-roam"
-                    :ref  "0b9fcbc97b65b349826e63bad89ca121a08fd2be")))
 
 (with-eval-after-load 'org-roam
   (setopt org-roam-directory my:org-roam-directory)
@@ -2287,9 +2205,6 @@ Use fast alternative if it exists, fallback grep if no alternatives in system.
   (load-package org-roam)
 
   (org-roam-db-autosync-mode +1))
-
-(eval-when-compile
-  (elpaca (org-modern :ref "e306c7df4985f77e5c4e2146900259a23a76c974")))
 
 (with-eval-after-load 'org-modern
   (setopt org-modern-block-fringe t)
@@ -2391,9 +2306,6 @@ Refer to `org-agenda-prefix-format' for more information."
 
   (keymap-global-set "C-c a" #'org-agenda))
 
-(eval-when-compile
-  (elpaca (go-mode :ref "6f4ff9ef874d151ed8d297a80f1bf27db5d9dbf0")))
-
 ;; go.modがある場所をrootとする
 (defun my:project-find-go-module (dir)
   (when-let ((root (locate-dominating-file dir "go.mod")))
@@ -2413,16 +2325,6 @@ Refer to `org-agenda-prefix-format' for more information."
 
 (with-low-priority-startup
   (load-package go-mode))
-
-(eval-when-compile
-  (elpaca (ruby-end :ref "ba7d7230f9e3ed75c9982d32bb9fdff1dc10935d")))
-
-(with-eval-after-load 'ruby-mode
-  (add-hook 'ruby-mode-hook #'ruby-end-mode)
-  )
-
-(with-low-priority-startup
-  (load-package ruby-end))
 
 (defun my:find-rust-project-root (dir)
   (when-let ((root (locate-dominating-file dir "Cargo.lock")))
@@ -2448,9 +2350,6 @@ Refer to `org-agenda-prefix-format' for more information."
 
 (with-low-priority-startup
   (add-hook 'python-mode-hook #'my:python-mode-hook-0))
-
-(eval-when-compile
-  (elpaca (pyvenv :ref "31ea715f2164dd611e7fc77b26390ef3ca93509b")))
 
 (defun my:pyvenv-activate-hook ()
   "pyvenvを有効にする"
@@ -2485,9 +2384,6 @@ Refer to `org-agenda-prefix-format' for more information."
 (when (my:opam-share-directory-p)
   (add-to-list 'load-path (my:opam-load-path)))
 
-(eval-when-compile
-  (elpaca (tuareg :ref "1d53723e39f22ab4ab76d31f2b188a2879305092")))
-
 (with-eval-after-load 'tuareg
   ;; Global tuareg setting
   ;; ただしインデント系統はocamlformatでフォーマットされるので、ほぼここにある設定は意味がなくなっている
@@ -2506,10 +2402,6 @@ Refer to `org-agenda-prefix-format' for more information."
 
   (add-hook 'tuareg-mode-hook #'eglot-ensure))
 
-(eval-when-compile
-  (elpaca (ocaml-ts-mode :type git :host github :repo "dmitrig/ocaml-ts-mode"
-                         :ref "bb8c86bd49e4e98f41e45fb0ec82e38f90bc3ee4")))
-
 (with-eval-after-load 'ocaml-ts-mode
   (defvar ocaml-ts-mode-map)
   (keymap-set ocaml-ts-mode-map "C-h" #'delete-backward-char)
@@ -2526,20 +2418,8 @@ Refer to `org-agenda-prefix-format' for more information."
   (add-hook 'ocaml-ts-mode-hook #'eglot-ensure)
   )
 
-(eval-when-compile
-  (elpaca (adoc-mode :ref "2c2eb8043623aa99d35aacbad2ee39188bf1bad3")))
-
-(with-low-priority-startup
-  (load-package adoc-mode))
-
-(eval-when-compile
-  (elpaca (lua-mode :ref "d074e4134b1beae9ed4c9b512af741ca0d852ba3")))
-
 (with-low-priority-startup
   (load-package lua-mode))
-
-(eval-when-compile
-  (elpaca (markdown-mode :ref "0cdebc833ed9b98baf9f260ed12b1e36b0ca0e89")))
 
 (with-low-priority-startup
   (load-package markdown-mode))
@@ -2561,30 +2441,19 @@ Refer to `org-agenda-prefix-format' for more information."
 (with-low-priority-startup
   (add-to-list 'auto-mode-alist '("\\.s?css\\'" . css-ts-mode)))
 
-(eval-when-compile
-  (elpaca (rainbow-mode :ref "f7db3b5919f70420a91eb199f8663468de3033f3")))
-
-(with-eval-after-load 'rainbow-mode)
+(with-eval-after-load 'colorful-mode)
 
 (with-low-priority-startup
-  (load-package rainbow-mode))
-
-(eval-when-compile
-  (elpaca (yaml-pro :ref "5f06949e92dc19dcc48dc31662b2aa958fe33726"))
-  (elpaca (yaml :ref "70c4fcead97e9bd6594e418c922ae769818f4245")))
+  (load-package colorful-mode))
 
 (with-eval-after-load 'yaml-pro
   )
 
 (with-low-priority-startup
-  (load-package yaml)
   (load-package yaml-pro)
 
   (add-hook 'yaml-ts-mode-hook #'yaml-pro-ts-mode)
   (add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-ts-mode)))
-
-(eval-when-compile
-  (elpaca (web-mode :ref "005aa62d6f41fbf9bc045cac3b3b772716ee8ba7")))
 
 (defun my:web-mode-hook-angular-service ()
   "Start angular lsp server if target is component"
@@ -2603,9 +2472,6 @@ Refer to `org-agenda-prefix-format' for more information."
   (add-to-list 'auto-mode-alist '("\\.rt\\'" . web-mode))
 
   (add-hook 'web-mode-hook #'my:web-mode-hook-angular-service))
-
-(eval-when-compile
-  (elpaca (add-node-modules-path :ref "841e93dfed50448da66c89a977c9182bb18796a1")))
 
 (with-eval-after-load 'add-node-modules-path
   ;; npm v9でbinが削除されてしまったので、npm rootを利用するように
@@ -2638,16 +2504,9 @@ Refer to `org-agenda-prefix-format' for more information."
   (add-hook 'typescript-ts-mode-hook #'eglot-ensure)
   (add-hook 'typescript-ts-mode-hook #'treesit-fold-indicators-mode))
 
-(eval-when-compile
-  (elpaca (terraform-mode :ref "a645c32a8f0f0d04034262ae5fea330d5c7a33c6"))
-  (elpaca (hcl-mode :ref "37f2cb1bf6fb51fbf99d4fac256298fcd6d1dd24")))
-
 (with-low-priority-startup
   (load-package hcl-mode)
   (load-package terraform-mode))
-
-(eval-when-compile
-  (elpaca (plantuml-mode :ref "ea45a13707abd2a70df183f1aec6447197fc9ccc")))
 
 (with-eval-after-load 'plantuml-mode
   (defvar plantuml-output-type)
@@ -2665,12 +2524,6 @@ Refer to `org-agenda-prefix-format' for more information."
 (with-low-priority-startup
   (load-package plantuml-mode))
 
-;; protobuf-modeが要求しているのでここで追加している
-(eval-when-compile
-  (elpaca (gtags-mode :ref "2f553d0c41c470c5d2ee4210267161333969e080"))
-  (elpaca (protobuf-mode :type git :host github :repo "protocolbuffers/protobuf"
-                         :ref "54d8f03974c108ef8fd0f26568cd9eb086165568")))
-
 (defconst my:protobuf-style
   '((c-basic-offset . 2)
     (indent-tabs-mode . nil)))
@@ -2684,42 +2537,22 @@ Refer to `org-agenda-prefix-format' for more information."
 
   (add-hook 'protobuf-mode-hook #'my:protobuf-mode-hook))
 
-(eval-when-compile
-  (elpaca (fish-mode :ref "2526b1803b58cf145bc70ff6ce2adb3f6c246f89")))
-
 (with-low-priority-startup
   ;; emacs-fish is repository name of recipe
   (load-package emacs-fish))
-
-(eval-when-compile
-  (elpaca (nushell-mode :type git :host github :repo "mrkkrp/nushell-mode"
-                        :ref "ad8d6f268d1307ac8b7c0aaef133cdd615c9a57b")))
-
-(with-low-priority-startup
-  (load-package nushell-mode))
-
-(eval-when-compile
-  (elpaca (kotlin-mode :ref "fddd747e5b4736e8b27a147960f369b86179ddff")))
-
-(with-low-priority-startup
-  (load-package kotlin-mode)
-
-  (add-hook 'kotlin-mode-hook #'eglot-ensure)
-  )
 
 (with-eval-after-load 'text-mode
   ;; emacs 30.1以降で追加されるオプションで、これがあるとcompleption-at-point-functionsが上書きされてしまうので、
   ;; 一旦切る。これはorg modeとかでも影響する。
   (setopt text-mode-ispell-word-completion nil))
 
-(eval-when-compile
-  (elpaca (nix-mode :ref "719feb7868fb567ecfe5578f6119892c771ac5e5")))
-
 (with-eval-after-load 'nix-mode
   )
 
 (with-low-priority-startup
-  (load-package nix-mode))
+  (load-package nix-mode)
+
+  (add-hook 'nix-mode-hook #'eglot-ensure))
 
 (with-eval-after-load 'eldoc
   ;; idle時にdelayをかけない
@@ -2764,9 +2597,6 @@ Refer to `org-agenda-prefix-format' for more information."
   (add-hook 'c-mode-common-hook #'my:c-mode-hook)
   )
 
-(eval-when-compile
-  (elpaca (ace-window :ref "77115afc1b0b9f633084cf7479c767988106c196")))
-
 (with-eval-after-load 'posframe
   (ace-window-posframe-mode +1))
 
@@ -2775,10 +2605,6 @@ Refer to `org-agenda-prefix-format' for more information."
 
 (with-low-priority-startup
   (load-package ace-window))
-
-(eval-when-compile
-  (elpaca  (tempel :type git :host github :repo "minad/tempel" :branch "main"
-                   :ref "317c0e41d542721db11a7a8a1c6b78762959259b")))
 
 (defvar tempel-map)
 (with-eval-after-load 'tempel
@@ -2793,9 +2619,6 @@ Refer to `org-agenda-prefix-format' for more information."
   (autoload 'tempel-next "tempel")
   (autoload 'tempel-previous "tempel"))
 
-(eval-when-compile
-  (elpaca (symbol-overlay :ref "de215fff392c916ffab01950fcb6daf6fd18be4f")))
-
 (with-eval-after-load 'symbol-overlay
   (set-face-attribute 'symbol-overlay-default-face nil :inherit 'highlight :underline t)
   )
@@ -2804,10 +2627,6 @@ Refer to `org-agenda-prefix-format' for more information."
   (load-package symbol-overlay)
 
   (add-hook 'prog-mode-hook #'symbol-overlay-mode))
-
-(eval-when-compile
-  (elpaca (pulsar :type git :host github :repo "protesilaos/pulsar"
-                  :ref "f20879ee38121a30498b25bc3d0b07460227b63a")))
 
 (with-eval-after-load 'pulsar
   (setopt pulsar-face 'pulsar-magenta)
@@ -2818,9 +2637,6 @@ Refer to `org-agenda-prefix-format' for more information."
 
   (pulsar-global-mode +1))
 
-(eval-when-compile
-  (elpaca (imenu-list :ref "76f2335ee6f2f066d87fe4e4729219d70c9bc70d")))
-
 (with-eval-after-load 'imenu-list
   (setopt imenu-list-size 0.25)
   (setopt imenu-list-auto-resize nil)
@@ -2829,9 +2645,6 @@ Refer to `org-agenda-prefix-format' for more information."
 
 (with-low-priority-startup
   (load-package imenu-list))
-
-(eval-when-compile
-  (elpaca (which-key :ref "1e89fa000e9ba9549f15ef57abccd118d5f2fe1a")))
 
 (with-eval-after-load 'which-key
   (setopt which-key-max-description-length 40)
@@ -2842,9 +2655,6 @@ Refer to `org-agenda-prefix-format' for more information."
   (load-package emacs-which-key)
 
   (require 'which-key))
-
-(eval-when-compile
-  (elpaca (puni :ref "72e091ef30e0c9299dbcd0bc4669ab9bb8fb6e47")))
 
 (with-eval-after-load 'puni)
 
@@ -2857,9 +2667,6 @@ Refer to `org-agenda-prefix-format' for more information."
   (add-hook 'dired-mode-hook #'puni-disable-puni-mode)
 
   (puni-global-mode +1))
-
-(eval-when-compile
-  (elpaca (diff-hl :ref "b80ff9b4a772f7ea000e86fbf88175104ddf9557")))
 
 (with-eval-after-load 'diff-hl
   ;; do not display border on fringe
@@ -2884,9 +2691,6 @@ Refer to `org-agenda-prefix-format' for more information."
   (keymap-global-set "S-<f2>" #'flymake-goto-prev-error)
   )
 
-(eval-when-compile
-  (elpaca (flymake-collection :ref "ecc15c74630fa75e7792aa23cec79ea4afc28cc2")))
-
 (with-eval-after-load 'flymake-collection
   )
 
@@ -2894,21 +2698,11 @@ Refer to `org-agenda-prefix-format' for more information."
   ;; flymake-collection自体には必要なものがないので、使うものを個別に指定していく
   (load-package flymake-collection))
 
-(when (and window-system my:use-posframe)
-  (eval-when-compile
-    (elpaca (posframe :ref "570273bcf6c21641f02ccfcc9478607728f0a2a2"))
-    (elpaca (mozc-posframe :type git :host github :repo "derui/mozc-posframe"
-                           :ref "54451afb2edfe48b83dde9c476b338706ddbe6de")))
+(when (eq window-system 'x)
+  (setq x-gtk-resize-child-frames 'resize-mode))
 
-  (when (eq window-system 'x)
-    (setq x-gtk-resize-child-frames 'resize-mode))
-
-  (with-low-priority-startup
-    (load-package posframe)
-    (load-package mozc-posframe)))
-
-(eval-when-compile
-  (elpaca (eldoc-box :ref "d3250fccf26649f250e8678f22276f375c01aec5")))
+(with-low-priority-startup
+  (load-package posframe))
 
 (with-eval-after-load 'eldoc-box
   ;; 複数行の場合だけ表示するようにする
@@ -2917,9 +2711,6 @@ Refer to `org-agenda-prefix-format' for more information."
 
 (with-low-priority-startup
   (load-package eldoc-box))
-
-(eval-when-compile
-  (elpaca (vundo :ref "ca590c571546eb1d38c855216db11d28135892f2")))
 
 (with-low-priority-startup
   (load-package vundo))
@@ -2932,6 +2723,7 @@ Refer to `org-agenda-prefix-format' for more information."
   (setopt eglot-events-buffer-config '(:size 0 :format full))
   
   (add-to-list 'eglot-server-programs '(((ocaml-ts-mode :language-id)) . ("ocamllsp")))
+  (add-to-list 'eglot-server-programs '((nix-mode . ("nixd"))))
 
   ;; eglotでもhotfuzzを利用するようにする
   (add-to-list 'completion-category-overrides
@@ -2957,15 +2749,8 @@ Refer to `org-agenda-prefix-format' for more information."
   (add-hook 'eglot-managed-mode-hook #'my:enable-language-base-flymake-backend)
   (add-hook 'eglot-managed-mode-hook #'eglot-booster-mode))
 
-(eval-when-compile
-  (elpaca (eglot-booster :type git :host github :repo "jdtsmith/eglot-booster"
-                         :ref "e19dd7ea81bada84c66e8bdd121408d9c0761fe6")))
-
 (with-low-priority-startup
   (load-package eglot-booster))
-
-(eval-when-compile
-  (elpaca (aggressive-indent :ref "a437a45868f94b77362c6b913c5ee8e67b273c42")))
 
 (with-low-priority-startup
   (load-package aggressive-indent)
@@ -2973,10 +2758,6 @@ Refer to `org-agenda-prefix-format' for more information."
   (add-hook 'lisp-mode-hook #'aggressive-indent-mode)
   (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
   )
-
-(eval-when-compile
-  (elpaca (copilot :type git :host github :repo "copilot-emacs/copilot.el" :files ("dist" "*.el")
-                   :ref "535ef61e82f09d744cd5b097b1fc99f08cce175c")))
 
 (defun my:not-completion-in-region-mode-p ()
   "Predicate to check if `completion-in-region-mode' is enabled."
@@ -3017,9 +2798,6 @@ Refer to `org-agenda-prefix-format' for more information."
 (with-low-priority-startup
   (load-package copilot))
 
-(eval-when-compile
-  (elpaca (goggles :ref "41d3669d7ae7b73bd39d298e5373ece48b656ce3")))
-
 (with-low-priority-startup
   (load-package goggles)
 
@@ -3031,10 +2809,6 @@ Refer to `org-agenda-prefix-format' for more information."
 
 ;; macOSの場合、segfaultが発生してしまうので、一旦止めておく
 (linux!
- (eval-when-compile
-   (elpaca (jinx :type git :host github :repo "minad/jinx" :branch "main"
-                 :ref "cd827ee199efedc8f5e094001d90206e698f91e8")))
-
  (with-eval-after-load 'jinx
    (setopt jinx-languages "en_US ja_JP")
    )
@@ -3045,40 +2819,20 @@ Refer to `org-agenda-prefix-format' for more information."
    (add-hook 'with-editor-mode-hook #'jinx-mode))
  )
 
-(eval-when-compile
-  (elpaca (avy :ref "be612110cb116a38b8603df367942e2bb3d9bdbe")))
-
 (with-low-priority-startup
   (load-package avy))
-
-(eval-when-compile
-  (elpaca (wgrep :ref "208b9d01cfffa71037527e3a324684b3ce45ddc4")))
 
 (with-low-priority-startup
   (load-package wgrep))
 
-(eval-when-compile
-  (elpaca (treesit-fold :type git :host github :repo "emacs-tree-sitter/treesit-fold"
-                        :ref "7312871386e4b525a0ced6a03dc33062cb27f573")))
-
 (with-low-priority-startup
   (load-package treesit-fold))
-
-(eval-when-compile
-  (elpaca (diminish :ref  "fbd5d846611bad828e336b25d2e131d1bc06b83d")))
 
 (with-low-priority-startup
   (load-package diminish))
 
-(eval-when-compile
-  (elpaca (nerd-icons :type git :host github :repo "rainstormstudio/nerd-icons.el"
-                      :ref "c3d641d8e14bd11b5f98372da34ee5313636e363")))
-
 (with-high-priority-startup
   (load-package nerd-icons))
-
-(eval-when-compile
-  (elpaca (nerd-icons-completion :ref "426a1d7c29a04ae8e6ae9b55b0559f11a1e8b420")))
 
 (with-low-priority-startup
   (load-package nerd-icons-completion)
@@ -3087,25 +2841,16 @@ Refer to `org-agenda-prefix-format' for more information."
   (nerd-icons-completion-mode +1)
   )
 
-(eval-when-compile
-  (elpaca (nerd-icons-dired :ref "c1c73488630cc1d19ce1677359f614122ae4c1b9")))
-
 (with-low-priority-startup
   (load-package nerd-icons-dired)
 
   (add-hook 'dired-mode-hook #'nerd-icons-dired-mode))
-
-(eval-when-compile
-  (elpaca (nerd-icons-corfu :ref "7077bb76fefc15aed967476406a19dc5c2500b3c")))
 
 (with-eval-after-load 'corfu
   (setopt corfu-margin-formatters '(nerd-icons-corfu-formatter)))
 
 (with-high-priority-startup
   (load-package nerd-icons-corfu))
-
-(eval-when-compile
-  (elpaca (emojify :ref "1b726412f19896abf5e4857d4c32220e33400b55")))
 
 (with-eval-after-load 'emojify
   (setopt emojify-display-style 'unicode)
@@ -3117,9 +2862,6 @@ Refer to `org-agenda-prefix-format' for more information."
 
   (global-emojify-mode +1))
 
-(eval-when-compile
-  (elpaca (exec-path-from-shell :ref "72ede29a0e0467b3b433e8edbee3c79bab005884")))
-
 (with-high-priority-startup
   (load-package exec-path-from-shell)
 
@@ -3128,9 +2870,6 @@ Refer to `org-agenda-prefix-format' for more information."
   (let ((envs '("GOROOT" "GOPATH" "PATH")))
     (exec-path-from-shell-copy-envs envs)))
 
-(eval-when-compile
-  (elpaca (ripgrep :ref "b6bd5beb0c11348f1afd9486cbb451d0d2e3c45a")))
-
 (with-eval-after-load 'ripgrep
   (setopt ripgrep-arguments '("--smart-case"
                               "--hidden"
@@ -3138,10 +2877,6 @@ Refer to `org-agenda-prefix-format' for more information."
 
 (with-low-priority-startup
   (load-package ripgrep))
-
-(when (and my:use-mozc-el my:mozc-helper-locate)
-  (eval-when-compile
-    (elpaca (mozc :ref "7967c42e5585d0789fe6565bf366afba8b31fcbf"))))
 
 (defvar mozc-keymap-kana)
 (defvar mozc-helper-program-name)
@@ -3158,10 +2893,6 @@ Refer to `org-agenda-prefix-format' for more information."
   ;; font lockで最大のレベルを利用しておく
   (setopt treesit-font-lock-level 4))
 
-
-(eval-when-compile
-  (elpaca (treesit-auto :ref "016bd286a1ba4628f833a626f8b9d497882ecdf3")))
-
 (with-eval-after-load 'treesit-auto
   ;; 対象のパーサがすでにあったら自動的にインストールしてくれる
   (setopt treesit-auto-install t)
@@ -3174,57 +2905,15 @@ Refer to `org-agenda-prefix-format' for more information."
 
   (add-hook 'prog-mode-hook #'treesit-auto-mode))
 
-(eval-when-compile
-  (elpaca (diredfl :ref  "f6d599c30875ab4894c1deab9713ff2faea54e06")))
-
 (with-low-priority-startup
   (load-package diredfl)
 
   (add-hook 'dired-mode-hook #'diredfl-mode))
 
-(eval-when-compile
-  (elpaca (alert :ref  "7774b5fd2feb98d4910ff06435d08c19fba93e26"))
-  (elpaca (simple-pomodoro :type git :host github :repo "derui/simple-pomodoro" :files (:defaults "misc/*")
-                           :ref  "109f902fabd5e7d0258dafcd7659bbf9cd87718f"))
-  )
-
-(with-eval-after-load 'alert
-  (setopt alert-default-style (cond
-                               ((string-match ".*darwin.*" (or system-configuration "")) 'osx-notifier)
-                               ((string-match ".*linux-gnu.*" (or system-configuration "")) 'notifications)
-                               (t 'message)))
-  )
-
-;; (with-eval-after-load 'simple-pomodoro
-;;   (setopt simple-pomodoro-auto-short-break t)
-
-;;   (setup simple-pomodoro-notification
-;;     (:require simple-pomodoro-notification)
-;;     (setopt simple-pomodoro-notification-icon `((default . ,(expand-file-name "images/001-tomato.png" user-emacs-directory))))
-;;     (setopt simple-pomodoro-notification-function #'simple-pomodoro-notification))
-
-;;   (setup simple-pomodoro-mode-line
-;;     (:require simple-pomodoro-mode-line)
-
-;;     (setopt simple-pomodoro-tick-function (lambda (&rest args)
-;;                                             (simple-pomodoro-mode-line-update-text)
-;;                                             (force-mode-line-update))))
-;;   )
-
-(with-low-priority-startup
-  (load-package alert)
-  (load-package simple-pomodoro))
-
-(eval-when-compile
-  (elpaca (rainbow-delimiters :ref  "f40ece58df8b2f0fb6c8576b527755a552a5e763")))
-
 (with-low-priority-startup
   (load-package rainbow-delimiters)
 
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
-
-(eval-when-compile
-  (elpaca (breadcrumb :ref "dcb6e2e82de2432d8eb75be74c8d6215fc97a2d3")))
 
 (with-eval-after-load 'breadcrumb)
 
@@ -3233,12 +2922,6 @@ Refer to `org-agenda-prefix-format' for more information."
 
   (add-hook 'prog-mode-hook #'breadcrumb-local-mode))
 
-(eval-when-compile
-  (elpaca (chokan :type git :host github :repo "derui/chokan"
-                  :ref "206acbfdc9709fa0392c4ad97cc263394db4ac1a"))
-  (elpaca (websocket :ref "40c208eaab99999d7c1e4bea883648da24c03be3")))
-
-
 (with-eval-after-load 'chokan
   (chokan-websocket-setup)
   )
@@ -3246,9 +2929,6 @@ Refer to `org-agenda-prefix-format' for more information."
 (with-low-priority-startup
   (load-package websocket)
   (load-package chokan))
-
-(eval-when-compile
-  (elpaca (anzu :ref  "26fb50b429ee968eb944b0615dd0aed1dd66172c")))
 
 (with-eval-after-load 'anzu
   ;; mode lineは自分で制御したいので、勝手にCons するのは許容しない
@@ -3259,10 +2939,6 @@ Refer to `org-agenda-prefix-format' for more information."
   (load-package anzu)
 
   (global-anzu-mode +1))
-
-(eval-when-compile
-  (elpaca (indent-bars :type git :host github :repo "jdtsmith/indent-bars" :branch "main"
-                       :ref "2d1d854ddaa5b0e19b69e73553675c2aaaed1641")))
 
 (defun my:indent-bars-mode-dwim ()
   "treesitが有効な場合は `indent-bars-ts-mode' を起動する。treesitが
@@ -3293,10 +2969,6 @@ Refer to `org-agenda-prefix-format' for more information."
   (add-hook 'typescript-ts-mode-hook #'my:indent-bars-mode-dwim)
   )
 
-(eval-when-compile
-  (elpaca (multiple-cursors :type git :host github :repo "magnars/multiple-cursors.el" :branch "master"
-                            :ref "c870c18462461df19382ecd2f9374c8b902cd804")))
-
 (with-eval-after-load 'multiple-cursors
   (defvar mc/cmds-to-run-for-all nil)
   (setq mc/cmds-to-run-for-all '(my:treesit-expand-region
@@ -3326,12 +2998,6 @@ Refer to `org-agenda-prefix-format' for more information."
 (with-low-priority-startup
   (load-package vterm))
 
-(eval-when-compile
-  (elpaca (popon :type git :url "https://codeberg.org/akib/emacs-popon.git"
-                 :ref "bf8174cb7e6e8fe0fe91afe6b01b6562c4dc39da"))
-  (elpaca (flymake-popon :type git :url "https://codeberg.org/akib/emacs-flymake-popon.git"
-                         :ref "99ea813346f3edef7220d8f4faeed2ec69af6060")))
-
 (with-low-priority-startup
   (load-package popon)
   (load-package flymake-popon)
@@ -3339,9 +3005,6 @@ Refer to `org-agenda-prefix-format' for more information."
   (add-hook 'flymake-mode-hook #'flymake-popon-mode))
 
 (when  (and my:migemo-command (executable-find my:migemo-command))
-  (eval-when-compile
-    (elpaca (migemo :ref "7d78901773da3b503e5c0d5fa14a53ad6060c97f")))
-
   (with-eval-after-load 'migemo
     (setopt migemo-command my:migemo-command)
     (setopt migemo-options '("-q" "--emacs"))
@@ -3361,10 +3024,6 @@ Refer to `org-agenda-prefix-format' for more information."
     (require 'migemo)
     (migemo-init))
   )
-
-(eval-when-compile
-  (elpaca (dmacro :type git :host github :repo "emacs-jp/dmacro"
-                  :ref "3480b97aaad9e65fa03c6a9d1a0a8111be1179f8")))
 
 (with-eval-after-load 'dmacro)
 
@@ -3443,10 +3102,6 @@ Refer to `org-agenda-prefix-format' for more information."
 (with-low-priority-startup
   (tab-bar-mode +1))
 
-(eval-when-compile
-  (elpaca (tabspaces :type git :host github :repo "mclear-tools/tabspaces" :branch "main"
-                     :ref "c21f28b96b63926a530babe50d2c4de81ebaaa18")))
-
 (with-eval-after-load 'tabspaces
   ;; tab ＝ Projectごとにfiltering されたbufferを利用する
   (setopt tabspaces-use-filtered-buffers-as-default t)
@@ -3488,9 +3143,6 @@ Refer to `org-agenda-prefix-format' for more information."
               ("<muhenkan>" my:disable-japanese-input)
               ("C-<f13>" my:disable-japanese-input)
               )))
-
-(eval-when-compile
-  (elpaca (dashboard :ref "3852301f9c6f3104d9cc98389612b5ef3452a7de")))
 
 (with-eval-after-load 'dashboard
   (declare-function dashboard-modify-heading-icons 'dashboard)

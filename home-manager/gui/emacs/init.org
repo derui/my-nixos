@@ -3079,7 +3079,7 @@ Nixを活用するためのmode。
   (with-low-priority-startup
     (load-package nix-mode)
 
-    (add-hook 'nix-mode-hook #'eglot))
+    (add-hook 'nix-mode-hook #'eglot-ensure))
 #+end_src
 
 ** minor-modes
