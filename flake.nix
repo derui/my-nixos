@@ -81,11 +81,9 @@
         in
         nixpkgs.lib.nixosSystem {
           inherit system;
-          pkgs = nixpkgsFor.${system};
 
           specialArgs = { inherit inputs; };
           modules = [
-            # import root configuration
             ./configuration.nix
           ];
         };
