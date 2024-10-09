@@ -71,6 +71,14 @@
             (push (current-time) my:setup-tracker--times)
             (setq my:setup-tracker--level (1+ my:setup-tracker--level)))))))
 
+;; nix で登録されたものはそのままだとよみこめないので、autoloadとして取得する
+;; (dolist (path load-path)
+;;   (when (string-match-p "/nix/store/[a-z0-9]\\{32\\}-emacs-packages-deps.*" path)
+;;     (dolist (autoload-file (directory-files path t "-autoloads.el"))
+;;       (with-demoted-errors "init.el error: %s"
+;;         (load autoload-file nil t)))))
+(package-activate-all)
+
 (add-to-list 'exec-path (expand-file-name "~/.npm/bin"))
 (add-to-list 'exec-path (expand-file-name "~/.asdf/shims"))
 (add-to-list 'exec-path "/usr/local/bin")
@@ -122,20 +130,22 @@
 (defmacro load-package (symbol)
   "`symbol' に対応するload-pathを追加する"
   (declare (indent 1))
-  (let* ((dir (expand-file-name user-emacs-directory))
-         (package-name (cond ((symbolp symbol)
-                              (symbol-name symbol))
-                             (t symbol)))
-         (autoload-name (seq-concatenate 'string package-name "-autoloads"))
-         (autoload-file-name (file-name-concat dir "elpaca" "builds" package-name
-                                               (seq-concatenate 'string autoload-name ".el") ))
-         (locate-autoload-p (file-exists-p autoload-file-name)))
-    `(progn
-       (message "Loading %s/%s..." ,package-name ,autoload-name)
-       (add-to-list 'load-path ,(file-name-concat dir "elpaca" "builds" package-name))
-       ,(when locate-autoload-p
-          `(load ,autoload-file-name nil t t t)))
-    ))
+  ;; (let* ((dir (expand-file-name user-emacs-directory))
+  ;;        (package-name (cond ((symbolp symbol)
+  ;;                             (symbol-name symbol))
+  ;;                            (t symbol)))
+  ;;        (autoload-name (seq-concatenate 'string package-name "-autoloads"))
+  ;;        (autoload-file-name (file-name-concat dir "elpaca" "builds" package-name
+  ;;                                              (seq-concatenate 'string autoload-name ".el") ))
+  ;;        (locate-autoload-p (file-exists-p autoload-file-name)))
+  ;;   `(progn
+  ;;      (message "Loading %s/%s..." ,package-name ,autoload-name)
+  ;;      (add-to-list 'load-path ,(file-name-concat dir "elpaca" "builds" package-name))
+  ;;      ,(when locate-autoload-p
+  ;;         `(load ,autoload-file-name nil t t t)))
+  ;;   )
+  ()
+  )
 
 (defvar my:high-priority-startup-queue nil
   "高いPriorityで実行されるQueue")

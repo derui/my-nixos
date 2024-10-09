@@ -321,23 +321,6 @@ in
           sha256 = "sha256-8HRzAk7HyAZ9TjiTHu2ekUTHiZqLVR4qyTTcu5+Eco0=";
         };
 
-        tomelr =
-          let
-            rev = "670e0a08f625175fd80137cf69e799619bf8a381";
-            sha256 = "sha256-0+Z2gS8VUJRfRIKGoANOofykFX1dbHLbQ89RmdWBMQ4=";
-          in
-          final.trivialBuild rec {
-            pname = "tomelr";
-            version = rev;
-
-            src = pkgs.fetchFromGitHub {
-              owner = "kaushalmodi";
-              repo = pname;
-
-              inherit rev sha256;
-            };
-          };
-
         emacsql = useMelpa prev {
           pkg = "emacsql";
           commit = "5108c16c5e1d5bfdd41fcc0807241e28886ab763";
