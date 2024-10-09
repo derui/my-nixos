@@ -6,7 +6,7 @@
 }:
 let
   version = "1.0.2";
-  sha256 = "";
+  sha256 = "sha256-vBpHwtVxsojiM/B6+Ntwh9WX3gyklHpt1GHsE5QFTjc=";
 in
 stdenvNoCC.mkDerivation {
   pname = "moralerspace-nf";
