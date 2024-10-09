@@ -77,7 +77,6 @@
 ;;     (dolist (autoload-file (directory-files path t "-autoloads.el"))
 ;;       (with-demoted-errors "init.el error: %s"
 ;;         (load autoload-file nil t)))))
-(package-activate-all)
 
 (add-to-list 'exec-path (expand-file-name "~/.npm/bin"))
 (add-to-list 'exec-path (expand-file-name "~/.asdf/shims"))
@@ -130,6 +129,7 @@
 (defmacro load-package (symbol)
   "`symbol' に対応するload-pathを追加する"
   (declare (indent 1))
+  `(package-activate ,(symbol-name symbol))
   ;; (let* ((dir (expand-file-name user-emacs-directory))
   ;;        (package-name (cond ((symbolp symbol)
   ;;                             (symbol-name symbol))
@@ -1733,10 +1733,12 @@ Use fast alternative if it exists, fallback grep if no alternatives in system.
   (vertico-mode +1))
 
 (defun my:orderless-migemo (component)
-  (condition-case nil
-      (let ((pattern (migemo-get-pattern component)))
-        (progn (string-match-p pattern "") pattern))
-    (nil nil)))
+  (if (featurep 'migemo)
+      (condition-case nil
+          (let ((pattern (migemo-get-pattern component)))
+            (progn (string-match-p pattern "") pattern))
+        (nil nil))
+    nil))
 
 (with-eval-after-load 'orderless
   (setq completion-category-overrides
