@@ -457,7 +457,7 @@ denoとts-lsを切り替えながらやりたい場合などに利用する。di
   (with-low-priority-startup
     ;; wdired-modeに入った時点でmultistate modeにする
     (declare-function multistate-mode 'multistate)
-    (add-hook wdired-mode-hook #'multistate-mode)
+    (add-hook 'wdired-mode-hook #'multistate-mode)
     
     (defun my:dired-do-native-comp ()
       "選択されているファイルをnative-compする"
@@ -2536,17 +2536,6 @@ org-mode本体の設定をおこなう。
     (with-eval-after-load 'org
       (require 'org-tempo)))
 #+end_src
-*** org-onit
-#+begin_src emacs-lisp
-  (with-eval-after-load 'org
-    (declare-function org-onit-goto-anchor 'org-onit)
-    (keymap-set org-mode-map "<f11>" #'org-onit-toggle-doing)
-    (keymap-set org-mode-map "S-<f11>" #'org-onit-goto-anchor)
-    )
-
-  (with-low-priority-startup
-    (load-package org-onit))
-#+end_src
 *** ox-hugo
 #+begin_src emacs-lisp
   (defun my:org-hugo-enable-if-hugo-buffer ()
@@ -3041,7 +3030,7 @@ node_modules/.binをexec-pathに追加してくれる。
 #+begin_src emacs-lisp
   (with-low-priority-startup
     ;; emacs-fish is repository name of recipe
-    (load-package emacs-fish))
+    (load-package fish-mode))
 #+end_src
 
 *** text-mode
@@ -3196,7 +3185,7 @@ https://protesilaos.com/emacs/pulsar
     )
 
   (with-low-priority-startup
-    (load-package emacs-which-key)
+    (load-package which-key)
 
     (require 'which-key))
 #+end_src

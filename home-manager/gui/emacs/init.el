@@ -325,7 +325,7 @@
 (with-low-priority-startup
   ;; wdired-modeに入った時点でmultistate modeにする
   (declare-function multistate-mode 'multistate)
-  (add-hook wdired-mode-hook #'multistate-mode)
+  (add-hook 'wdired-mode-hook #'multistate-mode)
   
   (defun my:dired-do-native-comp ()
     "選択されているファイルをnative-compする"
@@ -2093,15 +2093,6 @@ Use fast alternative if it exists, fallback grep if no alternatives in system.
   (with-eval-after-load 'org
     (require 'org-tempo)))
 
-(with-eval-after-load 'org
-  (declare-function org-onit-goto-anchor 'org-onit)
-  (keymap-set org-mode-map "<f11>" #'org-onit-toggle-doing)
-  (keymap-set org-mode-map "S-<f11>" #'org-onit-goto-anchor)
-  )
-
-(with-low-priority-startup
-  (load-package org-onit))
-
 (defun my:org-hugo-enable-if-hugo-buffer ()
   (let ((prop (my:org-global-props "HUGO_.\+" (current-buffer))))
     (when prop
@@ -2477,7 +2468,7 @@ Refer to `org-agenda-prefix-format' for more information."
 
 (with-low-priority-startup
   ;; emacs-fish is repository name of recipe
-  (load-package emacs-fish))
+  (load-package fish-mode))
 
 (with-eval-after-load 'text-mode
   ;; emacs 30.1以降で追加されるオプションで、これがあるとcompleption-at-point-functionsが上書きされてしまうので、
@@ -2590,7 +2581,7 @@ Refer to `org-agenda-prefix-format' for more information."
   )
 
 (with-low-priority-startup
-  (load-package emacs-which-key)
+  (load-package which-key)
 
   (require 'which-key))
 

@@ -44,6 +44,8 @@ in
       extraEmacsPackages = epkgs: [
         # treesitのgrammerは全体を用意しておく
         epkgs.treesit-grammars.with-all-grammars
+        epkgs.request
+        epkgs.gntp
         epkgs.magit
         epkgs.spacious-padding
         epkgs.perfect-margin
@@ -65,7 +67,6 @@ in
         epkgs.corfu
         epkgs.cape
         epkgs.org
-        epkgs.org-onit
         epkgs.ox-hugo
         epkgs.tomelr
         epkgs.emacsql
@@ -143,9 +144,10 @@ in
             rev = "a3151f3c99d6b3b2d4644da88546476b3d31f0fe";
             sha256 = "sha256-lDwcwuhzgWQm8ixx8R5W2XROeAJeNPktX5nsjWYIvoc=";
           in
-          final.trivialBuild rec {
+          final.melpaBuild rec {
             pname = "spacious-padding";
-            version = rev;
+            ename = pname;
+            version = "0.5.0";
 
             src = pkgs.fetchFromGitHub {
               owner = "protesilaos";
@@ -153,6 +155,7 @@ in
 
               inherit rev sha256;
             };
+            files = ''("spacious-padding.el")'';
           };
 
         magit = useMelpa prev {
@@ -188,11 +191,6 @@ in
         s = useMelpa prev {
           pkg = "s";
           commit = "dda84d38fffdaf0c9b12837b504b402af910d01d";
-          sha256 = "sha256-fbF/SyPwEiJICaPBq0xWj2yLWjdNwkaLF2iYvZ2EO1k=";
-        };
-        gntp = useMelpa prev {
-          pkg = "gntp";
-          commit = "767571135e2c0985944017dc59b0be79af222ef5";
           sha256 = "sha256-fbF/SyPwEiJICaPBq0xWj2yLWjdNwkaLF2iYvZ2EO1k=";
         };
         ht = useMelpa prev {
@@ -302,23 +300,6 @@ in
           sha256 = "sha256-cVvByjGcINHjNhA8I47/ELF2DhJtgZRZCf0mi4roJzc=";
         };
 
-        org-onit =
-          let
-            rev = "932ed472e46c277daf1edf0efb71fbac5ff45346";
-            sha256 = "sha256-zgWlR+odQLYDKpPzs+HcYwRn4+I+7kZgq3ZKpEHRM1s=";
-          in
-          final.trivialBuild rec {
-            pname = "org-onit";
-            version = rev;
-
-            src = pkgs.fetchFromGitHub {
-              owner = "takaxp";
-              repo = pname;
-
-              inherit rev sha256;
-            };
-          };
-
         ox-hugo = useMelpa prev {
           pkg = "ox-hugo";
           commit = "c4156d9d383bf97853ba9e16271b7c4d5e697f49";
@@ -378,9 +359,9 @@ in
             rev = "706472ea7f0ee2fe5719cd91df7315fe9ca86114";
             sha256 = "sha256-n99BshXxR6sqk+tATEzedVjYEPoo4wPxhvp9LiaW9jQ=";
           in
-          final.trivialBuild rec {
+          final.melpaBuild rec {
             pname = "colorful-mode";
-            version = rev;
+            version = "1.0.4";
 
             src = pkgs.fetchFromGitHub {
               owner = "DevelopmentCool2449";
@@ -388,6 +369,8 @@ in
 
               inherit rev sha256;
             };
+
+            files = ''("colorful-mode.el")'';
           };
 
         yaml-pro = useMelpa prev {
@@ -427,9 +410,9 @@ in
             rev = "2f553d0c41c470c5d2ee4210267161333969e080";
             sha256 = "sha256-nU2G62xfjIcMA/OscRy8jyzlkll0mKyp713eB9MwWYs=";
           in
-          final.trivialBuild rec {
+          final.melpaBuild rec {
             pname = "gtags-mode";
-            version = rev;
+            version = "1.8.1";
 
             src = pkgs.fetchFromGitHub {
               owner = "Ergus";
@@ -437,6 +420,8 @@ in
 
               inherit rev sha256;
             };
+
+            files = ''("gtags-mode.el")'';
           };
 
         protobuf-mode = useMelpa prev {
@@ -475,9 +460,9 @@ in
             rev = "f20879ee38121a30498b25bc3d0b07460227b63a";
             sha256 = "sha256-o6jrTU3zY2GVlZpilGCK+cpUThfbrm5XF+2vE1VEKWg=";
           in
-          final.trivialBuild rec {
+          final.melpaBuild rec {
             pname = "pulsar";
-            version = rev;
+            version = "1.1.0";
 
             src = pkgs.fetchFromGitHub {
               owner = "protesilaos";
@@ -485,6 +470,8 @@ in
 
               inherit rev sha256;
             };
+
+            files = ''("pulsar.el")'';
           };
 
         which-key = useMelpa prev {
@@ -527,9 +514,9 @@ in
             rev = "ca590c571546eb1d38c855216db11d28135892f2";
             sha256 = "sha256-2CTtDGXB9puk/MK1PId0zJllK2vHSw728Wbft3dfEak=";
           in
-          final.trivialBuild rec {
+          final.melpaBuild rec {
             pname = "vundo";
-            version = rev;
+            version = "2.3.0";
 
             src = pkgs.fetchFromGitHub {
               owner = "casouri";
@@ -537,6 +524,8 @@ in
 
               inherit rev sha256;
             };
+
+            files = ''("vundo.el" "vundo-diff.el")'';
           };
 
         eglot-booster =
@@ -544,9 +533,9 @@ in
             rev = "e19dd7ea81bada84c66e8bdd121408d9c0761fe6";
             sha256 = "sha256-vF34ZoUUj8RENyH9OeKGSPk34G6KXZhEZozQKEcRNhs=";
           in
-          final.trivialBuild rec {
+          final.melpaBuild rec {
             pname = "eglot-booster";
-            version = rev;
+            version = "0.0.2";
 
             src = pkgs.fetchFromGitHub {
               owner = "jdtsmith";
@@ -554,6 +543,8 @@ in
 
               inherit rev sha256;
             };
+
+            files = ''("eglot-booster.el")'';
           };
 
         copilot-mode =
@@ -561,9 +552,9 @@ in
             rev = "535ef61e82f09d744cd5b097b1fc99f08cce175c";
             sha256 = "sha256-/ZDnEZWUFcKnUtFrd/4C7LX16GAdUQncU8ZnYzntKS0=";
           in
-          final.trivialBuild rec {
-            pname = "copilot.el";
-            version = rev;
+          final.melpaBuild rec {
+            pname = "copilot";
+            version = "0.0.1";
 
             packageRequires = [ prev.f prev.dash ];
             src = pkgs.fetchFromGitHub {
@@ -573,7 +564,7 @@ in
               inherit rev sha256;
             };
 
-            files = [ "dist" "*.el" ];
+            files = ''("dist" "*.el")'';
           };
 
         goggles = useMelpa prev {
@@ -598,9 +589,9 @@ in
             rev = "7312871386e4b525a0ced6a03dc33062cb27f573";
             sha256 = "sha256-/RtT8Fg+wb5+uakmUSRxNtv9paAM6VgqeqJUSHp0S8c=";
           in
-          final.trivialBuild rec {
+          final.melpaBuild rec {
             pname = "treesit-fold";
-            version = rev;
+            version = "0.1.0";
 
             src = pkgs.fetchFromGitHub {
               owner = "emacs-tree-sitter";
@@ -608,6 +599,9 @@ in
 
               inherit rev sha256;
             };
+
+            files = ''("treesit-fold.el"
+                       "treesit-fold-util.el" "treesit-fold-indicators.el" "treesit-fold-parsers.el" "treesit-fold-summary.el")'';
           };
 
         nerd-icons = useMelpa prev {
@@ -651,9 +645,9 @@ in
             rev = "dcb6e2e82de2432d8eb75be74c8d6215fc97a2d3";
             sha256 = "sha256-toWIJ/rlKNsAxH/LLZRF084nQ5gfCJYWbB+9pJN8YgY=";
           in
-          final.trivialBuild rec {
+          final.melpaBuild rec {
             pname = "breadcrumb";
-            version = rev;
+            version = "1.0.1";
 
             src = pkgs.fetchFromGitHub {
               owner = "joaotavora";
@@ -661,6 +655,8 @@ in
 
               inherit rev sha256;
             };
+
+            files = ''("breadcrumb.el")'';
           };
 
         websocket = useMelpa prev {
@@ -698,9 +694,9 @@ in
             rev = "2d1d854ddaa5b0e19b69e73553675c2aaaed1641";
             sha256 = "sha256-gcqFMjgWktfGFKeiW6uwWbBtEM1Om2ezMI7W/ZGUFkE=";
           in
-          final.trivialBuild rec {
+          final.melpaBuild rec {
             pname = "indent-bars";
-            version = rev;
+            version = "0.8";
 
             src = pkgs.fetchFromGitHub {
               owner = "jdtsmith";
@@ -708,6 +704,8 @@ in
 
               inherit rev sha256;
             };
+
+            files = ''("indent-bars.el" "indent-bars-ts.el")'';
           };
 
         multiple-cursors = useMelpa prev {
@@ -725,9 +723,10 @@ in
             rev = "bf8174cb7e6e8fe0fe91afe6b01b6562c4dc39da";
             sha256 = "sha256-stiwCre9Ih6GwKjVQ7iFmMPGbkiQHx8hNgy8PHRE1BA=";
           in
-          final.trivialBuild rec {
+          final.melpaBuild rec {
             pname = "emacs-popon";
-            version = rev;
+            ename = "popon";
+            version = "0.13";
 
             src = fetchFromCodeberg {
               owner = "akib";
@@ -735,15 +734,18 @@ in
 
               inherit rev sha256;
             };
+
+            files = ''("popon.el")'';
           };
         flymake-popon =
           let
             rev = "99ea813346f3edef7220d8f4faeed2ec69af6060";
             sha256 = "sha256-YUyCP3WIjOAvaTP6d2G68mqwGwWdRqhoFMaJWai1WFI=";
           in
-          final.trivialBuild rec {
+          final.melpaBuild rec {
             pname = "emacs-flymake-popon";
-            version = rev;
+            ename = "flymake-popon";
+            version = "0.5.1";
 
             packageRequires = [ prev.popon prev.posframe ];
             src = fetchFromCodeberg {
@@ -752,6 +754,8 @@ in
 
               inherit rev sha256;
             };
+
+            files = ''("flymake-popon.el")'';
           };
         tabspaces = useMelpa prev {
           pkg = "tabspaces";
