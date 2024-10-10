@@ -10,5 +10,8 @@
     # music
     ardour
     pipewire # for pw-jack
+
+    # video
+    celluloid
   ];
 }
