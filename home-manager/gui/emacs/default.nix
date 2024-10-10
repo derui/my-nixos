@@ -1,4 +1,4 @@
-{ pkgs, home, ... }:
+{ pkgs, ... }:
 let
   # melpaにあるpackgeについて、指定したpkgについてrev/sha256をoverrideしたものを返す
   useMelpa = prev: { pkg, commit, sha256 }:
@@ -223,20 +223,24 @@ in
 
         motion =
           let
-            rev = "b67044122700eb02cf18223e5df7c8f8c3541131";
-            sha256 = "sha256-9ovUarisxVy6qn3WloiThxfaeNGVJc2GBMdPY3Saqos=";
+            rev = "bc8ea45bbea35b836c7ef7497d3e2ea5a63fa618";
+            sha256 = "sha256-nDvisEn0Y2d8WEv7XSogf3QaIZriwHkRtLbmj45ympc=";
           in
-          final.trivialBuild rec {
-            pname = "motion";
-            version = rev;
 
-            src = pkgs.fetchFromGitHub {
+          final.melpaBuild {
+            pname = "emacs-motion";
+            ename = "motion";
+            version = "0.3.2";
+
+            src = fetchFromGitHub {
               owner = "derui";
-              repo = pname;
-
+              repo = "motion";
               inherit rev sha256;
             };
+            files = ''("motion.el")'';
+
           };
+
 
         magit-delta = useMelpa prev {
           pkg = "magit-delta";
@@ -669,17 +673,18 @@ in
             rev = "206acbfdc9709fa0392c4ad97cc263394db4ac1a";
             sha256 = "sha256-Z8ClZdmgQ7muoay3xuHa+CQbdzaNtGJDQ/Oi+2m86Mw=";
           in
-          final.trivialBuild rec {
-            pname = "chokan";
-            version = rev;
+          final.melpaBuild {
+            pname = "emacs-chokan";
+            ename = "chokan";
+            version = "0.5.0";
 
-            packageRequires = [ prev.websocket ];
-            src = pkgs.fetchFromGitHub {
+            src = fetchFromGitHub {
               owner = "derui";
-              repo = pname;
-
+              repo = "chokan";
               inherit rev sha256;
             };
+            files = ''("chokan.el" "chokan-websocket.el")'';
+
           };
 
         anzu = useMelpa prev {
