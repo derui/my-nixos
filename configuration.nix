@@ -110,6 +110,7 @@
     pciutils
     usbutils
     lsof
+    nfs-utils
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";
