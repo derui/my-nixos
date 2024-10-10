@@ -3,9 +3,11 @@ add_newline = false
 
 format = """
   $username\
+  $hostname\
   $directory\
   $git_branch\
   $git_state\
+  $git_metrics\
   $nodejs\
   $ocaml\
   $time\
@@ -14,6 +16,12 @@ format = """
   $jobs\
   $character
 """
+
+[hostname]
+ssh_only = false
+
+[git_metrics]
+disabled = false
 
 # Disable the package module, hiding it from the prompt completely
 [package]
