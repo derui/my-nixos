@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ ... }:
 {
   imports = [
     ./git.nix
@@ -7,5 +7,6 @@
     ./nix.nix
     ./development.nix
     ./tools.nix
+    ./newsboat.nix
   ];
 }
