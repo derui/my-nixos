@@ -559,7 +559,7 @@ in
             packageRequires = [ prev.f prev.dash ];
             src = pkgs.fetchFromGitHub {
               owner = "copilot-emacs";
-              repo = pname;
+              repo = "copilot.el";
 
               inherit rev sha256;
             };

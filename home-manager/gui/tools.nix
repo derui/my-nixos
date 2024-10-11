@@ -10,6 +10,7 @@
     # music
     ardour
     pipewire # for pw-jack
+    pavucontrol
 
     # video
     celluloid

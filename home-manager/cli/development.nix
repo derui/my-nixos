@@ -21,5 +21,7 @@
 
     # nix
     nixd
+
+    pre-commit
   ];
 }

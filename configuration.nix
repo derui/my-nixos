@@ -36,8 +36,9 @@
 
   networking.hostName = "ereshkigal"; # Define your hostname.
   # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.networkmanager.insertNameservers = ["1.1.1.1" "1.0.0.1" "2606:4700:4700::1111" "2606:4700:4700::1001" ];
 
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
@@ -56,6 +57,8 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
+  boot.supportedFilesystems = ["nfs"];
+  services.rpcbind.enable = true; # needed forNFS
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -126,7 +129,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh.enable = false;
 
   # enable display manager
   services.xserver.enable = true;
@@ -143,6 +146,7 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.wireless.userControlled.enable = true;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

@@ -7,6 +7,11 @@
       "$terminal" = "kitty";
       "$menu" = "wofi --show drun";
 
+      monitor = [
+        "DP-1, 3840x2160@60, 2560x0, 1"
+        "DP-3, 2560x1440, 0x0, 1"
+      ];
+
       exec-once = [
         "waybar"
         "/run/current-system/sw/bin/fcitx5 -D"
