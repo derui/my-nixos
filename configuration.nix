@@ -114,6 +114,7 @@
     usbutils
     lsof
     nfs-utils
+    lm_sensors
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";
