@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports =
@@ -33,6 +33,10 @@
   # Define on which hard drive you want to install Grub.
   #boot.loader.grub.device = "nodev"; # or "nodev" for efi only
   boot.loader.systemd-boot.enable = true;
+
+  # use latest kernel
+
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_11;
 
   networking.hostName = "ereshkigal"; # Define your hostname.
   # Pick only one of the below networking options.
