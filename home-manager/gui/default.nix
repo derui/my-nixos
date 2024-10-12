@@ -9,5 +9,6 @@
     ./tools.nix
     ./emacs
     ./firefox.nix
+    ./maestral.nix
   ];
 }

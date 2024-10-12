@@ -2,6 +2,9 @@
 {
   # fenixを導入しているので、これをそのまま入れる
   home.packages = with pkgs; [
+    # common
+    ghq
+
     # Rust
     (fenix.stable.withComponents [
       "cargo"

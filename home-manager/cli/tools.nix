@@ -35,7 +35,5 @@ in
     mypkg.udev-gothic
     mypkg.udev-gothic-nf
     mypkg.moralerspace-nf
-
-    dropbox
   ];
 }
