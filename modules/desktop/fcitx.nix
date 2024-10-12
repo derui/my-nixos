@@ -1,10 +1,14 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
+let
+  # 自作のpackageはflakeを通してoutputsに入ってくる。
+  myPackages = inputs.self.outputs.packages.${pkgs.system};
+in
 {
   i18n.inputMethod = {
     enabled = "fcitx5";
 
     fcitx5.addons = with pkgs; [
-      fcitx5-mozc
+      myPackages.fcitx5-mozc
       fcitx5-gtk
     ];
   };
