@@ -2652,7 +2652,7 @@ Refer to `org-agenda-prefix-format' for more information."
   (setopt eglot-events-buffer-config '(:size 0 :format full))
   
   (add-to-list 'eglot-server-programs '(((ocaml-ts-mode :language-id)) . ("ocamllsp")))
-  (add-to-list 'eglot-server-programs '((nix-mode . ("nixd"))))
+  (add-to-list 'eglot-server-programs '(nix-mode . ("nixd")))
 
   ;; eglotでもhotfuzzを利用するようにする
   (add-to-list 'completion-category-overrides

@@ -1,7 +1,7 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
-  home.packages = [pkgs.maestral];
-  
+  home.packages = [ pkgs.maestral ];
+
   systemd.user.services.maestral = {
     Unit = {
       Description = "Maestral service";
