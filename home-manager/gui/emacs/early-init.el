@@ -103,7 +103,7 @@
   :group 'my
   :type 'string)
 
-(defcustom my:mozc-el-locate nil
+(defcustom my:mozc-el-locate "/run/current-system/sw/bin/mozc_emacs_helper"
   "Location of mozc.el"
   :group 'my
   :type 'file)
