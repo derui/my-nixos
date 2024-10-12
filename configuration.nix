@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ lib, pkgs, inputs, ... }:
+{ lib, pkgs, inputs, config, ... }:
 
 {
   imports =
@@ -34,6 +34,7 @@
   # Define on which hard drive you want to install Grub.
   #boot.loader.grub.device = "nodev"; # or "nodev" for efi only
   boot.loader.systemd-boot.enable = true;
+  boot.kernelModules = [ "iwlwifi" ];
 
   # use latest kernel
 
@@ -83,6 +84,7 @@
 
   # use all firmware
   hardware.enableAllFirmware = true;
+  hardware.enableRedistributableFirmware = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
@@ -124,6 +126,7 @@
     lsof
     nfs-utils
     lm_sensors
+    lshw
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";

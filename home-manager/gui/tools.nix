@@ -20,5 +20,8 @@ in
     celluloid
 
     blueman # bluetooth frontend
+
+    # multimedia
+    yacreader
   ];
 }
