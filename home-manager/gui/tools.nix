@@ -13,7 +13,7 @@ in
     # music
     ardour
     mypkgs.tuna-lv2
-    pipewire # for pw-jack
+    pipewire.jack # for pw-jack
     pavucontrol
 
     # video
