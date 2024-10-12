@@ -17,6 +17,7 @@
       ./modules/desktop/fcitx.nix
       ./modules/desktop/steam.nix
       ./modules/nix.nix
+      ./modules/music.nix
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
       common-cpu-amd
