@@ -782,4 +782,8 @@ in
   home.file.".emacs.d/early-init.el" = {
     source = ./early-init.el;
   };
+
+  home.file.".emacs.d/templates" = {
+    source = ./templates
+  };
 }
