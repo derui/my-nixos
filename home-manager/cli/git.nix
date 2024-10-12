@@ -41,6 +41,10 @@
         dark = true;
       };
 
+      ghq = {
+        root = "~/develop/ghq";
+      };
+
       push.default = "simple";
       color.ui = "auto";
       merge.conflictstyle = "diff3";
