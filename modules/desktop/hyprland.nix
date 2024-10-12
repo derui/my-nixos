@@ -15,11 +15,11 @@ in
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     package = pkgs-unstable.mesa.drivers;
 
     # if you also want 32-bit support (e.g for Steam)
-    driSupport32Bit = true;
+    enable32Bit = true;
     package32 = pkgs-unstable.pkgsi686Linux.mesa.drivers;
   };
 }

@@ -82,6 +82,8 @@ buildBazelPackage {
       install -Dm444 unix/fcitx5/mozc-addon.conf $out/share/fcitx5/addon/mozc.conf
       install -Dm444 unix/fcitx5/mozc.conf $out/share/fcitx5/inputmethod/mozc.conf
 
+      install -Dm555 -t $out/bin bazel-bin/unix/emacs/mozc_emacs_helper
+
       for pofile in unix/fcitx5/po/*.po; do
         filename=$(basename $pofile)
         lang=''${filename/.po/}

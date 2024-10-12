@@ -1,11 +1,11 @@
 { pkgs, ... }:
 {
-  hardware.opengl.extraPackages = [
+  hardware.graphics.extraPackages = [
     pkgs.amdvlk
   ];
 
   # for 32bit application
-  hardware.opengl.extraPackages32 = [
+  hardware.graphics.extraPackages32 = [
     pkgs.driversi686Linux.amdvlk
   ];
 }
