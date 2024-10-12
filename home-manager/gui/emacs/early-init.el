@@ -108,7 +108,7 @@
   :group 'my
   :type 'file)
 
-(defcustom my:mozc-helper-locate nil
+(defcustom my:mozc-helper-locate "/run/current-system/sw/bin/mozc_emacs_helper"
   "Location of emacs-mozc-helper"
   :group 'my
   :type 'file)

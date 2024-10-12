@@ -3540,6 +3540,7 @@ rg.elだとtransientとのnative compで相性が悪かったので、こっち�
 
   (with-low-priority-startup
     (load-package mozc)
+    (load-package mozc-posframe)
     )
 #+end_src
 

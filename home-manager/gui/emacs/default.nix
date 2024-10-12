@@ -118,6 +118,7 @@ in
         epkgs.exec-path-from-shell
         epkgs.ripgrep
         epkgs.mozc
+        epkgs.mozc-posframe
         epkgs.treesit-auto
         epkgs.diredfl
         epkgs.rainbow-delimiters
@@ -681,6 +682,23 @@ in
             };
             files = ''("chokan.el" "chokan-websocket.el")'';
 
+          };
+        mozc-posframe =
+          let
+            rev = "54451afb2edfe48b83dde9c476b338706ddbe6de";
+            sha256 = "sha256-RxbIKhQAP1PCLKirWRkrlShperpmK0eSzPYlP2zazYE=";
+          in
+          final.melpaBuild {
+            pname = "emacs-mozc-posframe";
+            ename = "mozc-posframe";
+            version = "0.3";
+
+            src = fetchFromGitHub {
+              owner = "derui";
+              repo = "mozc-posframe";
+              inherit rev sha256;
+            };
+            files = ''("mozc-posframe.el")'';
           };
 
         anzu = useMelpa prev {
