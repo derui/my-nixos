@@ -1645,10 +1645,6 @@ Use fast alternative if it exists, fallback grep if no alternatives in system.
    ((executable-find "rg") (consult-ripgrep prefix))
    (t (consult-grep prefix))))
 
-;; hotfuzz-moduleが有効な場合は、この設定がないとconsultでの検索がerrorになる場合がある
-(setq consult--tofu-char #x100000)
-(setq consult--tofu-range #x00fffe)
-
 ;; recent fileでpreviewする場合は明示的に実行する
 (with-eval-after-load 'consult
   (setopt consult-fd-args '((if (executable-find "fdfind" 'remote) "fdfind" "fd") "--full-path --color=never -H"))
@@ -1656,7 +1652,12 @@ Use fast alternative if it exists, fallback grep if no alternatives in system.
           "rg --null --line-buffered --color=never --max-columns=1000 --path-separator / --smart-case --no-heading --with-filename --line-number --hidden")
 
   ;; previewはC-.を押したときだけ
-  (setopt consult-preview-key "C-."))
+  (setopt consult-preview-key "C-.")
+  
+  ;; hotfuzz-moduleが有効な場合は、この設定がないとconsultでの検索がerrorになる場合がある
+  (setq consult--tofu-char #x100000)
+  (setq consult--tofu-range #x00fffe)
+  )
 
 (with-low-priority-startup
   (load-package consult))
@@ -2816,6 +2817,7 @@ Refer to `org-agenda-prefix-format' for more information."
 
 (with-low-priority-startup
   (load-package mozc)
+  (load-package mozc-posframe)
   )
 
 (with-eval-after-load 'treesit

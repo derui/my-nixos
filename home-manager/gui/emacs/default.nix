@@ -249,8 +249,8 @@ in
 
         consult = useMelpa prev {
           pkg = "consult";
-          commit = "4889458dccf842ab6223099f8a73ff8b147e9459";
-          sha256 = "sha256-L8M81rLgjYTDE6aYMxCMSa0LUuaATQ8RJ3ffp3ifTBo=";
+          commit = "5a02663b46f3ecc3d2f853c2c73923e35a288925";
+          sha256 = "sha256-3bl3Eb19F0La1bjeK7VxSsCduyi6xGqOjByf/rs+FnY=";
         };
 
         embark = useMelpa prev {
