@@ -1,7 +1,4 @@
 { pkgs, inputs, ... }:
-let
-  mypkg = inputs.self.outputs.packages.${pkgs.system};
-in
 {
   programs.kitty = {
     enable = true;

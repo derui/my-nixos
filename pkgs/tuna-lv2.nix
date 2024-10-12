@@ -31,7 +31,7 @@ stdenv.mkDerivation {
   '';
 
   installPhase = ''
-    make install PREFIX=$out/usr
+    make install PREFIX=$out
   '';
 
   meta = with lib; {

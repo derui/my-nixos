@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./hyprland.nix
@@ -11,4 +11,5 @@
     ./firefox.nix
     ./maestral.nix
   ];
+
 }
