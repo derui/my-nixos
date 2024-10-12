@@ -685,13 +685,13 @@ in
           };
         mozc-posframe =
           let
-            rev = "54451afb2edfe48b83dde9c476b338706ddbe6de";
-            sha256 = "sha256-RxbIKhQAP1PCLKirWRkrlShperpmK0eSzPYlP2zazYE=";
+            rev = "99ac43b47bd7d79458a30ea36a82acd7f7e22725";
+            sha256 = "sha256-B/GFp+TDvm1WzFwEfYo02I8YKOBY3yxbQYnutEr662I=";
           in
           final.melpaBuild {
             pname = "emacs-mozc-posframe";
             ename = "mozc-posframe";
-            version = "0.3";
+            version = "0.4";
 
             src = fetchFromGitHub {
               owner = "derui";
