@@ -18,5 +18,7 @@ in
 
     # video
     celluloid
+
+    blueman # bluetooth frontend
   ];
 }
