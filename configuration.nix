@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ pkgs, inputs, ... }:
+{ lib, pkgs, inputs, ... }:
 
 {
   imports =
@@ -148,6 +148,15 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
   networking.wireless.userControlled.enable = true;
+
+  system.activationScripts = {
+    binbash =
+      ''
+        mkdir -m 0755 -p /bin
+        ln -sfn ${pkgs.bash}/bin/bash /bin/.bash.tmp
+        mv /bin/.bash.tmp /usr/bash
+      '';
+  };
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
