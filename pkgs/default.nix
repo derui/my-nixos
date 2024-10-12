@@ -6,4 +6,5 @@ pkgs: {
   udev-gothic-nf = pkgs.callPackage ./udev-gothic-nf.nix { };
   moralerspace-nf = pkgs.callPackage ./moralerspace-nf.nix { };
   fcitx5-mozc = pkgs.callPackage ./fcitx5-mozc.nix { };
+  tuna-lv2 = pkgs.callPackage ./tuna-lv2.nix { };
 }

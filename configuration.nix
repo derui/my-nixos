@@ -114,6 +114,7 @@
     # for emacs
     enchant2
     nuspell
+    hunspellDicts.en_US-large
 
     # management
     smartmontools

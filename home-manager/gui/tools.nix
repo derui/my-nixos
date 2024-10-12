@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
+let
+  mypkgs = inputs.self.outputs.packages.${pkgs.system};
+in
 {
   home.packages = with pkgs; [
     bitwarden-desktop
@@ -9,6 +12,7 @@
 
     # music
     ardour
+    mypkgs.tuna-lv2
     pipewire # for pw-jack
     pavucontrol
 
