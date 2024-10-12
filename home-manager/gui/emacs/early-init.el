@@ -76,13 +76,13 @@
   :type 'string)
 
 (defcustom my:org-roam-directory
-  "~/Dropbox/git/roam"
+  "~/Dropbox (Maestral)/git/roam"
   "The location of roam files"
   :group 'my
   :type 'directory)
 
 (defcustom my:org-roam-dailies-directory
-  "~/Dropbox/git/roam-daily"
+  "~/Dropbox (Maestral)/git/roam-daily"
   "The location of roam-daily files"
   :group 'my
   :type 'directory)
