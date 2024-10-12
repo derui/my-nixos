@@ -784,6 +784,6 @@ in
   };
 
   home.file.".emacs.d/templates" = {
-    source = ./templates
+    source = ./templates;
   };
 }
