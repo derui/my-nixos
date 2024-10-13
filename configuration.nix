@@ -48,8 +48,6 @@ in
   networking.hostName = "ereshkigal"; # Define your hostname.
   # Pick only one of the below networking options.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
-  networking.networkmanager.insertNameservers = [ "1.1.1.1" "1.0.0.1" "2606:4700:4700::1111" "2606:4700:4700::1001" ];
 
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
@@ -101,6 +99,7 @@ in
       "video"
       "audio"
       "game"
+      "networkmanager"
       "wheel" # Enable ‘sudo’ for the user.
     ];
   };
