@@ -43,7 +43,7 @@ in
   # use latest kernel
 
   boot.kernelPackages = linuxKernel;
-  boot.extraModulePackages = [ myKernelModules.rtl8126 ];
+  boot.extraModulePackages = [ myKernelModules.rtl8126 linuxKernel.xpadneo ];
 
   networking.hostName = "ereshkigal"; # Define your hostname.
   # Pick only one of the below networking options.
