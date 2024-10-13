@@ -9,6 +9,7 @@
         # for low-energy support
         Privacy = "device";
         ControllerMode = "dual";
+        JustWorksRepairing = "confirm";
         UserspaceHID = true;
         ClassicBondedOnly = false;
         LEAutoSecurity = false;
