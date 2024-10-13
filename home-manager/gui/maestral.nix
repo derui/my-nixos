@@ -9,8 +9,9 @@
     Install = {
       WantedBy = [ "default.target" ];
     };
-    Service = {
+    serviceConfig = {
       ExecStart = "${pkgs.maestral}/bin/maestral start";
+      PreStop = "${pkgs.maestral}/bin/maestral stop";
       Restart = "on-failure";
     };
   };
