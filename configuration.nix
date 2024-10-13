@@ -3,7 +3,10 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 { lib, pkgs, inputs, config, ... }:
-
+let
+  linuxKernel = pkgs.linuxKernel.packages.linux_6_11;
+  myKernelModules = import ./pkgs/kernel { inherit pkgs linuxKernel; };
+in
 {
   imports =
     [
@@ -11,6 +14,7 @@
       ./hardware-configuration.nix
 
       # system modules
+      ./modules/wireless.nix
       ./modules/gpu.nix
       ./modules/bluetooth.nix
       ./modules/desktop/hyprland.nix
@@ -38,7 +42,8 @@
 
   # use latest kernel
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_11;
+  boot.kernelPackages = linuxKernel;
+  boot.extraModulePackages = [ myKernelModules.rtl8126 ];
 
   networking.hostName = "ereshkigal"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -159,7 +164,6 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-  networking.wireless.userControlled.enable = true;
 
   system.activationScripts = {
     binbash =
