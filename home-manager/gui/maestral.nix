@@ -10,7 +10,7 @@
       WantedBy = [ "default.target" ];
     };
     Service = {
-      ExecStart = "${pkgs.maestral}/bin/maestral";
+      ExecStart = "${pkgs.maestral}/bin/maestral start";
       Restart = "on-failure";
     };
   };

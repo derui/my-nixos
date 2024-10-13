@@ -3041,13 +3041,15 @@ Refer to `org-agenda-prefix-format' for more information."
   (setopt tabspaces-use-filtered-buffers-as-default t)
   ;; Defaultで使うタブ
   (setopt tabspaces-default-tab "Default")
-  ;; Defaultで用意されるBufferを削除する
-  (setopt tabspaces-remove-to-default t)
-  ;; scratchは常に含まれるようにする
+  ;; tabspaceで削除されたbufferはdefaultには戻さない
+  (setopt tabspaces-remove-to-default nil)
+  ;; 新しいbufferに対してscratchは常に含まれるようにする
   (setopt tabspaces-include-buffers '("*scratch*"))
 
   ;; sessionを有効にする
   (setopt tabspaces-session t)
+  ;; projectを初期化するときにtodo fileは作らない
+  (setopt tabspaces-initialize-project-with-todo nil)
   )
 
 (with-low-priority-startup
