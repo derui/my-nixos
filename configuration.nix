@@ -38,7 +38,7 @@ in
   # Define on which hard drive you want to install Grub.
   #boot.loader.grub.device = "nodev"; # or "nodev" for efi only
   boot.loader.systemd-boot.enable = true;
-  boot.kernelModules = [ "iwlwifi" ];
+  boot.kernelModules = [ "nl80211" ];
 
   # use latest kernel
 
