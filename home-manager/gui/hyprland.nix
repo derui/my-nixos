@@ -94,6 +94,11 @@
         "immediate, class:^(cs2)$"
       ];
 
+      bindm = [
+        "$mod SHIFT, left, movewindow"
+        "$mod ALT, left, resizewindow"
+      ];
+
       bind =
         [
           "$mod, Return, exec, $terminal"
