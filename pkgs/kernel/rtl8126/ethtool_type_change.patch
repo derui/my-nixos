@@ -1,0 +1,169 @@
+diff --git a/Makefile b/Makefile
+index 3e75c19..2f7dcaf 100644
+--- a/Makefile
++++ b/Makefile
+@@ -142,7 +142,8 @@ else
+ 	ifeq ($(DRIVERDIR),)
+ 		DRIVERDIR := $(BASEDIR)/kernel/drivers/net
+ 	endif
+-	RTKDIR := $(subst $(BASEDIR)/,,$(DRIVERDIR))
++	# RTKDIR := $(subst $(BASEDIR)/,,$(DRIVERDIR))
++	RTKDIR := $(DRIVERDIR)
+ 
+ 	KERNEL_GCC_VERSION := $(shell cat /proc/version | sed -n 's/.*gcc version \([[:digit:]]\.[[:digit:]]\.[[:digit:]]\).*/\1/p')
+ 	CCVERSION = $(shell $(CC) -dumpversion)
+@@ -165,7 +166,7 @@ else
+ 	)
+ 
+ .PHONY: all
+-all: print_vars clean modules install
++all: print_vars clean modules
+ 
+ print_vars:
+ 	@echo
+diff --git a/r8126.h b/r8126.h
+index 9c66f24..7b0ed16 100644
+--- a/r8126.h
++++ b/r8126.h
+@@ -2521,7 +2521,7 @@ struct rtl8126_private {
+         //Realwow--------------
+ #endif //ENABLE_REALWOW_SUPPORT
+ 
+-        struct ethtool_eee eee;
++        struct ethtool_keee eee;
+ 
+ #ifdef ENABLE_R8126_PROCFS
+         //Procfs support
+diff --git a/r8126_n.c b/r8126_n.c
+index d01c7ef..d4944e7 100644
+--- a/r8126_n.c
++++ b/r8126_n.c
+@@ -6798,8 +6798,8 @@ static void rtl8126_disable_adv_eee(struct rtl8126_private *tp)
+ 
+ static int rtl8126_enable_eee(struct rtl8126_private *tp)
+ {
+-        struct ethtool_eee *eee = &tp->eee;
+-        u16 eee_adv_t = ethtool_adv_to_mmd_eee_adv_t(eee->advertised);
++        struct ethtool_keee *eee = &tp->eee;
++        u16 eee_adv_t = ethtool_adv_to_mmd_eee_adv_t(eee->advertised[0]);
+         int ret;
+ 
+         ret = 0;
+@@ -6813,7 +6813,7 @@ static int rtl8126_enable_eee(struct rtl8126_private *tp)
+                                                       0xA5D0,
+                                                       MDIO_EEE_100TX | MDIO_EEE_1000T,
+                                                       eee_adv_t);
+-                if (eee->advertised & SUPPORTED_2500baseX_Full)
++                if (eee->advertised[0] & SUPPORTED_2500baseX_Full)
+                         rtl8126_set_eth_phy_ocp_bit(tp, 0xA6D4, MDIO_EEE_2_5GT);
+                 else
+                         rtl8126_clear_eth_phy_ocp_bit(tp, 0xA6D4, MDIO_EEE_2_5GT);
+@@ -6929,10 +6929,10 @@ rtl8126_device_lpi_t_to_ethtool_lpi_t(struct rtl8126_private *tp , u32 lpi_timer
+ }
+ 
+ static int
+-rtl_ethtool_get_eee(struct net_device *net, struct ethtool_eee *edata)
++rtl_ethtool_get_eee(struct net_device *net, struct ethtool_keee *edata)
+ {
+         struct rtl8126_private *tp = netdev_priv(net);
+-        struct ethtool_eee *eee = &tp->eee;
++        struct ethtool_keee *eee = &tp->eee;
+         u32 lp, adv, tx_lpi_timer, supported = 0;
+         u16 val;
+ 
+@@ -6942,10 +6942,10 @@ rtl_ethtool_get_eee(struct net_device *net, struct ethtool_eee *edata)
+         /* Get Supported EEE */
+         //val = rtl8126_mdio_direct_read_phy_ocp(tp, 0xA5C4);
+         //supported = mmd_eee_cap_to_ethtool_sup_t(val);
+-        supported = eee->supported;
++        supported = eee->supported[0];
+ 
+         /* Get advertisement EEE */
+-        adv = eee->advertised;
++        adv = eee->advertised[0];
+ 
+         /* Get LP advertisement EEE */
+         val = rtl8126_mdio_direct_read_phy_ocp(tp, 0xA5D2);
+@@ -6962,9 +6962,9 @@ rtl_ethtool_get_eee(struct net_device *net, struct ethtool_eee *edata)
+ 
+         edata->eee_enabled = !!val;
+         edata->eee_active = !!(supported & adv & lp);
+-        edata->supported = supported;
+-        edata->advertised = adv;
+-        edata->lp_advertised = lp;
++        edata->supported[0] = supported;
++        edata->advertised[0] = adv;
++        edata->lp_advertised[0] = lp;
+         edata->tx_lpi_enabled = edata->eee_enabled;
+         edata->tx_lpi_timer = tx_lpi_timer;
+ 
+@@ -6972,10 +6972,10 @@ rtl_ethtool_get_eee(struct net_device *net, struct ethtool_eee *edata)
+ }
+ 
+ static int
+-rtl_ethtool_set_eee(struct net_device *net, struct ethtool_eee *edata)
++rtl_ethtool_set_eee(struct net_device *net, struct ethtool_keee *edata)
+ {
+         struct rtl8126_private *tp = netdev_priv(net);
+-        struct ethtool_eee *eee = &tp->eee;
++        struct ethtool_keee *eee = &tp->eee;
+         u32 advertising;
+         int rc = 0;
+ 
+@@ -7008,18 +7008,18 @@ rtl_ethtool_set_eee(struct net_device *net, struct ethtool_eee *edata)
+         */
+ 
+         advertising = tp->advertising;
+-        if (!edata->advertised) {
+-                edata->advertised = advertising & eee->supported;
+-        } else if (edata->advertised & ~advertising) {
++        if (!edata->advertised[0]) {
++                edata->advertised[0] = advertising & eee->supported[0];
++        } else if (edata->advertised[0] & ~advertising) {
+                 dev_printk(KERN_WARNING, tp_to_dev(tp), "EEE advertised %x must be a subset of autoneg advertised speeds %x\n",
+-                           edata->advertised, advertising);
++                           edata->advertised[0], advertising);
+                 rc = -EINVAL;
+                 goto out;
+         }
+ 
+-        if (edata->advertised & ~eee->supported) {
++        if (edata->advertised[0] & ~eee->supported[0]) {
+                 dev_printk(KERN_WARNING, tp_to_dev(tp), "EEE advertised %x must be a subset of support %x\n",
+-                           edata->advertised, eee->supported);
++                           edata->advertised[0], eee->supported[0]);
+                 rc = -EINVAL;
+                 goto out;
+         }
+@@ -7030,7 +7030,7 @@ rtl_ethtool_set_eee(struct net_device *net, struct ethtool_eee *edata)
+         dev_printk(KERN_WARNING, tp_to_dev(tp), "EEE tx_lpi_timer %x must be a subset of support %x\n",
+                    edata->tx_lpi_timer, eee->tx_lpi_timer);
+ 
+-        eee->advertised = edata->advertised;
++        eee->advertised[0] = edata->advertised[0];
+         //eee->tx_lpi_enabled = edata->tx_lpi_enabled;
+         //eee->tx_lpi_timer = edata->tx_lpi_timer;
+         eee->eee_enabled = edata->eee_enabled;
+@@ -11998,17 +11998,17 @@ rtl8126_init_software_variable(struct net_device *dev)
+ #endif //LINUX_VERSION_CODE >= KERNEL_VERSION(4,10,0)
+ 
+         if (tp->mcfg != CFG_METHOD_DEFAULT) {
+-                struct ethtool_eee *eee = &tp->eee;
++                struct ethtool_keee *eee = &tp->eee;
+ 
+                 eee->eee_enabled = eee_enable;
+-                eee->supported  = SUPPORTED_100baseT_Full |
++                eee->supported[0]  = SUPPORTED_100baseT_Full |
+                                   SUPPORTED_1000baseT_Full;
+-                eee->advertised = mmd_eee_adv_to_ethtool_adv_t(MDIO_EEE_1000T | MDIO_EEE_100TX);
++                eee->advertised[0] = mmd_eee_adv_to_ethtool_adv_t(MDIO_EEE_1000T | MDIO_EEE_100TX);
+                 switch (tp->mcfg) {
+                 default:
+                         if (HW_SUPP_PHY_LINK_SPEED_2500M(tp)) {
+-                                eee->supported |= SUPPORTED_2500baseX_Full;
+-                                eee->advertised |= SUPPORTED_2500baseX_Full;
++                                eee->supported[0] |= SUPPORTED_2500baseX_Full;
++                                eee->advertised[0] |= SUPPORTED_2500baseX_Full;
+                         }
+                         break;
+                 }
