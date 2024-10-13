@@ -3749,6 +3749,17 @@ dynamic macro。key sequenceをある程度自動的に判別して、dynamicに
     (setq dmacro-key (kbd "C-t"))
     (global-dmacro-mode +1))
 #+end_src
+*** envrc
+direnvをbuffer-localに適用するためのpackage。
+
+#+begin_src emacs-lisp
+  (with-eval-after-load 'envrc)
+
+  (with-low-priority-startup
+    (load-package envrc)
+
+    (envrc-global-mode))
+#+end_src
 ** SKK
 
 *** ddskk

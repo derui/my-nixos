@@ -2961,6 +2961,13 @@ Refer to `org-agenda-prefix-format' for more information."
   (setq dmacro-key (kbd "C-t"))
   (global-dmacro-mode +1))
 
+(with-eval-after-load 'envrc)
+
+(with-low-priority-startup
+  (load-package envrc)
+
+  (envrc-global-mode))
+
 (defvar my:tab-bar-format-function #'tab-bar-tab-name-format-default
   "formatting function to display tab name")
 

@@ -136,6 +136,7 @@ in
         epkgs.tabspaces
         epkgs.dashboard
         epkgs.modus-themes
+        epkgs.envrc
       ];
 
       # Optionally override derivations.
