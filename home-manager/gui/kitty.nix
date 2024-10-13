@@ -12,7 +12,7 @@
       bell_on_tab = "🔔 ";
 
       # window layout
-      enabled_layout = "tall,grid,splits";
+      enabled_layouts = "tall,grid,splits";
       visual_window_select_characters = "ASDFGHJKL";
 
       # tab bar
