@@ -2,7 +2,7 @@
 { stdenv, emacs }:
 stdenv.mkDerivation {
   name = "emacs-init-el";
-  src = ./files;
+  src = ../files;
 
   # emacsは引数に渡されたものを利用する
   buildInputs = [ emacs ];
