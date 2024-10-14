@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, useLLM, ... }:
 {
   imports = [
     ./hyprland.nix
@@ -7,7 +7,7 @@
     ./mako.nix
     ./intellij
     ./tools.nix
-    ./emacs
+    (import ./emacs { inherit pkgs useLLM; })
     ./firefox.nix
     ./maestral.nix
   ];

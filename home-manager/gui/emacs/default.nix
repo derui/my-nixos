@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, useLLM, ... }:
 let
   # melpaにあるpackgeについて、指定したpkgについてrev/sha256をoverrideしたものを返す
   useMelpa = prev: { pkg, commit, sha256 }:
@@ -139,6 +139,7 @@ in
         epkgs.dashboard
         epkgs.modus-themes
         epkgs.envrc
+        (if useLLM then epkgs.ellama else null)
       ];
 
       # Optionally override derivations.
@@ -787,6 +788,11 @@ in
           pkg = "dashboard";
           commit = "3852301f9c6f3104d9cc98389612b5ef3452a7de";
           sha256 = "sha256-mxTDALb8RqZWeKS08LI1/mtJcNFpOndUSee/2nxwHaU=";
+        };
+        ellama = useMelpa prev {
+          pkg = "ellama";
+          commit = "74767cbd6dc582bd6ce99a83bc84d41bfad4b4ee";
+          sha256 = "sha256-p1wFeqCNJmXzGmIX3hDMg0ZYsfv1qRG64KQ0VXczbdo=";
         };
       };
 

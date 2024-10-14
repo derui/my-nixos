@@ -3385,6 +3385,28 @@ GitHub Copilotを利用するための設定。agent の起動が非常に重い
     (load-package copilot))
 #+end_src
 
+*** ellama
+https://github.com/s-kostyaev/ellama/
+
+llm.elを利用して、ollamaとのinterfaceを提供するためのpackage。
+
+#+begin_src emacs-lisp
+  (linux!
+   (with-eval-after-load 'ellama
+     (setopt ellama-language "Japanese")
+     (setopt ellama-provider
+             (make-llm-ollama
+              :chat-model "codegeex4:latest"
+              :embedding-model "omic-embed-text"))
+
+     ;; namingに利用するproviderとschemaを定義する
+     (setopt ellama-naming-scheme 'ellama-generate-name-by-llm)
+     )
+
+   (with-low-priority-startup
+     (load-package ellama)))
+#+end_src
+
 *** goggles
 volatile-highlightsの代替。標準で用意されている ~pulse~ というpackageが使われている。
 

@@ -98,6 +98,7 @@
 
           extraSpecialArgs = {
             inherit inputs user;
+            useLLM = true;
           };
           modules = [
             ./home.nix
@@ -115,6 +116,7 @@
 
           extraSpecialArgs = {
             inherit inputs user;
+            useLLM = false;
           };
           modules = [
             ./home.nix
