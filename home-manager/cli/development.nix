@@ -25,6 +25,7 @@
     # nix
     nixd
 
+    # utility
     pre-commit
   ];
 }

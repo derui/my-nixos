@@ -22,6 +22,7 @@ in
       ./modules/desktop/steam.nix
       ./modules/nix.nix
       ./modules/music.nix
+      ./modules/ollama.nix
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
       common-cpu-amd
@@ -100,6 +101,7 @@ in
       "audio"
       "game"
       "networkmanager"
+      "ollama"
       "wheel" # Enable ‘sudo’ for the user.
     ];
   };
