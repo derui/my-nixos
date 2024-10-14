@@ -23,6 +23,7 @@ in
     gawk
     zstd
     direnv
+    zoxide # move directory
 
     # nix related
     nix-output-monitor
