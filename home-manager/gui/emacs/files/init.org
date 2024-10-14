@@ -1337,6 +1337,32 @@ isearch用のTransient。基本的にisearch の中で使うことを想定し�
         ]]
       ))
 #+end_src
+*** LLM
+ellamaを利用して作成する感じ。
+
+#+begin_src emacs-lisp
+  (with-low-priority-startup
+    (transient-define-prefix my:llm-transient ()
+      "Menus with LLM"
+      [
+       ["Code related"
+        ("c" "Complete code" ellama-code-complete :transient nil)
+        ("a" "Add code" ellama-code-add :transient nil)
+        ("R" "Review code" ellama-code-review :transient nil)
+        ]
+       ["Generic usage"
+        ("s" "Summary selected content or buffer" ellama-summarize :transient nil)
+        ("t" "Translate selected content" ellama-translate :transient nil)
+        ]
+       ["Grammar"
+        ("W" "Improve wording" ellama-improve-wording :transient nil)
+        ("I" "Improve grammer" ellama-improve-grammar :transient nil)
+        ]]
+      [["Misc"
+        ("*" "Open chat" ellama-chat :transient t)
+        ]]
+      ))
+#+end_src
 ** mode-line
 主にモードラインに対するパッケージをまとめている。
 
@@ -1666,6 +1692,7 @@ navigationなどを行うための基本的なStateである。非常によく�
                   (keymap-set keymap "'" #'window-toggle-side-windows)
                   (keymap-set keymap "c" #'org-capture)
                   (keymap-set keymap "C" #'org-roam-capture)
+                  (keymap-set keymap "l" #'my:llm-transient)
 
                   keymap
                   )
@@ -3374,10 +3401,6 @@ GitHub Copilotを利用するための設定。agent の起動が非常に重い
     (setq copilot-enable-predicates
           '(my:insert-state-p my:not-completion-in-region-mode-p copilot--buffer-changed))
 
-    (linux!
-     ;; linuxの場合は自前のLocal LLMを利用するので、別途設定しておく
-     (setopt copilot-network-proxy '(:host "localhost" :port 11435 :rejectUnauthorized :json-false)))
-
     ;; tuaregはocamlにしてもらわないと困る
     (add-to-list 'copilot-major-mode-alist '("tuareg" . "ocaml"))
 
@@ -3402,7 +3425,7 @@ llm.elを利用して、ollamaとのinterfaceを提供するためのpackage。
              (make-llm-ollama
               :chat-model "codegeex4:latest"
               :embedding-model "omic-embed-text"))
-
+     
      ;; namingに利用するproviderとschemaを定義する
      (setopt ellama-translation-provider (make-llm-ollama
                                           :chat-model "gemma2:latest"))

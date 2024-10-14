@@ -6,9 +6,7 @@
     ./fish.nix
     ./nix.nix
     ./development.nix
-
     ./newsboat.nix
     ./tools.nix
-    ./ollama-copilot.nix
   ];
 }

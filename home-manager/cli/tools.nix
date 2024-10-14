@@ -35,8 +35,5 @@ in
     mypkg.udev-gothic
     mypkg.udev-gothic-nf
     mypkg.moralerspace-nf
-
-    # llm
-    (if useLLM then mypkg.ollama-copilot else null)
   ];
 }
