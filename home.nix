@@ -1,7 +1,7 @@
-{ ... }:
+{ user, ... }:
 {
-  home.username = "derui";
-  home.homeDirectory = "/home/derui";
+  home.username = user;
+  home.homeDirectory = "/home/${user}";
 
   # imports software
   imports =

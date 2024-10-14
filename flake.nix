@@ -114,7 +114,7 @@
           pkgs = nixpkgsFor.${system};
 
           extraSpecialArgs = {
-            inherit inputs;
+            inherit inputs user;
           };
           modules = [
             ./home.nix
