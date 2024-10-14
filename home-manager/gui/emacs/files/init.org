@@ -3535,6 +3535,9 @@ rg.elだとtransientとのnative compで相性が悪かったので、こっち�
   (defvar mozc-keymap-kana)
   (defvar mozc-helper-program-name)
   (with-eval-after-load 'mozc
+    ;; ここで初期化をしておかないと動かない
+    (mozc-posframe-initialize)
+    
     (setq mozc-keymap-kana mozc-keymap-kana-101us)
     (setopt mozc-candidate-style 'posframe)
     (setq mozc-helper-program-name my:mozc-helper-locate))

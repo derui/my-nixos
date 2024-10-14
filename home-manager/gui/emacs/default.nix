@@ -25,6 +25,8 @@ let
       url = "https://codeberg.org/${owner}/${repo}/archive/${rev}.tar.gz";
       inherit sha256;
     };
+
+  init-el = pkgs.callPackage ./init-el.nix { emacs = pkgs.emacs-git; };
 in
 {
   # lspを高速化するための拡張
@@ -686,8 +688,8 @@ in
           };
         mozc-posframe =
           let
-            rev = "99ac43b47bd7d79458a30ea36a82acd7f7e22725";
-            sha256 = "sha256-B/GFp+TDvm1WzFwEfYo02I8YKOBY3yxbQYnutEr662I=";
+            rev = "9adb3a258ff0457dfb556c78ddbb3b8c014ceb60";
+            sha256 = "sha256-kw+RhGa/QB6KP6/f0d/+377i4uqxgsuqPZsm4O6tJiI=";
           in
           final.melpaBuild {
             pname = "emacs-mozc-posframe";
@@ -794,15 +796,10 @@ in
   # Use unstable emacs
   programs.emacs.package = pkgs.emacs-git;
 
-  home.file.".emacs.d/init.el" = {
-    source = ./init.el;
-  };
-
-  home.file.".emacs.d/early-init.el" = {
-    source = ./early-init.el;
-  };
-
-  home.file.".emacs.d/templates" = {
-    source = ./templates;
+  # installはinit-elのderiviationから行う。fileを利用するだけなので、packageとして指定しなくてよい
+  xdg.configFile = {
+    "emacs/init.el".source = "${init-el}/share/emacs/init.el";
+    "emacs/early-init.el".source = "${init-el}/share/emacs/early-init.el";
+    "emacs/template".source = ./files/templates;
   };
 }

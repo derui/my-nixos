@@ -107,7 +107,7 @@ posframeを使うかどうか。
 *** org-roam
 #+begin_src emacs-lisp
   (defcustom my:org-roam-db-location
-    "~/.emacs.d/share/org-roam.db"
+    (expand-file-name  "share/org-roam.db" user-emacs-directory)
     "The location of database that is used by org-roam"
     :group 'my
     :type 'string)
