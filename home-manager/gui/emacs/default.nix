@@ -26,7 +26,7 @@ let
       inherit sha256;
     };
 
-  init-el = pkgs.callPackage ./init-el.nix { emacs = pkgs.emacs-git; };
+  init-el = pkgs.callPackage ./pkgs/init-el.nix { emacs = pkgs.emacs-git; };
 in
 {
   # lspを高速化するための拡張
