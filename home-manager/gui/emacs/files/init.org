@@ -577,13 +577,20 @@ denoとts-lsを切り替えながらやりたい場合などに利用する。di
 *** files
 #+begin_src emacs-lisp
   (with-eval-after-load 'files
+    (setopt auto-save-default t)
+    
+    ;; visited-modeでは5秒ごとに変更する
+    (setopt auto-save-visited-interval 5)
     ;; 5秒操作がなかったら自動保存
     (setopt auto-save-interval 5))
 
   (with-low-priority-startup
     (require 'files)
     
-    (auto-save-mode +1))
+    (auto-save-mode +1)
+    ;; 保存するfileはbufferと同じ名前にする。globalなminor mode
+    (auto-save-visited-mode +1)
+    )
 #+end_src
 *** electric-pair
 標準であるpairの挿入package。
