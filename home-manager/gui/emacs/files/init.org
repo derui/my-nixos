@@ -3374,6 +3374,10 @@ GitHub Copilotを利用するための設定。agent の起動が非常に重い
     (setq copilot-enable-predicates
           '(my:insert-state-p my:not-completion-in-region-mode-p copilot--buffer-changed))
 
+    (linux!
+     ;; linuxの場合は自前のLocal LLMを利用するので、別途設定しておく
+     (setopt copilot-network-proxy '(:host "localhost" :port 11435 :rejectUnauthorized :json-false)))
+
     ;; tuaregはocamlにしてもらわないと困る
     (add-to-list 'copilot-major-mode-alist '("tuareg" . "ocaml"))
 
@@ -3400,6 +3404,8 @@ llm.elを利用して、ollamaとのinterfaceを提供するためのpackage。
               :embedding-model "omic-embed-text"))
 
      ;; namingに利用するproviderとschemaを定義する
+     (setopt ellama-translation-provider (make-llm-ollama
+                                          :chat-model "gemma2:latest"))
      (setopt ellama-naming-scheme 'ellama-generate-name-by-llm)
      )
 
