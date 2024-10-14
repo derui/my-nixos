@@ -1,4 +1,4 @@
-{ pkgs, useLLM, ... }:
+{ inputs, pkgs, useLLM, ... }:
 let
   # melpaにあるpackgeについて、指定したpkgについてrev/sha256をoverrideしたものを返す
   useMelpa = prev: { pkg, commit, sha256 }:
@@ -27,6 +27,7 @@ let
     };
 
   init-el = pkgs.callPackage ./pkgs/init-el.nix { emacs = pkgs.emacs-git; };
+  mypkgs = inputs.self.outputs.packages.${pkgs.system};
 in
 {
   # lspを高速化するための拡張
@@ -807,5 +808,8 @@ in
     "emacs/init.el".source = "${init-el}/share/emacs/init.el";
     "emacs/early-init.el".source = "${init-el}/share/emacs/early-init.el";
     "emacs/templates".source = ./files/templates;
+    # installすると余計な依存ができるのでやらない
+    "emacs/.cache/copilot".source = "${mypkgs.nodePackages.copilot-node-server}";
   };
+
 }

@@ -1,4 +1,7 @@
 { pkgs, inputs, ... }:
+let
+  mypkgs = inputs.self.outputs.packages.${pkgs.system};
+in
 {
   # fenixを導入しているので、これをそのまま入れる
   home.packages = with pkgs; [
@@ -27,5 +30,6 @@
 
     # utility
     pre-commit
+
   ];
 }

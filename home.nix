@@ -6,7 +6,7 @@
   # imports software
   imports =
     [
-      (import ./home-manager/gui { inherit pkgs useLLM; })
+      (import ./home-manager/gui { inherit inputs pkgs useLLM; })
       (import ./home-manager/cli { inherit inputs pkgs useLLM; })
     ];
 
