@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ lib, pkgs, inputs, config, ... }:
+{ lib, pkgs, inputs, config, user, ... }:
 let
   linuxKernel = pkgs.linuxKernel.packages.linux_6_11;
   myKernelModules = import ./pkgs/kernel { inherit pkgs linuxKernel; };
@@ -94,7 +94,7 @@ in
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.derui = {
+  users.users.${user} = {
     isNormalUser = true;
     extraGroups = [
       "video"

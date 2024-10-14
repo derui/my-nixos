@@ -78,11 +78,12 @@
       nixosConfigurations.ereshkigal =
         let
           system = "x86_64-linux";
+          user = "derui";
         in
         nixpkgs.lib.nixosSystem {
           inherit system;
 
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs user; };
           modules = [
             ./configuration.nix
           ];
@@ -90,12 +91,13 @@
       homeConfigurations."derui@ereshkigal" =
         let
           system = "x86_64-linux";
+          user = "derui";
         in
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgsFor.${system};
 
           extraSpecialArgs = {
-            inherit inputs;
+            inherit inputs user;
           };
           modules = [
             ./home.nix
@@ -106,6 +108,7 @@
       homeConfigurations."derui@my-gentoo" =
         let
           system = "x86_64-linux";
+          user = "derui";
         in
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgsFor.${system};
