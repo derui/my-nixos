@@ -800,6 +800,6 @@ in
   xdg.configFile = {
     "emacs/init.el".source = "${init-el}/share/emacs/init.el";
     "emacs/early-init.el".source = "${init-el}/share/emacs/early-init.el";
-    "emacs/template".source = ./files/templates;
+    "emacs/templates".source = ./files/templates;
   };
 }
