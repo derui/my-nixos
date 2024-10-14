@@ -809,7 +809,7 @@ in
     "emacs/early-init.el".source = "${init-el}/share/emacs/early-init.el";
     "emacs/templates".source = ./files/templates;
     # installすると余計な依存ができるのでやらない
-    "emacs/.cache/copilot".source = "${mypkgs.nodePackages.copilot-node-server}";
+    "emacs/.cache/copilot/lib".source = "${mypkgs.nodePackages.copilot-node-server}";
   };
 
 }
