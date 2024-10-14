@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, pkgs, useLLM, ... }:
 {
   imports = [
     ./git.nix
@@ -6,7 +6,9 @@
     ./fish.nix
     ./nix.nix
     ./development.nix
-    ./tools.nix
+
     ./newsboat.nix
+    ./tools.nix
+    ./ollama-copilot.nix
   ];
 }

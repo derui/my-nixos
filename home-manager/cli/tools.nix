@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, useLLM, ... }:
 let
   mypkg = inputs.self.outputs.packages.${pkgs.system};
 in
@@ -35,5 +35,8 @@ in
     mypkg.udev-gothic
     mypkg.udev-gothic-nf
     mypkg.moralerspace-nf
+
+    # llm
+    (if useLLM then mypkg.ollama-copilot else null)
   ];
 }

@@ -1,4 +1,4 @@
-{ user, useLLM, pkgs, ... }:
+{ inputs, user, useLLM, pkgs, ... }:
 {
   home.username = user;
   home.homeDirectory = "/home/${user}";
@@ -7,7 +7,7 @@
   imports =
     [
       (import ./home-manager/gui { inherit pkgs useLLM; })
-      ./home-manager/cli
+      (import ./home-manager/cli { inherit inputs pkgs useLLM; })
     ];
 
   # home manager version
