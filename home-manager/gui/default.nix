@@ -7,7 +7,7 @@
     ./mako.nix
     ./intellij
     ./tools.nix
-    (import ./emacs { inherit inputs pkgs useLLM; })
+    (import ./emacs { inherit inputs pkgs; })
     ./firefox.nix
     ./maestral.nix
   ];
