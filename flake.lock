@@ -33,6 +33,21 @@
         "type": "github"
       }
     },
+    "dotfiles": {
+      "locked": {
+        "lastModified": 1729087227,
+        "narHash": "sha256-2Wy0nWDGwGZyAaqmmNaX0A5D3/bV/8MM6bOSJsjKFaU=",
+        "owner": "derui",
+        "repo": "dotfiles",
+        "rev": "b14a587648e79dbcd3e9029607c9197f456f1392",
+        "type": "github"
+      },
+      "original": {
+        "owner": "derui",
+        "repo": "dotfiles",
+        "type": "github"
+      }
+    },
     "emacs-overlay": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -382,6 +397,7 @@
     },
     "root": {
       "inputs": {
+        "dotfiles": "dotfiles",
         "emacs-overlay": "emacs-overlay",
         "fenix": "fenix",
         "home-manager": "home-manager",
