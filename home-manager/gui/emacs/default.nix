@@ -1,13 +1,14 @@
 { inputs, pkgs, ... }:
 let
-  my-dot-emacs = pkgs.fetchgit {
+  my-dot-emacs = builtins.fetchGit {
     url = "https://github.com/derui/dot.emacs.d";
-    rev = "e5f7f2d7809cbebef48fd18caf8f917ab61972e9";
-    hash = "sha256-zSHmBuRmaZFgwV36gIkVFusmWiOBEJeJm8TMd11g3Jg=";
+    rev = "7643fee871721a0584c7d6c2e29892283c1e7e11";
   };
+  treesit = (pkgs.emacsPackagesFor pkgs.emacs-git).treesit-grammars.with-all-grammars;
 in
 {
   home.packages = with pkgs; [
+    pkgs.emacs-git
     # lspを高速化するための拡張
     emacs-lsp-booster
   ];
@@ -17,6 +18,9 @@ in
 
   # installはgitのcheckoutをそのまま設定することで確立する。
   xdg.configFile = {
+    # use treesit on lib
+    "emacs-local/cache/tree-sitter".source = "${treesit}/lib";
+    # load emacs from original place
     "emacs/".source = my-dot-emacs;
   };
 
