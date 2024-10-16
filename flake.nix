@@ -27,12 +27,9 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # my dotfile manager
-    dotfiles.url = "github:derui/dotfiles";
   };
 
-  outputs = { self, nixpkgs, home-manager, emacs-overlay, fenix, dotfiles, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, emacs-overlay, fenix, ... }@inputs:
     let
       overlays = [
         (import emacs-overlay)
@@ -100,7 +97,7 @@
           pkgs = nixpkgsFor.${system};
 
           extraSpecialArgs = {
-            inherit inputs user dotfiles;
+            inherit inputs user;
             useLLM = true;
           };
           modules = [
