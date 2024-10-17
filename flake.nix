@@ -100,11 +100,12 @@
           pkgs = nixpkgsFor.${system};
 
           extraSpecialArgs = {
-            inherit inputs user dotfiles;
+            inherit inputs user;
             useLLM = true;
           };
           modules = [
             ./home.nix
+            dotfiles.nixosModules.default
           ];
         };
 

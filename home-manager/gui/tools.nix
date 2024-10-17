@@ -6,6 +6,7 @@ in
   home.packages = with pkgs; [
     bitwarden-desktop
 
+    kitty
     wofi # program launcher
     waybar # bar display
     mako

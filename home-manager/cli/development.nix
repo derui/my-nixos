@@ -6,6 +6,8 @@ in
   # fenixを導入しているので、これをそのまま入れる
   home.packages = with pkgs; [
     # common
+    git
+    delta
     ghq
 
     # Rust
