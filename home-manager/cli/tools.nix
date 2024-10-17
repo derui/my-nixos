@@ -15,6 +15,7 @@ in
     fzf # command-line fuzzy
     fd # find alternative
     procs # ps alternative
+    pv # for monitor
     starship
 
     # misc
