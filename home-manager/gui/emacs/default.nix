@@ -19,7 +19,7 @@ in
   # installはgitのcheckoutをそのまま設定することで確立する。
   xdg.configFile = {
     # use treesit on lib
-    "emacs-local/cache/tree-sitter".source = "${treesit}/lib";
+    "emacs-local/tree-sitter".source = "${treesit}/lib";
     # load emacs from original place
     "emacs/".source = my-dot-emacs;
     "emacs-local/templates".source = "${my-dot-emacs}/templates";
