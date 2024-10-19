@@ -20,6 +20,9 @@ in
     # video
     celluloid
 
+    # wayland misc
+    wl-clipboard
+
     blueman # bluetooth frontend
 
     # multimedia
