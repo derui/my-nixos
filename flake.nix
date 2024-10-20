@@ -37,6 +37,7 @@
       overlays = [
         (import emacs-overlay)
         fenix.overlays.default
+        (import ./overlays/gtk3)
       ];
 
       # System types to support.
@@ -52,6 +53,7 @@
           overlays
           system;
 
+        # ここで指定しておかないと、OS configurationの方にも反映できない。
         config = {
           allowUnfree = true;
         };
@@ -85,6 +87,7 @@
         in
         nixpkgs.lib.nixosSystem {
           inherit system;
+          pkgs = nixpkgsFor.${system};
 
           specialArgs = { inherit inputs user; };
           modules = [

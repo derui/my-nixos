@@ -18,6 +18,4 @@
       accept-flake-config = true;
     };
   };
-
-  nixpkgs.config.allowUnfree = true;
 }
