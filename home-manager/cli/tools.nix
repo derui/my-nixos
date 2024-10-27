@@ -26,6 +26,7 @@ in
     zstd
     direnv
     zoxide # move directory
+    just # task runner
 
     # nix related
     nix-output-monitor
