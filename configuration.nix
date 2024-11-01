@@ -152,7 +152,16 @@ in
 
   # enable display manager
   services.xserver.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
+
+  services.greetd = {
+    enable = true;
+
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd Hyprland";
+      };
+    };
+  };
 
   # enable zram
   zramSwap = {
