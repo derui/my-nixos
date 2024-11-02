@@ -2,7 +2,7 @@
 let
   my-dot-emacs = builtins.fetchGit {
     url = "https://github.com/derui/dot.emacs.d";
-    rev = "515e29b205a4c86024d14e2ca300add155ffe624";
+    rev = "da4d6199c94be5d0f13d18b9424d6a1ddf66213e";
   };
   treesit = (pkgs.emacsPackagesFor pkgs.emacs-git).treesit-grammars.with-all-grammars;
 in
