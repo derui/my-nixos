@@ -1,4 +1,10 @@
-{ lib, pkgs, stdenv, fetchgit, ... }:
+{
+  lib,
+  pkgs,
+  stdenv,
+  fetchgit,
+  ...
+}:
 let
   pname = "tuna-lv2";
 in
@@ -41,4 +47,3 @@ stdenv.mkDerivation {
     platforms = platforms.all;
   };
 }
-  

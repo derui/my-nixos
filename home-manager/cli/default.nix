@@ -1,4 +1,9 @@
-{ inputs, pkgs, useLLM, ... }:
+{
+  inputs,
+  pkgs,
+  useLLM,
+  ...
+}:
 {
   imports = [
     ./nix.nix

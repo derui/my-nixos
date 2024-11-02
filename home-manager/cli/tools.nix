@@ -1,4 +1,9 @@
-{ pkgs, inputs, useLLM, ... }:
+{
+  pkgs,
+  inputs,
+  useLLM,
+  ...
+}:
 let
   mypkg = inputs.self.outputs.packages.${pkgs.system};
 in

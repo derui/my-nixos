@@ -32,7 +32,16 @@
     dotfiles.url = "github:derui/dotfiles";
   };
 
-  outputs = { self, nixpkgs, home-manager, emacs-overlay, fenix, dotfiles, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      emacs-overlay,
+      fenix,
+      dotfiles,
+      ...
+    }@inputs:
     let
       overlays = [
         (import emacs-overlay)
@@ -41,30 +50,40 @@
       ];
 
       # System types to support.
-      supportedSystems = [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
+      supportedSystems = [
+        "x86_64-linux"
+        "x86_64-darwin"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
 
       # Helper function to generate an attrset '{ x86_64-linux = f "x86_64-linux"; ... }'.
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 
       # Nixpkgs instantiated for supported system types.
-      nixpkgsFor = forAllSystems (system: import nixpkgs {
+      nixpkgsFor = forAllSystems (
+        system:
+        import nixpkgs {
 
-        inherit
-          overlays
-          system;
+          inherit
+            overlays
+            system
+            ;
 
-        # ここで指定しておかないと、OS configurationの方にも反映できない。
-        config = {
-          allowUnfree = true;
-        };
-      });
+          # ここで指定しておかないと、OS configurationの方にも反映できない。
+          config = {
+            allowUnfree = true;
+          };
+        }
+      );
     in
     {
       # 自作のpackageをoutputに追加する
       packages = forAllSystems (system: import ./pkgs inputs.nixpkgs.legacyPackages.${system});
 
       # define devShell for aysstem with packages
-      devShells = forAllSystems (system:
+      devShells = forAllSystems (
+        system:
         let
           pkgs = nixpkgsFor.${system};
         in
@@ -74,10 +93,11 @@
               nh
             ];
           };
-        });
+        }
+      );
 
       # define formatter for all systems
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
+      formatter = forAllSystems (system: nixpkgsFor.${system}.nixfmt-rfc-style);
 
       # My reserved desktop configuration as NixOS
       nixosConfigurations.ereshkigal =
@@ -89,7 +109,9 @@
           inherit system;
           pkgs = nixpkgsFor.${system};
 
-          specialArgs = { inherit inputs user; };
+          specialArgs = {
+            inherit inputs user;
+          };
           modules = [
             ./configuration.nix
           ];

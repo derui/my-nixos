@@ -2,7 +2,14 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ lib, pkgs, inputs, config, user, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  config,
+  user,
+  ...
+}:
 let
   linuxKernel = pkgs.linuxKernel.packages.linux_6_11;
   myKernelModules = import ./pkgs/kernel { inherit pkgs linuxKernel; };
@@ -44,7 +51,10 @@ in
   # use latest kernel
 
   boot.kernelPackages = linuxKernel;
-  boot.extraModulePackages = [ myKernelModules.rtl8126 linuxKernel.xpadneo ];
+  boot.extraModulePackages = [
+    myKernelModules.rtl8126
+    linuxKernel.xpadneo
+  ];
 
   networking.hostName = "ereshkigal"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -176,12 +186,11 @@ in
   # networking.firewall.enable = false;
 
   system.activationScripts = {
-    binbash =
-      ''
-        mkdir -m 0755 -p /bin
-        ln -sfn ${pkgs.bash}/bin/bash /bin/.bash.tmp
-        mv /bin/.bash.tmp /bin/bash
-      '';
+    binbash = ''
+      mkdir -m 0755 -p /bin
+      ln -sfn ${pkgs.bash}/bin/bash /bin/.bash.tmp
+      mv /bin/.bash.tmp /bin/bash
+    '';
   };
 
   # Copy the NixOS configuration file and link it from the resulting system
@@ -208,4 +217,3 @@ in
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.05"; # Did you read the comment?
 }
-

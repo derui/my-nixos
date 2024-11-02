@@ -1,17 +1,17 @@
 # This file from https://github.com/NixOS/nixpkgs/pull/346680
 # should update after merged it.
-{ bazel_7
-, buildBazelPackage
-, fcitx5
-, fetchFromGitHub
-, gettext
-, lib
-, mozc
-, nixosTests
-, pkg-config
-, python3
-, unzip
-,
+{
+  bazel_7,
+  buildBazelPackage,
+  fcitx5,
+  fetchFromGitHub,
+  gettext,
+  lib,
+  mozc,
+  nixosTests,
+  pkg-config,
+  python3,
+  unzip,
 }:
 
 buildBazelPackage {

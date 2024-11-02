@@ -1,8 +1,9 @@
-{ stdenvNoCC
-, lib
-, fetchzip
-, nixosTests
-, ...
+{
+  stdenvNoCC,
+  lib,
+  fetchzip,
+  nixosTests,
+  ...
 }:
 let
   version = "0.0.3";

@@ -1,11 +1,11 @@
 # Noto Fonts in nixpkgs are variable fonts, but Steam doesn't support them.
 # Issue: https://github.com/NixOS/nixpkgs/issues/178121
 # PR(unmerged): https://github.com/NixOS/nixpkgs/pull/205641
-{ stdenvNoCC
-, lib
-, fetchFromGitHub
-, nixosTests
-,
+{
+  stdenvNoCC,
+  lib,
+  fetchFromGitHub,
+  nixosTests,
 }:
 let
   typeface = "Sans";
