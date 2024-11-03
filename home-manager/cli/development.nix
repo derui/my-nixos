@@ -32,6 +32,9 @@ in
 
     # utility
     pre-commit
+    tabby-agent
 
   ];
+
+  # tabby agentの設定にはtokenが必要になるので、一旦は何もしないことにする。
 }

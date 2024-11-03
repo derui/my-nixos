@@ -30,6 +30,7 @@ in
       ./modules/nix.nix
       ./modules/music.nix
       ./modules/ollama.nix
+      ./modules/tabby.nix
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
       common-cpu-amd
