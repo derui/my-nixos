@@ -25,7 +25,7 @@
   vulkanSupport ? true,
 
   # one of [ null "cpu" "rocm" "cuda" "metal" ];
-  acceleration ? "vulkan",
+  acceleration ? null,
   versionCheckHook,
 }:
 
