@@ -37,7 +37,6 @@ in
       common-gpu-amd
       common-pc-ssd
     ]);
-
   # Use the GRUB 2 boot loader.
   #boot.loader.grub.enable = true;
   #boot.loader.grub.efiSupport = true;
@@ -192,6 +191,12 @@ in
       ln -sfn ${pkgs.bash}/bin/bash /bin/.bash.tmp
       mv /bin/.bash.tmp /bin/bash
     '';
+  };
+
+  # enable tabby with custom package
+  services.tabby = {
+    enable = true;
+    acceleration = "vulkan";
   };
 
   # Copy the NixOS configuration file and link it from the resulting system
