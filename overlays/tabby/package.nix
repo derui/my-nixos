@@ -207,7 +207,14 @@ rustPlatform.buildRustPackage {
     # NOTE: Project contains a subproject for building llama-server
     # But, we already have a derivation for this
     rm $out/bin/llama-server
-    ln -s ${lib.getExe' llama-cpp "llama-server"} $out/bin/llama-server
+    ln -s ${lib.getExe' llamaccpPackage "llama-server"} $out/bin/llama-server
+  '';
+
+  postFixup = ''
+    # Fixup the symlinks in the package
+    for f in $out/bin/llama-server; do
+      ln -s $out/bin/llama-server $f
+    done
   '';
 
   env = {
