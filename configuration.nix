@@ -31,6 +31,7 @@ in
       ./modules/music.nix
       ./modules/ollama.nix
       ./modules/tabby.nix
+      ./modules/qmk.nix
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
       common-cpu-amd

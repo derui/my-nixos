@@ -36,7 +36,7 @@ let
   # https://github.com/NixOS/nixpkgs/blob/master/pkgs/tools/misc/ollama/default.nix
 
   pname = "tabby";
-  version = "0.18.0";
+  version = "0.19.0";
 
   availableAccelerations = flatten [
     (optional cudaSupport "cuda")
@@ -140,7 +140,7 @@ rustPlatform.buildRustPackage {
     owner = "TabbyML";
     repo = "tabby";
     rev = "refs/tags/v${version}";
-    hash = "sha256-8clEBWAT+HI2eecOsmldgRcA58Ehq9bZT4ZwUMm494g=";
+    hash = "sha256-RK81gQ5IUzZ4HXJbKBr5bqayH0Xip6ZVAgdMwqP+kx8=";
     fetchSubmodules = true;
   };
 
@@ -208,13 +208,6 @@ rustPlatform.buildRustPackage {
     # But, we already have a derivation for this
     rm $out/bin/llama-server
     ln -s ${lib.getExe' llamaccpPackage "llama-server"} $out/bin/llama-server
-  '';
-
-  postFixup = ''
-    # Fixup the symlinks in the package
-    for f in $out/bin/llama-server; do
-      ln -s $out/bin/llama-server $f
-    done
   '';
 
   env = {
