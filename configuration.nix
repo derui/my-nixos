@@ -198,6 +198,20 @@ in
   services.tabby = {
     enable = true;
     acceleration = "vulkan";
+
+    settings = {
+      model = {
+        completion = {
+          http = {
+            kind = "ollama/completion";
+            model_name = "codellama:7b-code-q4_1";
+            api_endpoint = "http://localhost:11434";
+            prompt_template = "<PRE> {prefix} <SUF>{suffix} <MID>";
+          };
+        };
+
+      };
+    };
   };
 
   # Copy the NixOS configuration file and link it from the resulting system

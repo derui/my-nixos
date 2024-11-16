@@ -185,10 +185,13 @@ in
           description = "Self-hosted AI coding assistant using large language models";
           after = [ "network.target" ];
           environment = serviceEnv;
+          preStart = ''
+            cp -f /etc/tabby/config.toml $TABBY_ROOT/config.toml
+          '';
           serviceConfig = lib.mkMerge [
             serviceUser
             {
-              ExecStart = "${lib.getExe tabbyPackage} serve --model ${cfg.model} --port ${toString cfg.port} --device ${tabbyPackage.featureDevice}";
+              ExecStart = "${lib.getExe tabbyPackage} serve --port ${toString cfg.port} --device ${tabbyPackage.featureDevice}";
             }
           ];
         };
