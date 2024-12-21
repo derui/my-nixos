@@ -32,6 +32,7 @@ in
     direnv
     zoxide # move directory
     just # task runner
+    s3fs
 
     # nix related
     nix-output-monitor
