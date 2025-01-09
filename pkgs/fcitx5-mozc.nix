@@ -10,7 +10,9 @@
   mozc,
   nixosTests,
   pkg-config,
+  protobuf_27,
   python3,
+  stdenv,
   unzip,
 }:
 
@@ -39,6 +41,9 @@ buildBazelPackage {
   ];
 
   postPatch = ''
+    # replace protobuf with our own
+    rm -r src/third_party/protobuf
+    cp -r ${protobuf_27.src} src/third_party/protobuf
     sed -i -e 's|^\(LINUX_MOZC_SERVER_DIR = \).\+|\1"${mozc}/lib/mozc"|' src/config.bzl
   '';
 
@@ -127,7 +132,7 @@ buildBazelPackage {
     '';
   };
 
-  passthru.tests = {
+  passthru.tests = lib.optionalAttrs stdenv.hostPlatform.isLinux {
     inherit (nixosTests) fcitx5;
   };
 
@@ -138,6 +143,7 @@ buildBazelPackage {
       asl20 # abseil-cpp
       bsd3 # mozc, breakpad, gtest, gyp, japanese-usage-dictionary, protobuf
       mit # wil
+      naist-2003 # IPAdic
       publicDomain # src/data/test/stress_test, Okinawa dictionary
       unicode-30 # src/data/unicode, breakpad
     ];
