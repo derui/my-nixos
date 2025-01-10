@@ -30,7 +30,6 @@ in
       ./modules/nix.nix
       ./modules/music.nix
       ./modules/ollama.nix
-      ./modules/tabby.nix
       ./modules/qmk.nix
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
@@ -192,26 +191,6 @@ in
       ln -sfn ${pkgs.bash}/bin/bash /bin/.bash.tmp
       mv /bin/.bash.tmp /bin/bash
     '';
-  };
-
-  # enable tabby with custom package
-  services.tabby = {
-    enable = true;
-    acceleration = "vulkan";
-
-    settings = {
-      model = {
-        completion = {
-          http = {
-            kind = "ollama/completion";
-            model_name = "codellama:7b-code-q4_1";
-            api_endpoint = "http://localhost:11434";
-            prompt_template = "<PRE> {prefix} <SUF>{suffix} <MID>";
-          };
-        };
-
-      };
-    };
   };
 
   # Copy the NixOS configuration file and link it from the resulting system

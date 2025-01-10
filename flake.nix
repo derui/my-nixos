@@ -50,7 +50,6 @@
         (import emacs-overlay)
         fenix.overlays.default
         (import ./overlays/gtk3)
-        (import ./overlays/tabby)
       ];
 
       # System types to support.

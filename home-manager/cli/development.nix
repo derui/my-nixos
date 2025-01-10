@@ -32,9 +32,6 @@ in
 
     # utility
     pre-commit
-    tabby-agent
-
+    aider-chat
   ];
-
-  # tabby agentの設定にはtokenが必要になるので、一旦は何もしないことにする。
 }
