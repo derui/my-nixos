@@ -30,6 +30,12 @@
       id = 0;
       isDefault = true;
 
+      settings = {
+        # Performance settings
+        "gfx.webrender.all" = true; # Force enable GPU acceleration
+        "media.ffmpeg.vaapi.enabled" = true;
+      };
+
       search.force = true;
       search.engines = {
         "Nix Packages" = {

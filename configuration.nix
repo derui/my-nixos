@@ -145,7 +145,20 @@ in
     lshw
   ];
   # Set the default editor to vim
-  environment.variables.EDITOR = "vim";
+  environment.variables = {
+    EDITOR = "vim";
+
+    # AMDでva-apiを利用するために必要な設定をいくつか追加する。
+    # Necessary to correctly enable va-api (video codec hardware
+    # acceleration). If this isn't set, the libvdpau backend will be
+    # picked, and that one doesn't work with most things, including
+    # Firefox.
+    LIBVA_DRIVER_NAME = "radeonsi";
+
+    # Required to use va-api it in Firefox. See
+    # https://github.com/elFarto/nvidia-vaapi-driver/issues/96
+    MOZ_DISABLE_RDD_SANDBOX = "1";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
