@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
@@ -50,6 +50,7 @@
         (import emacs-overlay)
         fenix.overlays.default
         (import ./overlays/gtk3)
+        (import ./overlays/rocm-llvm-libcxx)
       ];
 
       # System types to support.
