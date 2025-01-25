@@ -50,7 +50,7 @@
         (import emacs-overlay)
         fenix.overlays.default
         (import ./overlays/gtk3)
-        (import ./overlays/rocm-llvm-libcxx)
+        (import ./overlays/ardour)
       ];
 
       # System types to support.
