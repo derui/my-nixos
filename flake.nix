@@ -51,6 +51,7 @@
         fenix.overlays.default
         (import ./overlays/gtk3)
         (import ./overlays/ardour)
+        (import ./overlays/rocblas)
       ];
 
       # System types to support.
@@ -77,6 +78,7 @@
           # ここで指定しておかないと、OS configurationの方にも反映できない。
           config = {
             allowUnfree = true;
+            rocmSupport = true;
           };
         }
       );

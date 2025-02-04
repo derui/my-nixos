@@ -45,6 +45,7 @@ in
     mypkg.udev-gothic
     mypkg.udev-gothic-nf
     mypkg.moralerspace-nf
+    mypkg.moralerspace-hw
     mypkg.explex
   ];
 }

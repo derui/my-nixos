@@ -2,16 +2,15 @@
 {
   services.ollama = {
     enable = true;
-    package = pkgs.ollama-rocm;
+    acceleration = "rocm";
     group = "ollama";
 
     environmentVariables = {
-      HCC_AMDGPU_TARGET = "gfx1100"; # used to be necessary, but doesn't seem to anymore
+      HSA_OVERRIDE_GFX_VERSION = "11.0.0";
       OLLAMA_FLASH_ATTENTION = "1";
     };
     loadModels = [
       "qwen2.5-coder:14b-base-q8_0"
     ];
-    rocmOverrideGfx = "11.0.0";
   };
 }
