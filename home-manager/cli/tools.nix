@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  useLLM,
   ...
 }:
 let
@@ -32,7 +31,7 @@ in
     direnv
     zoxide # move directory
     just # task runner
-    s3fs
+    mountpoint-s3
 
     # nix related
     nix-output-monitor
