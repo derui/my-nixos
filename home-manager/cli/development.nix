@@ -27,7 +27,7 @@ in
     python312
 
     # nodejs
-    nodejs-slim_22
+    nodejs_22
     nodePackages.pnpm
 
     # nix
