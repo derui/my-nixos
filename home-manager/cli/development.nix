@@ -20,6 +20,9 @@ in
     ])
     rust-analyzer-nightly
 
+    # golang
+    go
+
     # python
     python312
 
