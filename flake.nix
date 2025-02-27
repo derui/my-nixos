@@ -49,7 +49,6 @@
       overlays = [
         (import emacs-overlay)
         fenix.overlays.default
-        (import ./overlays/gtk3)
         (import ./overlays/ardour)
         (import ./overlays/rocblas)
       ];

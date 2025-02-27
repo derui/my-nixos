@@ -30,6 +30,7 @@ in
       ./modules/music.nix
       ./modules/ollama.nix
       ./modules/qmk.nix
+      (import ./modules/syncthing.nix { inherit pkgs user; })
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
       common-cpu-amd
