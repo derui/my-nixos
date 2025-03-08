@@ -31,6 +31,7 @@ in
       ./modules/ollama.nix
       ./modules/qmk.nix
       (import ./modules/syncthing.nix { inherit pkgs user; })
+      ./modules/podman.nix
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
       common-cpu-amd
