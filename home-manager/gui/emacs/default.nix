@@ -8,13 +8,13 @@ let
 in
 {
   home.packages = with pkgs; [
-    pkgs.emacs-pgtk
+    pkgs.emacs-unstable-pgtk
     # lspを高速化するための拡張
     emacs-lsp-booster
   ];
 
   # Use unstable emacs
-  programs.emacs.package = pkgs.emacs-pgtk;
+  programs.emacs.package = pkgs.emacs-unstable-pgtk;
 
   # installはgitのcheckoutをそのまま設定することで確立する。
   xdg.configFile = {
