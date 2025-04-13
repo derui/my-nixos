@@ -10,7 +10,7 @@
   ...
 }:
 let
-  linuxKernel = pkgs.linuxKernel.packages.linux_6_12;
+  linuxKernel = pkgs.linuxKernel.packages.linux_6_13;
   myKernelModules = import ./pkgs/kernel { inherit pkgs linuxKernel; };
 in
 {
@@ -47,13 +47,16 @@ in
   # Define on which hard drive you want to install Grub.
   #boot.loader.grub.device = "nodev"; # or "nodev" for efi only
   boot.loader.systemd-boot.enable = true;
-  boot.kernelModules = [ "nl80211" ];
+  boot.kernelModules = [
+    "nl80211"
+    "rtl8126"
+  ];
 
   # use latest kernel
 
   boot.kernelPackages = linuxKernel;
   boot.extraModulePackages = [
-    myKernelModules.rtl8126
+    # myKernelModules.rtl8126
     linuxKernel.xpadneo
   ];
 
