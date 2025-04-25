@@ -16,6 +16,9 @@
         "my-phone" = {
           id = "BIW62GN-J7JWHF5-IRX3C3B-MXXNZLE-56MXRYN-WIIYCTI-RF2WJZD-CPFR5QG";
         };
+        "NOTE2" = {
+          id = "GTAC5U5-XLBY674-UMUNUFF-3W2CNXO-CKC672X-HE5USUG-PNH2PYF-RIL3SQF";
+        };
       };
 
       folders = {
