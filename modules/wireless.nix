@@ -9,12 +9,12 @@
 
   # nscdはそもそもdeprecatedということなので利用しない
   services.nscd = {
-    enable = true;
+    enable = false;
   };
 
   services.resolved = {
     enable = true;
-    dnssec = "true";
+    dnssec = "allow-downgrade";
     domains = [ "~." ];
     fallbackDns = [
       "1.1.1.1"
