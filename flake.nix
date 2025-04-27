@@ -50,6 +50,7 @@
         (import emacs-overlay)
         fenix.overlays.default
         (import ./overlays/ardour)
+        (import ./overlays/rocblas)
       ];
 
       # System types to support.
