@@ -1,15 +1,15 @@
 { config, ... }:
 {
-  networking.nameservers = [
+  networking.networkmanager.insertNameservers = [
     "1.1.1.1"
     "1.0.0.1"
     "2606:4700:4700::1111"
     "2606:4700:4700::1001"
   ];
+  networking.resolvconf.dnsExtensionMechanism = false;
 
-  # nscdはそもそもdeprecatedということなので利用しない
   services.nscd = {
-    enable = false;
+    enable = true;
   };
 
   services.resolved = {
@@ -22,6 +22,6 @@
       "2606:4700:4700::1111"
       "2606:4700:4700::1001"
     ];
-    dnsovertls = "true";
+    dnsovertls = "opportunistic";
   };
 }
