@@ -18,7 +18,7 @@ in
     pavucontrol
 
     # video
-    celluloid
+    vlc
 
     # wayland misc
     wl-clipboard
