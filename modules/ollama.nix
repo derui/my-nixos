@@ -1,7 +1,8 @@
 { pkgs, ... }:
 {
   services.ollama = {
-    enable = true;
+    # re-enable after https://github.com/NixOS/nixpkgs/pull/418461 is merged
+    #enable = true;
     acceleration = "rocm";
     group = "ollama";
 
