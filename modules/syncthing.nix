@@ -24,7 +24,10 @@
       folders = {
         "Org" = {
           path = "/home/${user}/Documents";
-          devices = [ "my-phone" ];
+          devices = [
+            "my-phone"
+            "NOTE2"
+          ];
         };
       };
     };
