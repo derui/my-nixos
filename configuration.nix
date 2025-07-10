@@ -10,7 +10,7 @@
   ...
 }:
 let
-  linuxKernel = pkgs.linuxKernel.packages.linux_6_14;
+  linuxKernel = pkgs.linuxKernel.packages.linux_6_15;
   myKernelModules = import ./pkgs/kernel { inherit pkgs linuxKernel; };
 in
 {
