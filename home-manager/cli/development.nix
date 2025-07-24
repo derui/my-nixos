@@ -35,6 +35,5 @@ in
 
     # utility
     pre-commit
-    aider-chat
   ];
 }
