@@ -10,6 +10,9 @@ in
     delta
     ghq
 
+    # podman
+    podman-compose
+
     # Rust
     (fenix.stable.withComponents [
       "cargo"

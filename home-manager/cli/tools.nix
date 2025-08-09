@@ -33,6 +33,9 @@ in
     just # task runner
     mountpoint-s3
 
+    # multimedia
+    mpv
+
     # nix related
     nix-output-monitor
     nh # for daily nix development
