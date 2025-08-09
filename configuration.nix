@@ -14,30 +14,29 @@ let
   myKernelModules = import ./pkgs/kernel { inherit pkgs linuxKernel; };
 in
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
 
-      # system modules
-      ./modules/wireless.nix
-      ./modules/gpu.nix
-      ./modules/bluetooth.nix
-      ./modules/desktop/hyprland.nix
-      ./modules/desktop/fcitx.nix
-      ./modules/desktop/steam.nix
-      ./modules/nix.nix
-      ./modules/music.nix
-      ./modules/ollama.nix
-      ./modules/qmk.nix
-      (import ./modules/syncthing.nix { inherit pkgs user; })
-      ./modules/podman.nix
-    ]
-    ++ (with inputs.nixos-hardware.nixosModules; [
-      common-cpu-amd
-      common-gpu-amd
-      common-pc-ssd
-    ]);
+    # system modules
+    ./modules/wireless.nix
+    ./modules/gpu.nix
+    ./modules/bluetooth.nix
+    ./modules/desktop/hyprland.nix
+    ./modules/desktop/fcitx.nix
+    ./modules/desktop/steam.nix
+    ./modules/nix.nix
+    ./modules/music.nix
+    ./modules/ollama.nix
+    ./modules/qmk.nix
+    (import ./modules/syncthing.nix { inherit pkgs user; })
+    ./modules/podman.nix
+  ]
+  ++ (with inputs.nixos-hardware.nixosModules; [
+    common-cpu-amd
+    common-gpu-amd
+    common-pc-ssd
+  ]);
   # Use the GRUB 2 boot loader.
   #boot.loader.grub.enable = true;
   #boot.loader.grub.efiSupport = true;
@@ -185,7 +184,7 @@ in
 
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd Hyprland";
+        command = "${pkgs.tuigreet}/bin/tuigreet --cmd Hyprland";
       };
     };
   };
