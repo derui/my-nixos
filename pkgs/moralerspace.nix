@@ -6,21 +6,21 @@
   ...
 }:
 let
-  version = "1.0.2";
-  sha256 = "sha256-vBpHwtVxsojiM/B6+Ntwh9WX3gyklHpt1GHsE5QFTjc=";
+  version = "2.0.0";
+  sha256 = "sha256-RWpJt59Yvt/nhu6xeyR3eJKRaw+477ZXAPztt7Clt7Q=";
 in
 stdenvNoCC.mkDerivation {
-  pname = "moralerspace-nf";
+  pname = "moralerspace";
   inherit version;
 
   src = fetchzip {
-    url = "https://github.com/yuru7/moralerspace/releases/download/v1.0.2/MoralerspaceNF_v1.0.2.zip";
+    url = "https://github.com/yuru7/moralerspace/releases/download/v2.0.0/Moralerspace_v2.0.0.zip";
     hash = sha256;
     stripRoot = true;
   };
 
   installPhase = ''
-    install -m444 -Dt $out/share/fonts/truetype/moralerspace-nf *.ttf
+    install -m444 -Dt $out/share/fonts/truetype/moralerspace *.ttf
   '';
 
   passthru.tests.noto-fonts = nixosTests.noto-fonts;

@@ -6,15 +6,15 @@
   ...
 }:
 let
-  version = "1.1.0";
-  sha256 = "sha256-V02Lp7bWKjUGhFJ5fOTVrk74ei0T5UtITQeHZ4OHytw=";
+  version = "2.0.0";
+  sha256 = "sha256-RWpJt59Yvt/nhu6xeyR3eJKRaw+477ZXAPztt7Clt7Q=";
 in
 stdenvNoCC.mkDerivation {
   pname = "moralerspace-hw";
   inherit version;
 
   src = fetchzip {
-    url = "https://github.com/yuru7/moralerspace/releases/download/v1.1.0/MoralerspaceHW_v1.1.0.zip";
+    url = "https://github.com/yuru7/moralerspace/releases/download/v2.0.0/Moralerspace_v2.0.0.zip";
     hash = sha256;
     stripRoot = true;
   };

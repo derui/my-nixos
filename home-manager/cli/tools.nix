@@ -43,7 +43,7 @@ in
     # fonts
     mypkg.udev-gothic
     mypkg.udev-gothic-nf
-    mypkg.moralerspace-nf
+    mypkg.moralerspace
     mypkg.moralerspace-hw
     mypkg.explex
   ];

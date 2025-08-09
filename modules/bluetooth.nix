@@ -12,7 +12,7 @@
         JustWorksRepairing = "confirm";
         UserspaceHID = true;
         ClassicBondedOnly = false;
-        LEAutoSecurity = false;
+        LEAutoSecurity = true;
       };
 
       LE = {

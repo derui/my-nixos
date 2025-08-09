@@ -4,7 +4,7 @@ pkgs: {
   noto-fonts-cjk-serif = pkgs.callPackage ./noto-fonts-cjk-serif.nix { };
   udev-gothic = pkgs.callPackage ./udev-gothic.nix { };
   udev-gothic-nf = pkgs.callPackage ./udev-gothic-nf.nix { };
-  moralerspace-nf = pkgs.callPackage ./moralerspace-nf.nix { };
+  moralerspace = pkgs.callPackage ./moralerspace.nix { };
   moralerspace-hw = pkgs.callPackage ./moralerspace-hw.nix { };
   fcitx5-mozc = pkgs.callPackage ./fcitx5-mozc.nix { };
   tuna-lv2 = pkgs.callPackage ./tuna-lv2.nix { };
