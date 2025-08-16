@@ -4,6 +4,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixos-wsl = {
+       url = "github:nix-community/NixOS-WSL/main";
+       inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -43,6 +47,7 @@
       emacs-overlay,
       fenix,
       dotfiles,
+      nixos-wsl,
       ...
     }@inputs:
     let
@@ -117,9 +122,30 @@
             inherit inputs user;
           };
           modules = [
-            ./configuration.nix
+            ./configurations/ereshkigal.nix
           ];
         };
+      nixosConfigurations.nixos = 
+        let
+          system = "x86_64-linux";
+          user = "derui";
+        in
+        nixpkgs.lib.nixosSystem {
+        inherit system;
+        pkgs = nixpkgsFor.${system};
+
+          specialArgs = {
+            inherit inputs user;
+          };
+        modules = [
+          nixos-wsl.nixosModules.default
+          {
+            system.stateVersion = "25.05";
+            wsl.enable = true;
+          }
+          ./configurations/wsl.nix
+        ];
+      };
       homeConfigurations."derui@ereshkigal" =
         let
           system = "x86_64-linux";
@@ -138,8 +164,8 @@
           ];
         };
 
-      # My old desktop
-      homeConfigurations."derui@my-gentoo" =
+      # My WSL
+      homeConfigurations."derui@nixos" =
         let
           system = "x86_64-linux";
           user = "derui";
@@ -153,6 +179,7 @@
           };
           modules = [
             ./home.nix
+            dotfiles.nixosModules.default
           ];
         };
     };

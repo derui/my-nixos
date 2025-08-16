@@ -11,26 +11,26 @@
 }:
 let
   linuxKernel = pkgs.linuxKernel.packages.linux_6_15;
-  myKernelModules = import ./pkgs/kernel { inherit pkgs linuxKernel; };
+  myKernelModules = import ../pkgs/kernel { inherit pkgs linuxKernel; };
 in
 {
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+    ../hardware-configuration.nix
 
     # system modules
-    ./modules/wireless.nix
-    ./modules/gpu.nix
-    ./modules/bluetooth.nix
-    ./modules/desktop/hyprland.nix
-    ./modules/desktop/fcitx.nix
-    ./modules/desktop/steam.nix
-    ./modules/nix.nix
-    ./modules/music.nix
-    ./modules/ollama.nix
-    ./modules/qmk.nix
-    (import ./modules/syncthing.nix { inherit pkgs user; })
-    ./modules/podman.nix
+    ../modules/wireless.nix
+    ../modules/gpu.nix
+    ../modules/bluetooth.nix
+    ../modules/desktop/hyprland.nix
+    ../modules/desktop/fcitx.nix
+    ../modules/desktop/steam.nix
+    ../modules/nix.nix
+    ../modules/music.nix
+    ../modules/ollama.nix
+    ../modules/qmk.nix
+    (import ../modules/syncthing.nix { inherit pkgs user; })
+    ../modules/podman.nix
   ]
   ++ (with inputs.nixos-hardware.nixosModules; [
     common-cpu-amd
