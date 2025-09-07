@@ -22,7 +22,7 @@ Locate modules for home-manager and daily use programs.
 ~modules~ manages *system-global* managemnet. So it is used for NixOS only.
 
 ** pkgs
-~pkgs~ defines private packages. Such as kernel modules, custm fcitx5, or fonts to use with Emacs/Terminal.
+~pkgs~ defines private packages. Such as kernel modules, custom fcitx5, or fonts to use with Emacs/Terminal.
 
 * develop
 

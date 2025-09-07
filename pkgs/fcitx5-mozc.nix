@@ -1,7 +1,7 @@
 # This file from https://github.com/NixOS/nixpkgs/pull/346680
 # should update after merged it.
 {
-  bazel_6,
+  bazel_7,
   buildBazelPackage,
   fcitx5,
   fetchFromGitHub,
@@ -47,7 +47,7 @@ buildBazelPackage {
     sed -i -e 's|^\(LINUX_MOZC_SERVER_DIR = \).\+|\1"${mozc}/lib/mozc"|' src/config.bzl
   '';
 
-  bazel = bazel_6;
+  bazel = bazel_7;
   removeRulesCC = false;
   dontAddBazelOpts = true;
 
@@ -67,9 +67,11 @@ buildBazelPackage {
   fetchAttrs = {
     preInstall = ''
       rm -rf $bazelOut/external/fcitx5
+      # Remove reference to the host platform
+      rm -rv "$bazelOut"/external/host_platform
     '';
 
-    sha256 = "sha256-rrRp/v1pty7Py80/6I8rVVQvkeY72W+nlixUeYkjp+o=";
+    hash = "sha256-nFPGhZWvzzBOSeIa35XQbK6dHgJJSYum/5X8eAA0uCY=";
   };
 
   preConfigure = ''

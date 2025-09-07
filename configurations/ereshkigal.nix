@@ -10,7 +10,7 @@
   ...
 }:
 let
-  linuxKernel = pkgs.linuxKernel.packages.linux_6_15;
+  linuxKernel = pkgs.linuxKernel.packages.linux_6_16;
   myKernelModules = import ../pkgs/kernel { inherit pkgs linuxKernel; };
 in
 {
@@ -116,6 +116,7 @@ in
       "networkmanager"
       "ollama"
       "wheel" # Enable ‘sudo’ for the user.
+      "kvm" # Enable para-virtualization
     ];
   };
 

@@ -5,12 +5,12 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixos-wsl = {
-       url = "github:nix-community/NixOS-WSL/main";
-       inputs.nixpkgs.follows = "nixpkgs-stable";
+      url = "github:nix-community/NixOS-WSL/main";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -90,7 +90,7 @@
       # 自作のpackageをoutputに追加する
       packages = forAllSystems (system: import ./pkgs inputs.nixpkgs.legacyPackages.${system});
 
-      # define devShell for aysstem with packages
+      # define devShell for a system with packages
       devShells = forAllSystems (
         system:
         let
@@ -125,27 +125,27 @@
             ./configurations/ereshkigal.nix
           ];
         };
-      nixosConfigurations.nixos = 
+      nixosConfigurations.nixos =
         let
           system = "x86_64-linux";
           user = "derui";
         in
         nixpkgs.lib.nixosSystem {
-        inherit system;
-        pkgs = nixpkgsFor.${system};
+          inherit system;
+          pkgs = nixpkgsFor.${system};
 
           specialArgs = {
             inherit inputs user;
           };
-        modules = [
-          nixos-wsl.nixosModules.default
-          {
-            system.stateVersion = "25.05";
-            wsl.enable = true;
-          }
-          ./configurations/wsl.nix
-        ];
-      };
+          modules = [
+            nixos-wsl.nixosModules.default
+            {
+              system.stateVersion = "25.05";
+              wsl.enable = true;
+            }
+            ./configurations/wsl.nix
+          ];
+        };
       homeConfigurations."derui@ereshkigal" =
         let
           system = "x86_64-linux";
