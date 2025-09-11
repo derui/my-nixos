@@ -117,6 +117,7 @@ in
       "ollama"
       "wheel" # Enable ‘sudo’ for the user.
       "kvm" # Enable para-virtualization
+      "libvirtd"
     ];
   };
 
@@ -173,6 +174,9 @@ in
   # };
 
   # List services that you want to enable:
+
+  # Enable libvirt
+  virtualisation.libvirtd.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = false;
