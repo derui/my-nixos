@@ -58,6 +58,9 @@ in
     # myKernelModules.rtl8126
     linuxKernel.xpadneo
   ];
+  boot.extraModprobeConfig = ''
+    options snd_usb_audio index=0
+  '';
 
   networking.hostName = "ereshkigal"; # Define your hostname.
   # Pick only one of the below networking options.
