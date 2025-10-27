@@ -8,6 +8,7 @@ in
     enable = true;
     type = "fcitx5";
 
+    fcitx5.waylandFrontend = true;
     fcitx5.addons = with pkgs; [
       myPackages.fcitx5-mozc
       fcitx5-gtk
