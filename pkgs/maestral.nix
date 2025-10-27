@@ -12,7 +12,6 @@
   desktop-notifier,
   dropbox,
   fasteners,
-  importlib-metadata,
   keyring,
   keyrings-alt,
   packaging,
