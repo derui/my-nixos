@@ -4,7 +4,7 @@
   ...
 }:
 let
-  mypkg = inputs.self.outputs.packages.${pkgs.system};
+  mypkg = inputs.self.outputs.packages.${pkgs.stdenv.hostPlatform.system};
 in
 {
   home.packages = with pkgs; [

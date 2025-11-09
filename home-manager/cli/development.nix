@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }:
 let
-  mypkgs = inputs.self.outputs.packages.${pkgs.system};
+  mypkgs = inputs.self.outputs.packages.${pkgs.stdenv.hostPlatform.system};
 in
 {
   # fenixを導入しているので、これをそのまま入れる
