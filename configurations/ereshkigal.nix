@@ -152,6 +152,9 @@ in
     nfs-utils
     lm_sensors
     lshw
+
+    # for hyprland
+    hyprpaper
   ];
   # Set the default editor to vim
   environment.variables = {
