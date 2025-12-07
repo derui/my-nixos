@@ -13,7 +13,7 @@ in
     emacs-lsp-booster
   ];
 
-  # Use unstable emacs
+  # Use git emacs
   programs.emacs.package = pkgs.emacs-git-pgtk;
 
   # installはgitのcheckoutをそのまま設定することで確立する。
