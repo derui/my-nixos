@@ -11,7 +11,6 @@
 }:
 let
   linuxKernel = pkgs.linuxKernel.packages.linux_6_17;
-  myKernelModules = import ../pkgs/kernel { inherit pkgs linuxKernel; };
 in
 {
   imports = [
@@ -27,7 +26,6 @@ in
     ../modules/desktop/steam.nix
     ../modules/nix.nix
     ../modules/music.nix
-    ../modules/ollama.nix
     ../modules/qmk.nix
     (import ../modules/syncthing.nix { inherit pkgs user; })
     ../modules/podman.nix

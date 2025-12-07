@@ -29,7 +29,6 @@
       "audio"
       "game"
       "networkmanager"
-      "ollama"
       "wheel" # Enable ‘sudo’ for the user.
     ];
   };
