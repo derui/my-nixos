@@ -1,10 +1,21 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 let
   my-dot-emacs = builtins.fetchGit {
     url = "https://github.com/derui/dot.emacs.d";
     rev = "1ac3546ae1c22e0c397aa9b899abb0aefd8905d3";
   };
-  treesit = (pkgs.emacsPackagesFor pkgs.emacs-git).treesit-grammars.with-all-grammars;
+  # temporary avoid broken parser
+  treesit = (pkgs.emacsPackagesFor pkgs.emacs-git).treesit-grammars.with-grammars (
+    p:
+    # `p` is attribute of package, treesit-grammars. filterAttrs filter `attributes`, but it a set.
+    # with-grammars requires a list of packages, so use attrValues to convert it.
+    builtins.attrValues (lib.filterAttrs (_: g: !(g.meta.broken or false)) p)
+  );
 in
 {
   home.packages = with pkgs; [

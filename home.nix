@@ -3,6 +3,7 @@
   user,
   useLLM,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -11,8 +12,22 @@
 
   # imports software
   imports = [
-    (import ./home-manager/gui { inherit inputs pkgs useLLM; })
-    (import ./home-manager/cli { inherit inputs pkgs useLLM; })
+    (import ./home-manager/gui {
+      inherit
+        inputs
+        pkgs
+        useLLM
+        lib
+        ;
+    })
+    (import ./home-manager/cli {
+      inherit
+        inputs
+        pkgs
+        useLLM
+        lib
+        ;
+    })
   ];
 
   # home manager version

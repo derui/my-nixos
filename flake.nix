@@ -17,7 +17,8 @@
     # Emacs Head
     emacs-overlay = {
       # for build error avoidance. It seems that Emacs's mirror has some problems
-      url = "github:nix-community/emacs-overlay?rev=7be781d707a05599420a06cdcc3a3a793b17fc4d";
+      #url = "github:nix-community/emacs-overlay?rev=7be781d707a05599420a06cdcc3a3a793b17fc4d";
+      url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

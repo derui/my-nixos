@@ -67,7 +67,7 @@
             }
           ];
         };
-        "Bing".metaData.hidden = true;
+        "bing".metaData.hidden = true;
       };
     };
   };
