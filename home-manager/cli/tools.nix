@@ -33,6 +33,9 @@ in
     just # task runner
     mountpoint-s3
 
+    # latex
+    texliveBasic
+    texlivePackages.dvipng
     # multimedia
     mpv
 

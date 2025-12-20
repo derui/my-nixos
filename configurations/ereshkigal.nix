@@ -56,10 +56,9 @@ in
     # myKernelModules.rtl8126
     linuxKernel.xpadneo
   ];
-  # boot.extraModprobeConfig = ''
-  #   options snd_usb_audio index=1
-  #   options snd_hda_intel index=0
-  # '';
+  boot.kernelParams = [
+    "btusb.enable_autosuspend=0"
+  ];
 
   networking.hostName = "ereshkigal"; # Define your hostname.
   # Pick only one of the below networking options.
