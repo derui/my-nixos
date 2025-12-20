@@ -9,4 +9,5 @@ pkgs: {
   fcitx5-mozc = pkgs.callPackage ./fcitx5-mozc.nix { };
   tuna-lv2 = pkgs.callPackage ./tuna-lv2.nix { };
   explex = pkgs.callPackage ./explex.nix { };
+  lsp-proxy = pkgs.callPackage ./lsp-proxy.nix { };
 }

@@ -4,39 +4,42 @@ let
 in
 {
   # fenixを導入しているので、これをそのまま入れる
-  home.packages = with pkgs; [
-    # common
-    git
-    delta
-    ghq
+  home.packages =
+    with pkgs;
+    [
+      # common
+      git
+      delta
+      ghq
 
-    # podman
-    podman-compose
+      # podman
+      podman-compose
 
-    # Rust
-    (fenix.stable.withComponents [
-      "cargo"
-      "clippy"
-      "rust-src"
-      "rustc"
-      "rustfmt"
-    ])
-    rust-analyzer-nightly
+      # Rust
+      (fenix.stable.withComponents [
+        "cargo"
+        "clippy"
+        "rust-src"
+        "rustc"
+        "rustfmt"
+      ])
+      rust-analyzer-nightly
 
-    # golang
-    go
+      # golang
+      go
 
-    # python
-    python312
+      # python
+      python312
 
-    # nodejs
-    nodejs_22
-    nodePackages.pnpm
+      # nodejs
+      nodejs_22
+      nodePackages.pnpm
 
-    # nix
-    nixd
+      # nix
+      nixd
 
-    # utility
-    pre-commit
-  ];
+      # utility
+      pre-commit
+    ]
+    ++ [ mypkgs.lsp-proxy ];
 }
