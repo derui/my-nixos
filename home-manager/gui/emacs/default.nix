@@ -7,7 +7,7 @@
 let
   my-dot-emacs = builtins.fetchGit {
     url = "https://github.com/derui/dot.emacs.d";
-    rev = "8fd06f2e5873514ae49aa85e2522270feb436928";
+    rev = "da9c96960294dc5ac41e351bfdf5469c8f546650";
   };
 
   # temporary avoid broken parser
@@ -23,6 +23,14 @@ in
     pkgs.emacs-git-pgtk
     # lspを高速化するための拡張
     emacs-lsp-booster
+
+    # jinx
+    enchant
+    gcc
+    pkg-config
+    cmake
+    libvterm
+    glibc
   ];
 
   # Use git emacs
