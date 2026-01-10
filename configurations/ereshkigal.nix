@@ -201,7 +201,11 @@ in
     ];
     settings = {
       background = {
-        path = "/home/derui/Documents/wallpapers/wallhaven-x6128o.jpg";
+        # wallpaper from net
+        path = builtins.fetchurl {
+          url = "https://w.wallhaven.cc/full/x6/wallhaven-x6128o.jpg";
+          sha256 = "sha256:1nn91c60hpwvsvkazx26pz7xfypc63n79xj93wip47yv0x32rbkh";
+        };
       };
 
       commands = {
