@@ -38,11 +38,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1767610069,
-        "narHash": "sha256-O/W7bM9fgN2NSJxY/BwwBtdDZ9tZ6tb6IKlum30YMeQ=",
+        "lastModified": 1768008972,
+        "narHash": "sha256-SCwYasFHQYk5e9FqSL457iW7TMPQxQKXVJQmcCTlLzI=",
         "owner": "derui",
         "repo": "dotfiles",
-        "rev": "5533362547a59a0e8b3a949c21d87380e77631db",
+        "rev": "a4cf5a19541398662c9ac448d08d6adfbff4c876",
         "type": "github"
       },
       "original": {

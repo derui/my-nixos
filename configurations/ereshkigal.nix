@@ -188,12 +188,24 @@ in
   # enable display manager
   services.xserver.enable = true;
 
+  # enable greetd and greeter
   services.greetd = {
     enable = true;
-
+  };
+  programs.regreet = {
+    enable = true;
+    cageArgs = [
+      "-s"
+      "-m"
+      "last"
+    ];
     settings = {
-      default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --cmd start-hyprland";
+      background = {
+        path = "/home/derui/Documents/wallpapers/wallhaven-x6128o.jpg";
+      };
+
+      commands = {
+        Hyprland = [ "start-hyprland" ];
       };
     };
   };
