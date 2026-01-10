@@ -193,7 +193,7 @@ in
 
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --cmd Hyprland";
+        command = "${pkgs.tuigreet}/bin/tuigreet --cmd start-hyprland";
       };
     };
   };

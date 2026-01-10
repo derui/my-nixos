@@ -14,7 +14,7 @@ Locate modules for home-manager and daily use programs.
 
 - *cli* :: management for CLI in daily use, such as git, starship, fish and more.
 - *cli/fish* :: Fish configuration files.
-- *gui* :: managemtn for GUI applications. Such as hyprland on Linux.
+- *gui* :: management for GUI applications. Such as hyprland on Linux.
 - *gui/emacs* :: My main editor is Emacs, so I manage it in nix.
 
 
