@@ -22,6 +22,7 @@ in
     procs # ps alternative
     pv # for monitor
     starship
+    go-task
 
     # misc
     which
