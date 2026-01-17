@@ -26,6 +26,7 @@ in
 
     # jinx
     enchant
+    enchant.dev
     gcc
     pkg-config
     cmake
