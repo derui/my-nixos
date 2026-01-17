@@ -25,13 +25,18 @@ in
     emacs-lsp-booster
 
     # jinx
-    enchant
-    enchant.dev
+    enchant2
+    enchant2.dev
     gcc
     pkg-config
     cmake
     libvterm
     glibc
+  ];
+  # headerとかをinstallするための設定
+  home.extraOutputsToInstall = [
+    "dev"
+    "lib"
   ];
 
   # Use git emacs
