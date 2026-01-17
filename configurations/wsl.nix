@@ -43,7 +43,7 @@
     fish
 
     # for emacs
-    enchant2
+    enchant_2
     nuspell
     hunspellDicts.en_US-large
   ];

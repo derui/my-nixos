@@ -25,8 +25,6 @@ in
     emacs-lsp-booster
 
     # jinx
-    enchant2
-    enchant2.dev
     gcc
     pkg-config
     cmake
