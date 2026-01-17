@@ -16,6 +16,7 @@ in
     ripgrep # fast grep altrenative
     jq # JSON processor
     eza # A modern replacement for `ls`
+    bat # A modern replacement for `cat/less`
     fzf # command-line fuzzy
     fd # find alternative
     procs # ps alternative
