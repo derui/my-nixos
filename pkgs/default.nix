@@ -10,4 +10,5 @@ pkgs: {
   tuna-lv2 = pkgs.callPackage ./tuna-lv2.nix { };
   explex = pkgs.callPackage ./explex.nix { };
   lsp-proxy = pkgs.callPackage ./lsp-proxy.nix { };
+  claude-code = pkgs.callPackage ./claude-code.nix { };
 }

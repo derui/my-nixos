@@ -41,5 +41,8 @@ in
       # utility
       pre-commit
     ]
-    ++ [ mypkgs.lsp-proxy ];
+    ++ [
+      mypkgs.lsp-proxy
+      mypkgs.claude-code
+    ];
 }

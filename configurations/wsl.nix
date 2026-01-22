@@ -11,7 +11,6 @@
 }:
 {
   imports = [
-
     ../modules/nix.nix
   ];
 
