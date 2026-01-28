@@ -7,7 +7,7 @@
 let
   my-dot-emacs = fetchGit {
     url = "https://github.com/derui/dot.emacs.d";
-    rev = "3deaa7ca0fe1864abda3ca1fbd7ba67749899d81";
+    rev = "63e198364065e847d698c4f68aa69b46e03817ad";
   };
 
   # temporary avoid broken parser
@@ -28,7 +28,6 @@ in
     gcc
     pkg-config
     cmake
-    libvterm
     glibc
   ];
   # headerとかをinstallするための設定

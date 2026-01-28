@@ -55,6 +55,7 @@ in
   boot.extraModulePackages = [
     # myKernelModules.rtl8126
     linuxKernel.xpadneo
+    linuxKernel.openrazer
   ];
   boot.kernelParams = [
     "btusb.enable_autosuspend=0"
