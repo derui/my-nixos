@@ -56,7 +56,6 @@
       overlays = [
         (import emacs-overlay)
         fenix.overlays.default
-        (import ./overlays/maestral)
       ];
 
       # System types to support.
