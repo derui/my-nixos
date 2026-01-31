@@ -4,8 +4,15 @@
   lib,
   stdenv,
   fetchurl,
-  patchelf,
-  glibc,
+  procps,
+  ripgrep,
+  bubblewrap,
+  socat,
+  installShellFiles,
+  makeBinaryWrapper,
+  autoPatchelfHook,
+  writableTmpDirAsHomeHook,
+  versionCheckHook,
 }:
 
 let
@@ -34,36 +41,50 @@ stdenv.mkDerivation {
   };
 
   dontUnpack = true;
-  dontPatchELF = true; # We handle patching ourselves
+  dontBuild = true;
   dontStrip = true; # Stripping corrupts the Bun embedded payload
 
-  nativeBuildInputs = [ patchelf ];
+  nativeBuildInputs = [
+    installShellFiles
+    makeBinaryWrapper
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isElf [ autoPatchelfHook ];
 
-  buildPhase = ''
-    runHook preBuild
-
-    # Copy and patch in build dir (writable)
-    cp $src claude
-    chmod u+w,+x claude
-
-    # Only patch the interpreter, nothing else
-    patchelf --set-interpreter "${glibc}/lib/ld-linux-x86-64.so.2" claude
-
-    # Verify the Bun trailer is still intact
-    if ! tail -c 20 claude | grep -q "Bun!"; then
-      echo "ERROR: Bun trailer was corrupted by patchelf!"
-      exit 1
-    fi
-
-    runHook postBuild
-  '';
+  strictDeps = true;
 
   installPhase = ''
     runHook preInstall
-    mkdir -p $out/bin
-    cp claude $out/bin/claude
+
+    installBin $src
+
+    wrapProgram $out/bin/claude \
+      --set DISABLE_AUTOUPDATER 1 \
+      --set USE_BUILTIN_RIPGREP 0 \
+      --prefix PATH : ${
+        lib.makeBinPath (
+          [
+            # claude-code uses [node-tree-kill](https://github.com/pkrumins/node-tree-kill) which requires procps's pgrep(darwin) or ps(linux)
+            procps
+            # https://code.claude.com/docs/en/troubleshooting#search-and-discovery-issues
+            ripgrep
+          ]
+          # the following packages are required for the sandbox to work (Linux only)
+          ++ lib.optionals stdenv.hostPlatform.isLinux [
+            bubblewrap
+            socat
+          ]
+        )
+      }
     runHook postInstall
   '';
+
+  doInstallCheck = true;
+  nativeInstallCheckInputs = [
+    writableTmpDirAsHomeHook
+    versionCheckHook
+  ];
+  versionCheckKeepEnvironment = [ "HOME" ];
+  versionCheckProgramArg = "--version";
 
   meta = with lib; {
     description = "Claude Code - AI coding assistant in your terminal";
