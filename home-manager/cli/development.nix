@@ -42,7 +42,7 @@ in
       nixd
 
       # utility
-      pre-commit
+      prek
     ]
     ++ [
       mypkgs.lsp-proxy
