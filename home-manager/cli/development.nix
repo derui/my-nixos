@@ -25,6 +25,9 @@ in
       ])
       rust-analyzer-nightly
 
+      # git alternative
+      jujutsu
+
       # golang
       go
 
