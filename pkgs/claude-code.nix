@@ -16,14 +16,14 @@
 }:
 
 let
-  version = "2.1.42";
+  version = "2.1.45";
 
   baseUrl = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases";
 
   platformInfo = {
     "x86_64-linux" = {
       platform = "linux-x64";
-      hash = "UXhb0m0oljloGYMrwjoYpsDKObe3YRk/p7bpkKF/J9g=";
+      hash = "5+hHODxGZplHB3Qejlar+E3SQwFTYg07pf9ahJN15N4=";
     };
   };
 
