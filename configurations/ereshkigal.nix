@@ -59,6 +59,7 @@ in
   ];
   boot.kernelParams = [
     "btusb.enable_autosuspend=0"
+    "threadirqs"
   ];
 
   networking.hostName = "ereshkigal"; # Define your hostname.
