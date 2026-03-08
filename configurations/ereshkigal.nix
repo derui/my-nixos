@@ -154,6 +154,10 @@ in
 
     # for hyprland
     hyprpaper
+
+    # security
+    gnome-keyring
+    libsecret
   ];
   # Set the default editor to vim
   environment.variables = {

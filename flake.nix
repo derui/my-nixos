@@ -101,7 +101,7 @@
       );
 
       # define formatter for all systems
-      formatter = forAllSystems (system: nixpkgsFor.${system}.nixfmt-rfc-style);
+      formatter = forAllSystems (system: nixpkgsFor.${system}.nixfmt);
 
       # My reserved desktop configuration as NixOS
       nixosConfigurations.ereshkigal =
