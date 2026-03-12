@@ -9,7 +9,7 @@
     openDefaultPorts = true;
 
     user = user;
-    configDir = "/home/${user}/.conifg/syncthing";
+    configDir = "/home/${user}/.config/syncthing";
 
     settings = {
       devices = {
