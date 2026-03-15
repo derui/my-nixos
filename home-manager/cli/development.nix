@@ -32,10 +32,10 @@ in
       go
 
       # python
-      python312
+      python313
 
       # nodejs
-      nodejs_22
+      nodejs_24
       nodePackages.pnpm
 
       # nix
