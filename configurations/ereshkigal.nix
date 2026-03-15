@@ -27,6 +27,7 @@ in
     ../modules/nix.nix
     ../modules/music.nix
     ../modules/qmk.nix
+    ../modules/ollama.nix
     (import ../modules/syncthing.nix { inherit pkgs user; })
     ../modules/podman.nix
   ]
