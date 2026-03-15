@@ -28,6 +28,9 @@ in
       # git alternative
       jujutsu
 
+      # copilot CLI
+      github-copilot-cli
+
       # golang
       go
 

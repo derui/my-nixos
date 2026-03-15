@@ -23,7 +23,6 @@ in
     pv # for monitor
     starship
     go-task
-    github-copilot-cli
 
     # misc
     which
