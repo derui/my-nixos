@@ -158,6 +158,8 @@ in
 
     # security
     libsecret
+    gnome-keyring
+    libgnome-keyring
   ];
   # Set the default editor to vim
   environment.variables = {
