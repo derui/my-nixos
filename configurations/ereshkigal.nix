@@ -157,7 +157,6 @@ in
     hyprpaper
 
     # security
-    gnome-keyring
     libsecret
   ];
   # Set the default editor to vim
@@ -189,11 +188,26 @@ in
   # Enable libvirt
   virtualisation.libvirtd.enable = true;
 
-  # Enable the OpenSSH daemon.
+  # Disable the OpenSSH daemon.
   services.openssh.enable = false;
+
+  # keyring
+  services.gnome.gnome-keyring.enable = true;
+  services.gnome.gcr-ssh-agent.enable = false;
 
   # enable display manager
   services.xserver.enable = true;
+
+  # security concerns
+  security.pam.services = {
+    greetd.enableGnomeKeyring = true;
+    greetd-password.enableGnomeKeyring = true;
+    login.enableGnomeKeyring = true;
+  };
+  services.dbus.packages = [
+    pkgs.gnome-keyring
+    pkgs.gcr
+  ];
 
   # enable greetd and greeter
   services.greetd = {

@@ -4,7 +4,7 @@ let
 in
 {
   home.packages = with pkgs; [
-    bitwarden-desktop
+    # bitwarden-desktop
 
     kitty
     wofi # program launcher
