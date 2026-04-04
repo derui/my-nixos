@@ -40,7 +40,6 @@ in
 
       # nodejs
       nodejs_24
-      nodePackages.pnpm
 
       # nix
       nixd
