@@ -27,7 +27,7 @@ in
     ../modules/nix.nix
     ../modules/music.nix
     ../modules/qmk.nix
-    (import ../modules/llama-cpp.nix { inherit pkgs user; })
+    ../modules/llama-cpp.nix
     (import ../modules/syncthing.nix { inherit pkgs user; })
     ../modules/podman.nix
   ]
