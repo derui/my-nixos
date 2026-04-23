@@ -35,6 +35,9 @@ in
       # golang
       go
 
+      # zig
+      zig_0_15
+
       # python
       python313
 

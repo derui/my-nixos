@@ -27,5 +27,8 @@ in
 
     # multimedia
     yacreader
+
+    # browser
+    chromium
   ];
 }
