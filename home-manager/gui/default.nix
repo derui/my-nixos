@@ -11,6 +11,7 @@
     (import ./emacs { inherit inputs pkgs lib; })
     ./firefox.nix
     ./maestral.nix
+    ./xdg-mime.nix
   ];
 
 }
