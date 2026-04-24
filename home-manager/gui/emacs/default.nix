@@ -17,10 +17,15 @@ let
     # with-grammars requires a list of packages, so use attrValues to convert it.
     builtins.attrValues (lib.filterAttrs (_: g: !(g.meta.broken or false)) p)
   );
+
+  emacs = pkgs.emacs-git.overrideAttrs (_: {
+    # remove patches to prevent failure of applying patches
+    patches = [ ];
+  });
 in
 {
   home.packages = with pkgs; [
-    pkgs.emacs-git-pgtk
+    emacs
     # lspを高速化するための拡張
     emacs-lsp-booster
 
@@ -47,5 +52,4 @@ in
     "emacs/".source = my-dot-emacs;
     "emacs-local/templates".source = "${my-dot-emacs}/templates";
   };
-
 }
