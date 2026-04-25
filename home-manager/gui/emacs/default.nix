@@ -18,10 +18,42 @@ let
     builtins.attrValues (lib.filterAttrs (_: g: !(g.meta.broken or false)) p)
   );
 
-  emacs = pkgs.emacs-git.overrideAttrs (_: {
-    # remove patches to prevent failure of applying patches
-    patches = [ ];
-  });
+  emacs = pkgs.emacs-git.overrideAttrs (
+    _:
+    let
+      libGccJitLibraryPaths = [
+        "${lib.getLib pkgs.libgccjit}/lib/gcc"
+        "${lib.getLib pkgs.stdenv.cc.libc}/lib"
+      ]
+      ++ lib.optionals (pkgs.stdenv.cc ? cc.lib.libgcc) [
+        "${lib.getLib pkgs.stdenv.cc.cc.lib.libgcc}/lib"
+      ];
+    in
+    {
+      # remove original patches and leave only nativecomp-related patch
+      patches = [
+        (pkgs.replaceVars ./native-comp-driver-options-30.patch {
+          backendPath = (
+            lib.concatStringsSep " " (
+              map (x: ''"-B${x}"'') (
+                [
+                  # Paths necessary so the JIT compiler finds its libraries:
+                  "${lib.getLib pkgs.libgccjit}/lib"
+                ]
+                ++ libGccJitLibraryPaths
+                ++ [
+                  # Executable paths necessary for compilation (ld, as):
+                  "${lib.getBin pkgs.stdenv.cc.cc}/bin"
+                  "${lib.getBin pkgs.stdenv.cc.bintools}/bin"
+                  "${lib.getBin pkgs.stdenv.cc.bintools.bintools}/bin"
+                ]
+              )
+            )
+          );
+        })
+      ];
+    }
+  );
 in
 {
   home.packages = with pkgs; [
