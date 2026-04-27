@@ -11,14 +11,14 @@ let
   };
 
   # temporary avoid broken parser
-  treesit = (pkgs.emacsPackagesFor pkgs.emacs-git).treesit-grammars.with-grammars (
+  treesit = (pkgs.emacsPackagesFor pkgs.emacs-git-pgtk).treesit-grammars.with-grammars (
     p:
     # `p` is attribute of package, treesit-grammars. filterAttrs filter `attributes`, but it a set.
     # with-grammars requires a list of packages, so use attrValues to convert it.
     builtins.attrValues (lib.filterAttrs (_: g: !(g.meta.broken or false)) p)
   );
 
-  emacs = pkgs.emacs-git.overrideAttrs (
+  emacs = pkgs.emacs-git-pgtk.overrideAttrs (
     _:
     let
       libGccJitLibraryPaths = [
