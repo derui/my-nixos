@@ -1,6 +1,7 @@
 { pkgs, lib, ... }:
 let
   llama-cpp = pkgs.llama-cpp.override {
+    blasSupport = true;
     rocmSupport = true;
   };
   llama-server = lib.getExe' llama-cpp "llama-server";
