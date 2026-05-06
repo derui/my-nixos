@@ -26,6 +26,10 @@ in
         "gemma-4:4b" = {
           cmd = "${llama-server} -dev ROCm0 -hf ggml-org/gemma-4-E4B-it-GGUF --port \${PORT} --n-gpu-layers 999 --repeat-penalty 1.0 ";
         };
+
+        "gemma-4-nt:4b" = {
+          cmd = "${llama-server} -dev ROCm0 -hf ggml-org/gemma-4-E4B-it-GGUF --port \${PORT} --n-gpu-layers 999 --repeat-penalty 1.0 --chat-template-kwargs '{\"enable_thinking\": false}'";
+        };
       };
     };
   };
