@@ -32,7 +32,7 @@ in
         };
 
         "gemma-4-nt:12b" = {
-          cmd = "${llama-server} -dev ROCm0 -hf ggml-org/gemma-4-12B-it-GGUF --port \${PORT} --n-gpu-layers 999 --repeat-penalty 1.0 --reasoning off'";
+          cmd = "${llama-server} -dev ROCm0 -hf ggml-org/gemma-4-12B-it-GGUF:Q4_K_M --port \${PORT} --n-gpu-layers 999 --repeat-penalty 1.0 --reasoning off";
         };
       };
     };
