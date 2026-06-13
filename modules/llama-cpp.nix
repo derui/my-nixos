@@ -13,7 +13,6 @@ in
 
   # for debug
   # environment.systemPackages = [llama-cpp];
-
   services.llama-swap = {
     enable = true;
     port = 9292;
