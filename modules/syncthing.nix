@@ -29,6 +29,13 @@
             "NOTE2"
           ];
         };
+        "Photos" = {
+          path = "/home/${user}/Photos";
+          devices = [
+            "my-phone"
+            "NOTE2"
+          ];
+        };
       };
     };
 
