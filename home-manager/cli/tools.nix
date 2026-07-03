@@ -20,7 +20,6 @@ in
     fzf # command-line fuzzy
     fd # find alternative
     procs # ps alternative
-    pv # for monitor
     starship
     go-task
 
@@ -32,7 +31,6 @@ in
     zstd
     direnv
     zoxide # move directory
-    just # task runner
     mountpoint-s3
 
     # latex
@@ -47,6 +45,8 @@ in
     nix-direnv
 
     btop # replacement of htop
+
+    imagemagick # for magick
 
     # fonts
     mypkg.udev-gothic

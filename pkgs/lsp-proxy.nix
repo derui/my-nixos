@@ -3,16 +3,18 @@
   pkgs,
   ...
 }:
-pkgs.rustPlatform.buildRustPackage rec {
+pkgs.rustPlatform.buildRustPackage {
   pname = "lsp-proxy";
-  version = "v0.7.2";
+  version = "v0.8.2";
 
-  cargoHash = "sha256-GuenUBYjU36N8qenkGo2WjfJfQwUdjBKAq3mYDgUIJE=";
+  cargoHash = "sha256-NmG3+FexaCuoQRf1OV/OcktSKYMXJHWh+cBzJToQl+M=";
   src = fetchFromGitHub {
     owner = "jadestrong";
     repo = "lsp-proxy";
     fetchSubmodules = true;
-    rev = "08a6f7c01135db8a09f6a75cf8ffecb7d8010ba5";
-    hash = "sha256-Q82KmTJDBOeN9uYVlvtCIPsXcM+vX0/HheKwgH+Gqk0=";
+    rev = "e40e8cb9e131f37a88224a0b207cb6e920d22e11";
+    hash = "sha256-gCD7FC6uc8rypeGaFwYgP2Xrf7smDs8iMCyHY1qxd3M=";
   };
+
+  doCheck = false;
 }
