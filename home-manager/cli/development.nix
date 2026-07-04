@@ -28,10 +28,6 @@ in
       # git alternative
       jujutsu
 
-      # copilot CLI
-      # https://github.com/NixOS/nixpkgs/issues/500198
-      github-copilot-cli
-
       # golang
       go
 
@@ -53,5 +49,6 @@ in
     ++ [
       mypkgs.lsp-proxy
       mypkgs.claude-code
+      mypkgs.github-copilot-cli
     ];
 }

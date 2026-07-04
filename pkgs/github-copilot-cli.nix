@@ -32,7 +32,7 @@ stdenv.mkDerivation (finalAttrs: {
       {
         "x86_64-darwin" = "sha256-D72R1Vt/6eSg7INVYjPtC5W/6oPVzpVC1Tn4q831Wqs=";
         "aarch64-darwin" = "sha256-Ly/Tay3iOMzsipaWLTTh3HKBYwvq7Nu3yQpYrC39UPI=";
-        "x86_64-linux" = "sha256-E8vo0HUyvw9U7cXbjeY7H9atxdMHHLMXcGgWEciuqK0=";
+        "x86_64-linux" = "sha256-d5666Un+h2v18L++GB21nj79WoHb/tXkQdGRGHFPDXs==";
         "aarch64-linux" = "sha256-3l260k1Uw79owiBP2bhNfGgqkE35JN7zPSb8OXIpeuI=";
       }
       .${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
@@ -86,11 +86,6 @@ stdenv.mkDerivation (finalAttrs: {
     description = "GitHub Copilot CLI brings the power of Copilot coding agent directly to your terminal";
     homepage = "https://github.com/github/copilot-cli";
     changelog = "https://github.com/github/copilot-cli/releases/tag/v${finalAttrs.version}";
-    license = lib.licenses.unfree;
-    maintainers = with lib.maintainers; [
-      dbreyfogle
-      me-and
-    ];
     mainProgram = "copilot";
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
     platforms = [
