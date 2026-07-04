@@ -7,7 +7,7 @@
 let
   my-dot-emacs = fetchGit {
     url = "https://github.com/derui/dot.emacs.d";
-    rev = "4e9392db2ddb7600ae1066de23cb5f4fa333cd18";
+    rev = "2c89f3b0f03ece5c1d6a43d13e9a46f9bcf73901";
   };
 
   # temporary avoid broken parser
@@ -18,42 +18,7 @@ let
     builtins.attrValues (lib.filterAttrs (_: g: !(g.meta.broken or false)) p)
   );
 
-  emacs = pkgs.emacs-git-pgtk.overrideAttrs (
-    _:
-    let
-      libGccJitLibraryPaths = [
-        "${lib.getLib pkgs.libgccjit}/lib/gcc"
-        "${lib.getLib pkgs.stdenv.cc.libc}/lib"
-      ]
-      ++ lib.optionals (pkgs.stdenv.cc ? cc.lib.libgcc) [
-        "${lib.getLib pkgs.stdenv.cc.cc.lib.libgcc}/lib"
-      ];
-    in
-    {
-      # remove original patches and leave only nativecomp-related patch
-      patches = [
-        (pkgs.replaceVars ./native-comp-driver-options-30.patch {
-          backendPath = (
-            lib.concatStringsSep " " (
-              map (x: ''"-B${x}"'') (
-                [
-                  # Paths necessary so the JIT compiler finds its libraries:
-                  "${lib.getLib pkgs.libgccjit}/lib"
-                ]
-                ++ libGccJitLibraryPaths
-                ++ [
-                  # Executable paths necessary for compilation (ld, as):
-                  "${lib.getBin pkgs.stdenv.cc.cc}/bin"
-                  "${lib.getBin pkgs.stdenv.cc.bintools}/bin"
-                  "${lib.getBin pkgs.stdenv.cc.bintools.bintools}/bin"
-                ]
-              )
-            )
-          );
-        })
-      ];
-    }
-  );
+  emacs = pkgs.emacs-git-pgtk;
 in
 {
   home.packages = with pkgs; [
