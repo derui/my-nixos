@@ -10,4 +10,5 @@ pkgs: {
   explex = pkgs.callPackage ./explex.nix { };
   lsp-proxy = pkgs.callPackage ./lsp-proxy.nix { };
   claude-code = pkgs.callPackage ./claude-code.nix { };
+  github-copilot-cli = pkgs.callPackage ./github-copilot-cli.nix { };
 }
