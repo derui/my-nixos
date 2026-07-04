@@ -1,3 +1,5 @@
+# This configuration from https://github.com/NixOS/nixpkgs/pull/534884/changes
+# It seems to define local machine only, not nixpkgs.
 {
   lib,
   stdenv,
