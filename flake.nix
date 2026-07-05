@@ -50,7 +50,6 @@
       overlays = [
         (import emacs-overlay)
         fenix.overlays.default
-        (import ./overlay/mountpoint-s3)
       ];
 
       # System types to support.

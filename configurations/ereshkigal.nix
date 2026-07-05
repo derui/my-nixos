@@ -116,9 +116,6 @@ in
     extraGroups = [
       "video"
       "audio"
-      "game"
-      "networkmanager"
-      "ollama"
       "wheel" # Enable ‘sudo’ for the user.
       "kvm" # Enable para-virtualization
       "libvirtd"
@@ -160,6 +157,9 @@ in
     libsecret
     gnome-keyring
     libgnome-keyring
+
+    # fuse
+    fuse3
   ];
   # Set the default editor to vim
   environment.variables = {
