@@ -10,7 +10,7 @@
   ...
 }:
 let
-  linuxKernel = pkgs.linuxKernel.packages.linux_7_0;
+  linuxKernel = pkgs.linuxKernel.packages.linux_7_1;
 in
 {
   imports = [
