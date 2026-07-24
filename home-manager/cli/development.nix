@@ -45,6 +45,9 @@ in
 
       # utility
       prek
+
+      # agent
+      opencode
     ]
     ++ [
       mypkgs.lsp-proxy
