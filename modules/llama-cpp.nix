@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 let
   llama-cpp = pkgs.llama-cpp.override {
-    rocmSupport = true;
+    vulkanSupport = true;
   };
   llama-server = lib.getExe' llama-cpp "llama-server";
 in
@@ -23,9 +23,6 @@ in
       models = {
         "gemma-4-nt:12b" = {
           cmd = "${llama-server} -dev ROCm0 -hf unsloth/gemma-4-12b-it-GGUF:Q4_K_S --port \${PORT} --n-gpu-layers 999 --repeat-penalty 1.0 --reasoning off --spec-type draft-mtp --spec-draft-n-max 2";
-        };
-        "gemma-4-nt:26b" = {
-          cmd = "${llama-server} -dev ROCm0 -hf unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q4_K_S --port \${PORT} --n-gpu-layers 999 --repeat-penalty 1.0 --reasoning off --spec-type draft-mtp --spec-draft-n-max 2";
         };
         "qwen3.6:27b" = {
           cmd = "${llama-server} -dev ROCm0 -hf unsloth/Qwen3.6-27B-MTP-GGUF:IQ4_XS --port \${PORT} \\
