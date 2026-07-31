@@ -7,7 +7,7 @@
 let
   my-dot-emacs = fetchGit {
     url = "https://github.com/derui/dot.emacs.d";
-    rev = "70dae6e027dfe434471320941efb443394480736";
+    rev = "9c55d1492cf4d1b32adf2eb6b902b0ee476141e3";
   };
 
   # temporary avoid broken parser

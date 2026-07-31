@@ -25,8 +25,8 @@ in
              -ngl 99 -np 1 \\
              --reasoning off \\
              --flash-attn on \\
-             --cache-type-k q8_0 \\
-             --cache-type-v q8_0 \\
+             --cache-type-k q4_0 \\
+             --cache-type-v q4_0 \\
              --spec-type draft-mtp \\
              --spec-draft-n-max 2";
         };
