@@ -6,10 +6,6 @@ let
   llama-server = lib.getExe' llama-cpp "llama-server";
 in
 {
-  systemd.services.llama-swap = {
-    environment.XDG_CACHE_HOME = "/var/cache/llama.cpp";
-  };
-
   # for debug
   # environment.systemPackages = [llama-cpp];
   services.llama-swap = {
@@ -24,10 +20,13 @@ in
         "gemma-4-nt:12b" = {
           cmd = "${llama-server} -dev ROCm0 -hf unsloth/gemma-4-12b-it-GGUF:Q4_K_S --port \${PORT} --n-gpu-layers 999 --repeat-penalty 1.0 --reasoning off --spec-type draft-mtp --spec-draft-n-max 2";
         };
-        "qwen3.6:27b" = {
-          cmd = "${llama-server} -dev ROCm0 -hf unsloth/Qwen3.6-27B-MTP-GGUF:IQ4_XS --port \${PORT} \\
-             -ngl 99 -c 8192 -fa on -np 1 \\
-             --chat-template-kwargs '{\"enable_thinking\": false}' \\
+        "qwen3.6:35b" = {
+          cmd = "${llama-server} -dev ROCm0 -hf unsloth/Qwen3.6-35B-A3B-MTP-GGUF:IQ4_XS --port \${PORT} \\
+             -ngl 99 -np 1 \\
+             --reasoning off \\
+             --flash-attn on \\
+             --cache-type-k q8_0 \\
+             --cache-type-v q8_0 \\
              --spec-type draft-mtp \\
              --spec-draft-n-max 2";
         };
