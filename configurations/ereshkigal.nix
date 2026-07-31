@@ -19,7 +19,7 @@ in
 
     # system modules
     ../modules/wireless.nix
-    ../modules/gpu.nix
+
     ../modules/bluetooth.nix
     ../modules/desktop/hyprland.nix
     ../modules/desktop/fcitx.nix
