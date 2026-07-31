@@ -26,7 +26,7 @@ let
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "github-copilot-cli";
-  version = "1.0.68";
+  version = "1.0.76";
 
   src = fetchurl {
     url = "https://github.com/github/copilot-cli/releases/download/v${finalAttrs.version}/github-copilot-${finalAttrs.version}-${platform}.tgz";
@@ -34,7 +34,7 @@ stdenv.mkDerivation (finalAttrs: {
       {
         "x86_64-darwin" = "sha256-D72R1Vt/6eSg7INVYjPtC5W/6oPVzpVC1Tn4q831Wqs=";
         "aarch64-darwin" = "sha256-Ly/Tay3iOMzsipaWLTTh3HKBYwvq7Nu3yQpYrC39UPI=";
-        "x86_64-linux" = "sha256-d5666Un+h2v18L++GB21nj79WoHb/tXkQdGRGHFPDXs==";
+        "x86_64-linux" = "sha256-sr/kUeP54o1SXKvfyvpJYASPH44IBxSI3WQ8Nu+t+hc=";
         "aarch64-linux" = "sha256-3l260k1Uw79owiBP2bhNfGgqkE35JN7zPSb8OXIpeuI=";
       }
       .${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
@@ -62,6 +62,16 @@ stdenv.mkDerivation (finalAttrs: {
     "libpng16.so.16"
     "libpipewire-0.3.so.0"
     "libei.so.1"
+    "libwebkit2gtk-4.1.so.0"
+    "libjavascriptcoregtk-4.1.so.0"
+    "libgtk-3.so.0"
+    "libgdk-3.so.0"
+    "libcairo.so.2"
+    "libgdk_pixbuf-2.0.so.0"
+    "libsoup-3.0.so.0"
+    "libwayland-client.so.0"
+    "libdbus-1.so.3"
+    "libxdo.so.3"
   ];
 
   installPhase = ''
