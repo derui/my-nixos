@@ -215,7 +215,7 @@ in
   services.greetd = {
     enable = true;
   };
-  programs.displayManager.regreet = {
+  services.displayManager.regreet = {
     enable = true;
     cageArgs = [
       "-s"
