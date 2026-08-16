@@ -12,6 +12,7 @@
     ./firefox.nix
     ./maestral.nix
     ./xdg-mime.nix
+    ./wayle.nix
   ];
 
 }
