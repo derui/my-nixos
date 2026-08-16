@@ -8,7 +8,6 @@ in
 
     kitty
     wofi # program launcher
-    waybar # bar display
     mako
 
     # music
