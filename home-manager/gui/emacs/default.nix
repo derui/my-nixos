@@ -7,7 +7,7 @@
 let
   my-dot-emacs = fetchGit {
     url = "https://github.com/derui/dot.emacs.d";
-    rev = "b1b23b1f32eac722af3a5ff07903893c745ff7fa";
+    rev = "8013a299c51294345a8807849e87a1433456ff0e";
   };
 
   # temporary avoid broken parser
@@ -23,8 +23,6 @@ in
 {
   home.packages = with pkgs; [
     emacs
-    # lspを高速化するための拡張
-    emacs-lsp-booster
 
     # jinx
     gcc
