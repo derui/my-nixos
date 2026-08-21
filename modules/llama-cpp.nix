@@ -33,8 +33,8 @@ in
              --spec-type draft-mtp \\
              --spec-draft-n-max 2";
         };
-        "Muse-Glimmer:30b" = {
-          cmd = "${llama-server} -dev ROCm0 -hf meta-models/Muse-Glimmer-30B-GGUF:Q4_K_M --port \${PORT} \\
+        "gemma-4-it:26b" = {
+          cmd = "${llama-server} -dev ROCm0 -hf unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q4_K_S --port \${PORT} \\
              --chat-template-kwargs '{\"reasoning_effort\":\"low\"}' \\
              -ngl 99 -np 1 \\
              --temp 1.0 \\
@@ -43,7 +43,9 @@ in
              --min-p 0.0 \\
              --flash-attn on \\
              --cache-type-k q4_0 \\
-             --cache-type-v q4_0";
+             --cache-type-v q4_0 \\
+             --spec-type draft-mtp \\
+             --spec-draft-n-max 2";
         };
       };
     };
