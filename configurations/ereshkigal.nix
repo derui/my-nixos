@@ -136,6 +136,9 @@ in
     # terminals
     kitty
 
+    # system monitor
+    rocmPackages.rocm-smi
+
     # for emacs
     enchant_2
     nuspell

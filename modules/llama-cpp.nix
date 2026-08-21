@@ -20,19 +20,30 @@ in
         "gemma-4-nt:12b" = {
           cmd = "${llama-server} -dev ROCm0 -hf unsloth/gemma-4-12b-it-GGUF:Q4_K_S --port \${PORT} --n-gpu-layers 999 --repeat-penalty 1.0 --reasoning off --spec-type draft-mtp --spec-draft-n-max 2";
         };
-        "qwen3.8:27b" = {
-          cmd = "${llama-server} -dev ROCm0 -hf unsloth/Qwen3.8-27B-GGUF:Q3_K_S --port \${PORT} \\
-             -ngl 99 -np 1 \\
+        "ornith1.5:31b" = {
+          cmd = "${llama-server} -dev ROCm0 -hf ornith-ai/Ornith-1.5-35B-A3B-GGUF:Q4_K_M --port \${PORT} \\
+             -ngl 99 -np 1 --n-cpu-moe 6 \\
              --temp 1.0 \\
              --top-p 0.95 \\
              --top-k 20 \\
              --min-p 0.0 \\
-             --reasoning off \\
              --flash-attn on \\
              --cache-type-k q4_0 \\
              --cache-type-v q4_0 \\
              --spec-type draft-mtp \\
              --spec-draft-n-max 2";
+        };
+        "Muse-Glimmer:30b" = {
+          cmd = "${llama-server} -dev ROCm0 -hf unsloth/Muse-Glimmer-30B-GGUF:UD-Q4_K_XL --port \${PORT} \\
+             --chat-template-kwargs '{\"reasoning_effort\":\"low\"}' \\
+             -ngl 99 -np 1 \\
+             --temp 1.0 \\
+             --top-p 0.95 \\
+             --top-k 20 \\
+             --min-p 0.0 \\
+             --flash-attn on \\
+             --cache-type-k q4_0 \\
+             --cache-type-v q4_0";
         };
       };
     };
