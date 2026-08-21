@@ -6,6 +6,7 @@ pkgs: {
   udev-gothic-nf = pkgs.callPackage ./udev-gothic-nf.nix { };
   moralerspace = pkgs.callPackage ./moralerspace.nix { };
   moralerspace-hw = pkgs.callPackage ./moralerspace-hw.nix { };
+  plemoljp = pkgs.callPackage ./plemoljp.nix { };
   tuna-lv2 = pkgs.callPackage ./tuna-lv2.nix { };
   explex = pkgs.callPackage ./explex.nix { };
   lsp-proxy = pkgs.callPackage ./lsp-proxy.nix { };
