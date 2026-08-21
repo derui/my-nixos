@@ -34,7 +34,7 @@ in
              --spec-draft-n-max 2";
         };
         "Muse-Glimmer:30b" = {
-          cmd = "${llama-server} -dev ROCm0 -hf unsloth/Muse-Glimmer-30B-GGUF:UD-Q4_K_XL --port \${PORT} \\
+          cmd = "${llama-server} -dev ROCm0 -hf meta-models/Muse-Glimmer-30B-GGUF:Q4_K_M --port \${PORT} \\
              --chat-template-kwargs '{\"reasoning_effort\":\"low\"}' \\
              -ngl 99 -np 1 \\
              --temp 1.0 \\
