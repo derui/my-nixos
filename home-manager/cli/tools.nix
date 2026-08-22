@@ -44,7 +44,7 @@ in
     nh # for daily nix development
     nix-direnv
 
-    btop # replacement of htop
+    btop-rocm # replacement of htop
 
     imagemagick # for magick
 
