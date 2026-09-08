@@ -211,7 +211,7 @@ in
   };
   services.dbus.packages = [
     pkgs.gnome-keyring
-    pkgs.gcr
+    pkgs.gcr_4
   ];
 
   # enable greetd and greeter
