@@ -6,15 +6,15 @@
   ...
 }:
 let
-  version = "2.0.0";
-  sha256 = "sha256-mOQOlq3p/TZ/7+WSMFgjsI1kx0UL8IeQnUATAXxxahg=";
+  version = "2.2.0";
+  sha256 = "sha256-8b31FU8LRIjaO3SQW0j5tl5CdOXGR9FimqQWfpNmgPc=";
 in
 stdenvNoCC.mkDerivation {
   pname = "udev-gothic";
   inherit version;
 
   src = fetchzip {
-    url = "https://github.com/yuru7/udev-gothic/releases/download/v2.0.0/UDEVGothic_HS_v2.0.0.zip";
+    url = "https://github.com/yuru7/udev-gothic/releases/download/v${version}/UDEVGothic_HS_v${version}.zip";
     hash = sha256;
     stripRoot = true;
   };
