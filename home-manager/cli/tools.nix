@@ -48,6 +48,10 @@ in
 
     imagemagick # for magick
 
+    # wayland screenshots
+    grim
+    slurp
+
     # fonts
     mypkg.udev-gothic
     mypkg.udev-gothic-nf
