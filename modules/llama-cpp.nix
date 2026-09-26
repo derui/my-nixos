@@ -17,8 +17,8 @@ in
       ttl = 3600;
 
       models = {
-        "gemma-4-nt:12b" = {
-          cmd = "${llama-server} -dev ROCm0 -hf unsloth/gemma-4-12b-it-GGUF:Q4_K_S --port \${PORT} --n-gpu-layers 999 --repeat-penalty 1.0 --reasoning off --spec-type draft-mtp --spec-draft-n-max 2";
+        "ornith1.5:9b" = {
+          cmd = "${llama-server} -dev ROCm0 -hf ornith-ai/Ornith-1.5-9B-GGUF --port \${PORT} --n-gpu-layers 99 -np 1 --n-cpu-moe 6 --repeat-penalty 1.0 --reasoning off --spec-type draft-mtp --spec-draft-n-max 2";
         };
         "ornith1.5:31b" = {
           cmd = "${llama-server} -dev ROCm0 -hf ornith-ai/Ornith-1.5-35B-A3B-GGUF:Q4_K_M --port \${PORT} \\
