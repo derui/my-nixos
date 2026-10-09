@@ -32,7 +32,7 @@ in
       go
 
       # zig
-      zig_0_15
+      zig_0_16
 
       # python
       python313
