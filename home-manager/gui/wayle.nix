@@ -15,7 +15,7 @@
           # add more attribute sets with different monitors if wayle should
           # have different layouts on each
           {
-            monitor = "*"; # replace "DP-1" with "*" for all monitors
+            monitor = "*";
             show = true;
             center = [
               "window-title"
